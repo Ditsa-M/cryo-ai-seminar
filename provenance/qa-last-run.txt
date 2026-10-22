@@ -1,4 +1,4 @@
-QA 2026-10-22T06:44:14.869Z
+QA 2026-10-22T20:30:22.793Z
 s01   30 s    64 w  128 wpm  ends 0:30  Title and central question
 s02   45 s   107 w  143 wpm  ends 1:15  Why AI-assisted processing matters
 s03   50 s   104 w  125 wpm  ends 2:05  What cryo-EM and cryo-ET reveal

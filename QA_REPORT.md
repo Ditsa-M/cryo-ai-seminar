@@ -63,5 +63,51 @@ The three prototype slides (title micrograph, benchmark chart, picking/tomograph
 * video height on slide 3;
 * print layout of the PDF.
 
+
 ## 2. Technical QA
-See section 3 (filled from `tests/test-report.json`).
+
+Automated run: 2026-10-22T08:30:04 UTC, headless Chrome (/usr/bin/google-chrome), production build served by `vite preview`, every non-localhost request blocked (offline). 29/29 checks passed.
+
+| Result | Check | Detail |
+|---|---|---|
+| PASS | 16 slides | found 16 |
+| PASS | speaker notes on all slides with all fields | 16 notes |
+| PASS | data-timing on every slide, sums to 900 s | sum 900 |
+| PASS | no automatic slide advancement (6 s idle) |  |
+| PASS | keyboard (arrow/space) reaches final slide | 70 presses, ended at 15 |
+| PASS | ArrowLeft goes back (fragment, then slide) |  |
+| PASS | no element overflows the 1920×1080 slide |  |
+| PASS | citation strips ≥18 px at slide scale |  |
+| PASS | citation strip present on evidence slides | 15 slides with strip |
+| PASS | scientific video: paused until click |  |
+| PASS | scientific video: plays on click |  |
+| PASS | scientific video: plays once and holds final frame |  |
+| PASS | scientific video: resets when presenter goes back |  |
+| PASS | scientific video: replayable |  |
+| PASS | videos pause when slide inactive |  |
+| PASS | decorative loop plays muted on its slide |  |
+| PASS | all videos muted with WebM+MP4 sources and poster |  |
+| PASS | fragment-driven animation reverses and replays | {"a":"12,163 picks · P 0.55 · R 0.99","b":"7,995 picks · P 0.76 · R 0.89","c":"12,163 picks · P 0.55 · R 0.99" |
+| PASS | speaker view: current + next slide, timer, pacing, notes | {"current":true,"upcoming":true,"timer":true,"pacing":true,"notes":"TARGET TIME: 0:50 (50 s) — be done by 2:05 |
+| PASS | offline: no non-local requests |  |
+| PASS | no missing files (HTTP ≥400) |  |
+| PASS | no console errors |  |
+| PASS | 1366×768 renders scaled deck | scale 0.700 |
+| PASS | 1366×768 citation text ≥ 12 px on screen | 13.3 px |
+| PASS | 1366×768 no console errors |  |
+| PASS | reduced motion (OS setting): posters instead of video | {"videos":0,"posters":4,"cls":true} |
+| PASS | reduced motion ('M' key toggle) | {"videos":0,"cls":true} |
+| PASS | PDF backup has 16 pages | 16 pages |
+| PASS | MP4 backup decodes, H.264 1920×1080, silent, ≈15 min | 900.0 s |
+
+Bugs found by these checks and fixed:
+* **Speaker view showed no notes.** The page's Content-Security-Policy had `frame-src 'none'`, which blocked the speaker window's own preview iframes. It is now `'self'`. URL-query config (used by those iframes) is also merged back into the React config.
+* **PDF printed 1 page with a white background.** Root `overflow: hidden` and a page-size mismatch caused this. Print rules were added and the CSS page size is now used.
+* **Slide 10 chart lines were not drawn.** The reversed x-domain broke the line filter.
+
+Not automated, done by hand in Chrome: all 16 slides reviewed in final state at 1920×1080. Still worth doing before 27 Oct: one live rehearsal with the projector, clicking through every step and timing it with the speaker view.
+
+## 3. Publication
+* Live deck (GitHub Pages, `gh-pages` branch): https://ditsa-m.github.io/cryo-ai-seminar/
+* Backups: release v1.0, https://github.com/Ditsa-M/cryo-ai-seminar/releases/tag/v1.0 (`deck-backup.mp4`, 900.0 s, H.264 1920×1080, silent, rendered on the lab PC; `deck.pdf`).
+* `sources/` (copyrighted PDFs and full texts used for verification) is deliberately not published.

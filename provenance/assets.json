@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-21",
+ "generated": "2026-10-22",
  "policy": "No generative AI imagery. Every pixel derives from deposited experimental data, deterministic simulation from deposited models, or reproducible computation; schematics are hand-coded SVG in src/.",
  "schematic_svg": [
   "s02 pipeline",

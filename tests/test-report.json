@@ -1,5 +1,5 @@
 {
- "when": "2026-10-22T06:45:35.840Z",
+ "when": "2026-10-22T08:30:04.104Z",
  "chrome": "/usr/bin/google-chrome",
  "results": [
   {
@@ -143,9 +143,9 @@
    "detail": "16 pages"
   },
   {
-   "name": "MP4 backup exists",
-   "ok": false,
-   "detail": "run npm run export:mp4"
+   "name": "MP4 backup decodes, H.264 1920×1080, silent, ≈15 min",
+   "ok": true,
+   "detail": "900.0 s"
   }
  ]
 }
