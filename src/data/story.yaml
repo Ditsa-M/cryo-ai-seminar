@@ -1,0 +1,465 @@
+# Timed 16-slide script. Single source of truth for speaker notes, transcript and QA.
+# target_seconds must sum to 900; the take-home (s15) must end at ~875 s (14:35).
+# Word counts are computed by scripts/qa-check.mjs from `script`; do not hand-edit counts.
+meta:
+  title: "AI in cryo-EM and cryo-ET data processing"
+  subtitle: "Where does deep learning add trustworthy structural information — and how can we tell whether an apparent improvement is real?"
+  presenter: "Ditsa Mallick"
+  course: "BCH 561 · Arizona State University"
+  date: "27 October 2026"
+  speaking_rate_wpm: [130, 145]
+  word_target: [1800, 1950]
+  total_seconds: 900
+
+slides:
+  - id: s01
+    title: "Title and central question"
+    stage: null
+    target_seconds: 30
+    evidence: true
+    labels: [EXPERIMENTAL DATA, RECOMPUTED RESULT]
+    citation: "Micrograph: EMPIAR-10017 (β-galactosidase, Falcon II, 1.77 Å/px; expert coordinates by R. Henderson). Picks: Topaz 0.3.20 pretrained ResNet16, run by presenter."
+    claims: [c01-empiar10017, c01-topaz-run]
+    script: >-
+      This is a real cryo-EM image of beta-galactosidase. Can you see the proteins?
+      Filtered, they start to emerge. Now look at the outlines: a neural network and an
+      expert agree on most particles, but not all. So my question today is: where does
+      deep learning add trustworthy structural information to cryo-EM and cryo-ET, and
+      how can we tell whether an apparent improvement is real?
+    clicks:
+      - "Low-pass filter fades in over the raw micrograph."
+      - "Outlines appear: cyan solid = expert and Topaz agree; amber dashed = Topaz only; white dotted = expert only."
+      - "Central question appears."
+    source: "EMPIAR-10017 entry and data; Topaz (Bepler et al. 2019). Pick comparison recomputed by the presenter (production/data-pipeline/eval_picks.py)."
+    qualification: "The micrograph is an unaligned 24-frame average from 2012 — older and noisier than modern data, which makes the point about low SNR but is not state of the art."
+    deeper: "The 'expert' labels are one person's choices for a 2015 semi-automated picking paper; they were never meant to be exhaustive ground truth."
+    question: "Is this micrograph simulated?"
+    answer: "No. It is deposited experimental data (EMPIAR-10017). Only the low-pass filter and the outlines are computed; the label in the corner says so."
+
+  - id: s02
+    title: "Why AI-assisted processing matters"
+    stage: null
+    target_seconds: 45
+    evidence: true
+    labels: [REPORTED RESULT, CONCEPTUAL SCHEMATIC]
+    citation: "Iqbal et al. 2026 BMC Artif Intell 2:2 (EMPIAR size, Jan 2025) · Dhakal et al. 2025 Brief Bioinform 26:bbaf011 Table 3 · EMPIAR-10017 metadata"
+    claims: [c02-empiar-size, c02-max-picks, c02-dose, c02-henderson-rate]
+    script: >-
+      Why automate at all? Three reasons. First, the signal is tiny: radiation damage limits
+      the electron dose, so every particle sits in noise. Second, scale: by January 2025 the
+      public archive EMPIAR held 1,879 datasets, about 4.8 petabytes, and one dataset in
+      today's case study produced over four hundred thousand picks. Third, people are slow
+      and inconsistent: in the micrograph you just saw, an expert marked roughly five hundred
+      particles per image, by hand. But speed is not the goal. A wrong pick, a bad drift
+      estimate or an over-sharpened map does not stay local. It propagates downstream, into
+      the structure and into the biology we claim.
+    clicks:
+      - "Three numbers appear: dose, archive size, picks per dataset."
+      - "Pipeline strip appears; an error marker at 'pick' propagates to 'interpret'."
+    source: "Iqbal et al. 2026 (EMPIAR: 1,879 entries, 4.83 PB as of 14 Jan 2025); Dhakal et al. 2025 Table 3 (Topaz, EMPIAR-10093 full: 437,235 picks); EMPIAR-10017 metadata (24 e⁻/Å²); presenter count of 6,829 expert coordinates in 12 micrographs."
+    qualification: "Archive size is a review's snapshot; it grows continuously. The 400,000 picks are one tool on one dataset, not typical of every project."
+    deeper: "Dose is limited because high-energy electrons break bonds; at ~20–60 e⁻/Å² high-resolution features are already being destroyed, so you cannot simply 'expose longer'."
+    question: "Isn't manual picking still the gold standard?"
+    answer: "It is a useful reference but not ground truth: humans miss particles, are inconsistent between sessions, and favour obvious views. Our own comparison later shows the expert skipped real particles."
+
+  - id: s03
+    title: "What cryo-EM and cryo-ET reveal"
+    stage: null
+    target_seconds: 50
+    evidence: true
+    labels: [EXPERIMENTAL DATA, SIMULATION]
+    citation: "Left: EMPIAR-10017 (experimental). Right: simulated tomogram slice from PDB 6CVM + 4V6X, ±60° tilt, presenter's deterministic simulation (seed 561). Iqbal et al. 2026."
+    claims: [c03-tilt-range, c03-et-context]
+    script: >-
+      There are two branches. Single-particle analysis images many copies of a purified
+      complex, each frozen in a random orientation. We pick two-dimensional particle images
+      and average them, often to near-atomic resolution. Cryo-electron tomography instead
+      tilts one region, often a thin slice of a cell, through about plus or minus sixty
+      degrees, and reconstructs a three-dimensional tomogram. We pick three-dimensional
+      subvolumes and average those, usually at lower resolution, but in their native context.
+      So single-particle work asks: what is the atomic mechanism of this purified complex?
+      Tomography asks: where is it, what is it bound to, and what state is it in, inside the cell?
+    clicks:
+      - "Right panel (tomography) slides in."
+      - "Question boxes appear under each panel."
+    source: "Iqbal et al. 2026 (SPA vs in situ ET); TomoTwin (Rice et al. 2023) for tomogram picking context."
+    qualification: "±60° is typical, not universal; dose-symmetric schemes and specimen thickness change the usable range."
+    deeper: "Subtomogram averaging can reach sub-4 Å for abundant, rigid complexes such as ribosomes in situ, but most cellular targets are far lower resolution."
+    question: "Why not just tilt to ±90°?"
+    answer: "The holder and the grid bars block the beam, and a slab-shaped specimen gets effectively thicker with tilt (path length ∝ 1/cos θ). Beyond ~60–70° there is almost no usable signal."
+
+  - id: s04
+    title: "Fundamental image-formation principle"
+    stage: null
+    target_seconds: 70
+    evidence: true
+    labels: [SIMULATION]
+    citation: "Simulation from PDB 6CVM (β-galactosidase) via ChimeraX 1.12 molmap 4 Å; 300 kV, Cs 2.7 mm, 7% amplitude contrast, 1.5 µm defocus, SNR 0.05; known poses; seed 561."
+    claims: [c04-model, c04-central-slice]
+    script: >-
+      Here is the physics in one line. V is the three-dimensional density of the molecule.
+      Each particle sits in an unknown orientation, phi-i, and the microscope records its
+      projection, P: a two-dimensional shadow summed along the beam. The optics do not pass
+      every spatial frequency equally. The contrast transfer function, the CTF, multiplies
+      the image's Fourier transform by an oscillating curve set by defocus, so some details
+      flip contrast and some vanish at the zeros. Then comes noise, n-i: at a safe dose the
+      noise is larger than the signal. The rescue is averaging. Averaging N aligned copies
+      raises signal-to-noise roughly N-fold, and projections from many directions fill
+      three-dimensional Fourier space, the central-slice theorem, so the map emerges. In this
+      simulation of beta-galactosidase, thirty views give a blur and thirty thousand give the
+      structure. Every tool today attacks one unknown in this equation.
+    clicks:
+      - "Projection: clean views of the simulated molecule."
+      - "CTF: the 1D curve and the CTF-modulated images."
+      - "Noise: the same images at SNR 0.05."
+      - "Averaging: 1 → 10 → 100 → 1000 aligned copies."
+      - "Reconstruction: central slices from 30 → 300 → 3,000 → 30,000 views."
+    source: "Central-slice theorem (DeRosier & Klug 1968, cited in Iqbal et al. 2026); CryoAI (Levy et al. 2022) formulates the same forward model."
+    qualification: "Poses are known in this simulation. Real data must estimate them, which is the hard part; this is an upper bound on what averaging can do."
+    deeper: "CTF(k) = −[√(1−A²)·sin χ(k) + A·cos χ(k)], χ(k) = πλΔf k² − (π/2)C_s λ³ k⁴. Defocus is varied across micrographs so that zeros fall at different k and the averaged data cover all frequencies."
+    question: "If the CTF has zeros, how is that information recovered?"
+    answer: "By collecting images at different defocus values: each has zeros at different frequencies, so the combined data fill the gaps. CTF correction (Wiener filtering) then weights each image by how much signal it carries at each frequency."
+
+  - id: s05
+    title: "What the raw data look like"
+    stage: motion
+    target_seconds: 50
+    evidence: true
+    labels: [EXPERIMENTAL DATA, RECOMPUTED RESULT, SIMULATION]
+    citation: "Movie: EMPIAR-10204 (β-gal, CRYO ARM 200, 49 frames, 0.885 Å/px). Particles/2D classes: EMPIAR-10017, presenter's simplified classification. Map: EMD-72202 half maps. Tilt series/tomogram: simulation."
+    claims: [c05-empiar10204, c05-emd72202]
+    script: >-
+      What do the data actually look like? The measurement is a movie: dozens of very
+      low-dose frames. Here are forty-nine frames from a public beta-galactosidase dataset,
+      about one point three electrons per square ångström each. Summing aligned frames gives
+      the micrograph. In tomography the measurement is a tilt series, and the tomogram is
+      computed from it. Everything after that is inference: the particle coordinates, the
+      extracted boxes, the two-dimensional class averages, the density map. Keep that line in
+      mind, measured on the left, inferred on the right, because every AI tool today lives on
+      the inferred side. Even a two-dimensional class average is already
+      the product of many computational decisions.
+    clicks:
+      - "Measured row: single frame, aligned sum, tilt series (simulated)."
+      - "Inferred row: coordinates, extracted boxes, 2D classes, density map."
+      - "Dividing line labelled 'measured | inferred'."
+    source: "EMPIAR-10204; RELION-3 tutorial dose (1.277 e⁻/Å² per frame) for this dataset; EMPIAR-10017; EMD-72202."
+    qualification: "Even the 'measured' micrograph is already processed (gain correction, alignment). The line is a gradient, not a wall."
+    deeper: "Direct electron detectors made movies possible: by counting individual electrons at high frame rates they let us correct motion after the fact (Li et al. 2013)."
+    question: "Why record a movie instead of one long exposure?"
+    answer: "Because the specimen moves during exposure. Fractionating the dose lets you measure and undo motion, and weight early (less damaged) frames more heavily at high resolution."
+
+  - id: s06
+    title: "End-to-end workflow"
+    stage: null
+    target_seconds: 70
+    evidence: true
+    labels: [CONCEPTUAL SCHEMATIC, REPORTED RESULT]
+    citation: "Iqbal et al. 2026 (workflow, Fig. 1–2, not reproduced) · Levy et al. 2022 ECCV LNCS 13681:540–557 (CryoAI) · Giri et al. 2024 Sci Data 11:458 (Cryo2StructData)"
+    claims: [c06-cryoai-speed, c06-cryo2struct-size]
+    script: >-
+      Here is the full workflow, branched. Single particle: movies, motion correction, CTF
+      estimation, particle picking, extraction, two- and three-dimensional classification,
+      refinement, map sharpening or denoising, then model building. Tomography adds tilt-series
+      alignment and tomogram reconstruction before subtomogram picking and averaging. The small
+      indicator at the top of each slide tracks where we are. Deep learning has now entered almost
+      every box, but not equally: some steps are still pure physics and optimization. Two of my
+      sources sit downstream of picking. CryoAI uses a neural encoder to predict each particle's
+      orientation directly and reconstructs from scratch, reported as about an order of magnitude
+      faster on large datasets. Cryo2StructData supplies 7,600 labelled density maps to train
+      networks that build atomic models. Today I stay upstream: motion, picking and enhancement,
+      because that is where errors are born.
+    clicks:
+      - "SPA branch draws left to right."
+      - "Cryo-ET branch splits off at reconstruction."
+      - "Violet tags mark stages where DL tools exist; CryoAI and Cryo2StructData tags highlighted."
+    source: "Iqbal et al. 2026; Levy et al. 2022 ('one order of magnitude faster for large datasets'); Giri et al. 2024 ('7,600 preprocessed cryo-EM density maps')."
+    qualification: "CryoAI's speed-up is for homogeneous reconstruction on large datasets, compared with the solvers the authors tested; it does not handle heterogeneity."
+    deeper: "Amortized inference: instead of searching all orientations for every image (like RELION's expectation–maximization), CryoAI trains one encoder that maps any image to a pose, so the cost per image falls as the dataset grows."
+    question: "Is motion correction or CTF estimation done by deep learning?"
+    answer: "Not in the standard tools. MotionCor2, RELION and cryoSPARC patch motion use optimization; CTFFIND and Gctf fit a physical model. I found no widely used deep-learning motion-correction method."
+
+  - id: s07
+    title: "Motion correction"
+    stage: motion
+    target_seconds: 50
+    evidence: true
+    labels: [EXPERIMENTAL DATA, RECOMPUTED RESULT]
+    citation: "EMPIAR-10204 movie 20170629_00021 · presenter's simplified cross-correlation alignment (not MotionCor2) · Zheng et al. 2017 Nat Methods 14:331 · Grant & Grigorieff 2015 eLife 4:e06980"
+    claims: [c07-drift, c07-conventional, c07-doseweight]
+    script: >-
+      Step one is motion. The beam makes the ice move, and the stage drifts. In this real
+      movie the whole frame drifted about twenty-one ångströms during the exposure, roughly
+      ten times the detail we want to see. Summing frames without alignment blurs the image;
+      look at the Thon rings in the power spectrum, the fingerprint of the CTF. Aligning
+      frames by cross-correlation sharpens them. Local patches then correct uneven motion,
+      but small patches carry little signal, and this corner's estimate is probably noise.
+      Dose weighting down-weights late, damaged frames. And note: MotionCor2, RELION and
+      cryoSPARC do this by optimization, not deep learning.
+    clicks:
+      - "Unaligned frame groups drift (plays once, holds)."
+      - "Global trajectory plotted; unaligned vs aligned power spectra."
+      - "Patch residual trajectories; outlier corner patch flagged amber dashed."
+      - "Label: 'conventional optimization — not deep learning'."
+    source: "Presenter's recomputation on EMPIAR-10204 (production/data-pipeline/motioncorr_demo.py); MotionCor2 (Zheng et al. 2017); Bayesian polishing (Zivanov et al. 2019); dose weighting (Grant & Grigorieff 2015)."
+    qualification: "Our script is a teaching re-implementation; its drift estimate is not a MotionCor2 result. The 21 Å is for this one movie."
+    deeper: "Errors propagate: a wrong trajectory blurs high frequencies, which damps Thon rings and degrades CTF estimation, which then mis-weights every particle downstream."
+    question: "Could a neural network do motion correction better?"
+    answer: "Possibly, but motion is a well-posed physical problem with strong signal from the whole frame; optimization already works well. Learned priors would risk inventing motion. I found no widely adopted DL method for it."
+
+  - id: s08
+    title: "Particle picking as an inference problem"
+    stage: pick
+    target_seconds: 50
+    evidence: true
+    labels: [EXPERIMENTAL DATA, RECOMPUTED RESULT]
+    citation: "EMPIAR-10017 micrograph + expert coordinates · Topaz 0.3.20 pretrained (Bepler et al. 2019 Nat Methods 16:1153), threshold 2.0, 40 px match radius · Dhakal et al. 2025"
+    claims: [c08-challenges, c08-categories]
+    script: >-
+      Picking sounds like object detection, but it is inference under uncertainty. Contrast
+      is low, ice and carbon look like particles, particles touch and aggregate, and some
+      views are rare. Even the ground truth is a human judgement, so every pick is a hypothesis, not an observation. On this real micrograph I
+      ran Topaz and compared it with the expert's picks. Cyan, solid: both agree. Amber,
+      dashed: the model picked and the expert did not. Is that a false positive, or a missed
+      label? White, dotted: the expert picked and the model missed. And all of it depends on a
+      threshold that somebody chose.
+    clicks:
+      - "Cyan solid outlines: agreed picks."
+      - "Amber dashed: model-only picks (uncertain)."
+      - "White dotted: expert-only picks (missed)."
+      - "Threshold label appears with its value."
+    source: "Dhakal et al. 2025 (challenges: low SNR, contamination, overlap, heterogeneity); presenter's Topaz run."
+    qualification: "Matching radius and threshold are our choices (40 px ≈ 71 Å; score 2.0, the best-F1 threshold). Different choices shift every count."
+    deeper: "In detection terms, a 'pick' is a coordinate plus a score. The score is not a calibrated probability; it ranks candidates within a run."
+    question: "Why not use the network's confidence directly?"
+    answer: "Scores are ranks, not calibrated probabilities, and they shift between datasets. That is why you choose thresholds by downstream quality — 2D classes and resolution — not by the score itself."
+
+  - id: s09
+    title: "Topaz, crYOLO and TomoTwin"
+    stage: pick
+    target_seconds: 80
+    evidence: true
+    labels: [CONCEPTUAL SCHEMATIC, REPORTED RESULT]
+    citation: "Bepler et al. 2019 Nat Methods 16:1153 · Wagner et al. 2019 Commun Biol 2:218 · Rice et al. 2023 Nat Methods 20:871"
+    claims: [c09-topaz-pu, c09-cryolo-speed, c09-cryolo-general, c09-tomotwin-embed, c09-tomotwin-train, c09-tomotwin-limit]
+    script: >-
+      Three tools, three learning ideas. Topaz uses positive-unlabeled learning. You label a
+      few particles, and everything else is unlabeled, not negative, because the background
+      still hides particles. A convolutional network, a stack of learned filters that slide
+      across the image, is trained with a constraint on the expected fraction of particles,
+      and it outputs a score map that you threshold into coordinates. crYOLO is supervised
+      detection based on YOLO, 'you only look once': one pass predicts boxes with
+      confidences. It is fast, up to five micrographs per second, and ships a general model
+      trained on more than forty datasets, but it depends on representative training boxes.
+      TomoTwin works in tomograms. It uses metric learning: a 3D network turns every
+      subvolume into a thirty-two number fingerprint, an embedding, so that copies of the same
+      protein land close together and different proteins land far apart. You pick by
+      similarity to one example, without retraining. It was trained on simulated tomograms of
+      about a hundred and twenty proteins, and the authors expect a lower size limit near 150
+      kilodaltons.
+    clicks:
+      - "Topaz column: labelled positives + unlabeled background → score map."
+      - "crYOLO column: grid → boxes with confidence."
+      - "TomoTwin column: subvolumes → 32-D embedding; same protein clusters."
+      - "Comparison table."
+    source: "Topaz: PU learning with class prior π and constraint λ; crYOLO: 'up to five micrographs per second', general model 'trained on more than 40 datasets'; TomoTwin: '37 × 37 × 37 subvolume to a 32-length feature vector', 120 proteins (108 in the curated training set), ~150 kDa expected limit, ~10 Å/px."
+    qualification: "Speeds and limits are as reported by each tool's authors on their hardware and test data."
+    deeper: "Metric learning trains with triplets: an anchor, a positive (same protein) and a negative (different protein). The loss pulls anchor–positive together and pushes anchor–negative apart by a margin."
+    question: "Why is Topaz's 'unlabeled' not the same as 'negative'?"
+    answer: "Because most unlabeled pixels near particles are particles nobody clicked. Treating them as negatives teaches the network to reject real particles. PU learning instead estimates how many positives hide in the unlabeled set."
+
+  - id: s10
+    title: "How to interpret picker output"
+    stage: pick
+    target_seconds: 75
+    evidence: true
+    labels: [RECOMPUTED RESULT]
+    citation: "Presenter's Topaz 0.3.20 run on 12 EMPIAR-10017 micrographs vs 6,829 expert coordinates (40 px radius) · simplified 2D classification (not RELION/cryoSPARC) · Scheres & Chen 2012 Nat Methods 9:853"
+    claims: [c10-pr-curve, c10-bestf1, c10-pu25, c10-fp-classes, c10-fsc]
+    script: >-
+      So how do we read picker output? Precision is the fraction of picks that are real.
+      Recall is the fraction of real particles found. F1 combines the two. Here is the real
+      curve for Topaz against the expert picks across twelve micrographs. Lower the
+      threshold and recall rises, precision falls, and the pick count balloons from under
+      three thousand to over twelve thousand. The best F1, zero point eight two, comes at about
+      eight thousand picks. But these metrics assume the labels are complete. When I classified
+      the so-called false positives, several classes look like genuine beta-galactosidase
+      views, particles the expert skipped; others are overlapping neighbours. So judge picks
+      downstream: clean 2D classes, coverage of viewing directions, rare views kept, then the
+      gold-standard Fourier shell correlation between two independently refined half maps,
+      read where it drops below 0.143, plus local resolution. More particles are not
+      automatically better.
+    clicks:
+      - "Precision–recall curve draws; threshold marker moves from high to low (D3)."
+      - "Best-F1 point annotated; pick count shown."
+      - "2D classes: agreed picks vs 'false-positive' picks vs missed picks."
+      - "Downstream checklist and FSC schematic."
+    source: "Presenter's recomputation (eval_picks.py, classify2d_picks.py); FSC 0.143 criterion (Rosenthal & Henderson 2003); gold-standard half maps (Scheres & Chen 2012)."
+    qualification: "Our 2D classification is a simplified teaching implementation and the 'looks like β-gal' judgement is visual, not quantified."
+    deeper: "Topaz trained on only 25% of the expert labels in 8 micrographs reached best F1 0.863 on 4 held-out micrographs, vs 0.823 for the pretrained general model — PU learning in action, on real data."
+    question: "Why 0.143 for the FSC threshold?"
+    answer: "Half-maps each contain half the data. 0.143 for their correlation corresponds to 0.5 correlation between the full map and a perfect reference (Rosenthal & Henderson 2003). It is a convention; the shape of the whole curve matters too."
+
+  - id: s11
+    title: "DeepEMhancer and map enhancement"
+    stage: enhance
+    target_seconds: 60
+    evidence: true
+    labels: [EXPERIMENTAL DATA, RECOMPUTED RESULT]
+    citation: "EMD-72202 half maps (β2AR dimer + AP-7-168) · DeepEMhancer 0.18 (Sanchez-Garcia et al. 2021 Commun Biol 4:874), run by presenter · our FSC, B-factor and local resolution (not cryoSPARC) · Iqbal et al. 2026"
+    claims: [c11-demh-training, c11-fsc, c11-locres, c11-bias]
+    script: >-
+      Downstream, map enhancement. Sharpening boosts damped high frequencies; denoising suppresses
+      noise; neither adds a new measurement. DeepEMhancer is a 3D convolutional network trained on
+      pairs of experimental maps and maps sharpened using their atomic models. Given the two half maps,
+      it returns a map that looks masked and sharpened in one step. On this beta-two adrenergic
+      receptor dimer it is cleaner than conventional sharpening. But the independent evidence is
+      unchanged: our half-map FSC is about two point six ångströms. Now lower the contour. The
+      conventional maps show the lipid nanodisc around the receptors; DeepEMhancer erased it. That
+      density was real, just not protein. So interpret against the half maps, compare methods, and
+      never validate a model against a map enhanced by models.
+    clicks:
+      - "Unsharpened average of half maps."
+      - "Global B-factor sharpening (conventional)."
+      - "DeepEMhancer output."
+      - "Independent evidence panel: half-map FSC + local-resolution colour scale."
+      - "Half contour level: nanodisc present in conventional maps, absent after DeepEMhancer."
+    source: "DeepEMhancer: 'trained on a dataset of pairs of experimental maps and maps sharpened using their respective atomic models'; testing set of 20 maps. Iqbal et al. 2026: such methods 'can introduce model bias, particularly when dealing with structures underrepresented in the data'."
+    qualification: "Our FSC (2.62 Å, soft mask) differs slightly from the deposited 2.5 Å because masks differ. Local resolution uses a 24-voxel window and 0.5 threshold, which is conservative."
+    deeper: "Global B-factor sharpening multiplies amplitudes by exp(B·s²/4): one number for the whole map, so flexible regions get over-sharpened (noise) and rigid cores under-sharpened. DeepEMhancer and LocScale act locally."
+    question: "If DeepEMhancer improves the FSC against the atomic model, isn't that proof it adds information?"
+    answer: "No. Its training target was model-based maps, so agreement with a model is partly what it learned to produce. Independent evidence must come from the half maps, which the network never 'saw' separately."
+
+  - id: s12
+    title: "Literature case study: six pickers, same data"
+    stage: reconstruct
+    target_seconds: 75
+    evidence: true
+    labels: [REPORTED RESULT]
+    citation: "Dhakal et al. 2025 Brief Bioinform 26:bbaf011, Table 3 — best resolution of 3 cryoSPARC trials, average across 4 test proteins; lower Å is better. Values re-plotted, not reproduced."
+    claims: [c12-protocol, c12-averages, c12-counts, c12-hemagglutinin, c12-conflict, c12-orientation, c12-coi]
+    script: >-
+      Now the case study. Dhakal and colleagues ran six deep-learning pickers on the same four
+      EMPIAR datasets, at two scales: about three hundred micrographs from the CryoPPP subset,
+      and every micrograph in the full entry. Each pick set went through the same cryoSPARC
+      reconstruction; the best of three seeds is reported. First, the counts differ hugely: on
+      the full data, Topaz averaged about two hundred and seven thousand picks, CryoSegNet about
+      one hundred and six thousand. Then resolution, averaged over four proteins: CryoSegNet
+      3.28 ångströms, Topaz 3.46, Deep Picker 4.75. So Topaz picked twice as many particles yet
+      did slightly worse. On hemagglutinin, CryoTransformer picked two hundred and sixty
+      thousand particles and CryoSegNet ninety thousand, for the same 3.2 ångströms. And there
+      is no universal winner: on the ion-channel dataset, Topaz was best, although the paper's
+      text credits CryoTransformer. The authors link failures to missing particle orientations.
+    clicks:
+      - "Six pickers listed."
+      - "Particle counts (full EMPIAR) appear as bars."
+      - "Average resolution appears (lower is better)."
+      - "Highlight: more particles ≠ better resolution (Topaz vs CryoSegNet; HA dataset)."
+      - "Qualification: benchmark-specific, best of 3, CryoSegNet not best everywhere; EMPIAR-10093 text/table conflict."
+      - "Transition: orientation coverage and FSC."
+    source: "Dhakal et al. 2025, Table 3 and Results text; values in src/data/benchmarks.json."
+    qualification: "Benchmark- and protocol-specific; best of three trials; four proteins; CryoSegNet and CryoTransformer come from the same group as the review's authors."
+    deeper: "Best-of-three reporting rewards variance: a method with unstable ab initio runs can look better than its typical result. Averages over seeds with spread would be more conservative."
+    question: "So which picker should I use?"
+    answer: "The one that gives the best validated reconstruction on your data. Run two, compare 2D classes, orientation coverage and half-map FSC, and keep the union or the better set. Rankings from one benchmark do not transfer automatically."
+
+  - id: s13
+    title: "When these tools are useful"
+    stage: pick
+    target_seconds: 45
+    evidence: true
+    labels: [CONCEPTUAL SCHEMATIC]
+    citation: "Bepler et al. 2019 · Wagner et al. 2019 · Rice et al. 2023 · Dhakal et al. 2025"
+    claims: [c13-decision]
+    script: >-
+      So when should you reach for these tools? Large single-particle datasets with few
+      annotations: that is Topaz's sweet spot. Rapid screening during collection, where a general
+      model like crYOLO's gives a useful first pass in minutes. Low-contrast, small or irregular
+      particles, where templates bias you toward what you expect. Crowded tomograms and searches for
+      known or related complexes: TomoTwin. And reproducible, high-throughput pipelines. Simpler
+      methods win when particles are large and obvious, when you need a strictly unbiased search, or
+      when your data look nothing like anything in the training set.
+    clicks:
+      - "'Use AI' column."
+      - "'Prefer simpler' column."
+    source: "Synthesis of the method papers' stated use cases (Topaz: few labels; crYOLO: general model, on-the-fly; TomoTwin: no retraining, ≥~150 kDa)."
+    qualification: "This is my synthesis, not a published decision tree."
+    deeper: "A practical pattern: pick broadly with a general model, clean with 2D classification, then retrain Topaz on the clean set and re-pick to recover rare views."
+    question: "Isn't template matching biased too?"
+    answer: "Yes — it finds what looks like the template ('Einstein from noise'). Learned pickers trade template bias for training-set bias. Either way, validate with independent half maps."
+
+  - id: s14
+    title: "Limitations, artifacts and safeguards"
+    stage: interpret
+    target_seconds: 80
+    evidence: true
+    labels: [CONCEPTUAL SCHEMATIC, REPORTED RESULT]
+    citation: "Iqbal et al. 2026 · Dhakal et al. 2025 · Rice et al. 2023 · Sanchez-Garcia et al. 2021 · Scheres & Chen 2012"
+    claims: [c14-domain, c14-leakage, c14-wedge, c14-compute]
+    script: >-
+      What can go wrong? Domain shift: a model trained on one microscope, detector, ice or
+      particle size meets something new. Labels are incomplete and subjective, and particles are
+      rare compared with background. Small particles, overlaps, contamination, rare conformations
+      and preferred orientation are where pickers fail silently. In tomography, the missing wedge
+      elongates densities and confuses similarity, as this simulation shows. Scores are often
+      overconfident, thresholds shift results, and enhancers can over-sharpen, invent or erase
+      density. Benchmarks can leak when training and test proteins overlap, and authors often
+      benchmark their own tools. So, the safeguards: test on held-out and different datasets; look
+      at raw micrographs and 2D classes; check orientation distributions and local resolution; keep
+      independent half maps away from the network; compare at least two methods; validate
+      biochemically, with mutations, ligands or functional assays; and report uncertainty instead of
+      hiding it.
+    clicks:
+      - "Failure modes, grouped: data, labels, physics, model, evaluation."
+      - "Missing-wedge simulation inset (x–z slice)."
+      - "Safeguards column, each paired with the failure it addresses."
+    source: "Iqbal et al. 2026 (generalization, compute cost, model bias); Dhakal et al. 2025 (dataset scarcity, generalization, benchmarking); TomoTwin (size limit, 10 Å/px); presenter's missing-wedge simulation."
+    qualification: "No single safeguard is sufficient; the list is ordered roughly by cost."
+    deeper: "Data leakage example: if test micrographs come from the same EMPIAR entry as training micrographs, a picker can memorise ice texture and particle size, inflating F1 without generalising."
+    question: "How would you detect a hallucinated density?"
+    answer: "Check it in the unfiltered half maps and in the unsharpened average; check its local resolution; see if it persists with a different post-processing method; and ask whether it is chemically plausible and supported biochemically."
+
+  - id: s15
+    title: "Take-home decision framework"
+    stage: interpret
+    target_seconds: 45
+    evidence: false
+    labels: []
+    citation: ""
+    claims: []
+    script: >-
+      Three things to take home. One: AI is most valuable when it removes repetitive inference,
+      such as picking and triage, while preserving the experimental evidence. Two: a visually
+      cleaner result is not automatically a more accurate one; more picks, prettier maps and
+      higher confidence can all mislead. Three: validate every AI output at the level of your
+      biological question. The goal is not to maximize picks or make the prettiest map. It is
+      to preserve structural information, and to know when the model is uncertain.
+    clicks:
+      - "Conclusion 1."
+      - "Conclusion 2."
+      - "Conclusion 3."
+      - "Final line."
+    source: "Synthesis of slides 7–14."
+    qualification: "These are principles, not rules; context decides."
+    deeper: "A useful habit: for every AI step in a pipeline, write down which independent check would catch its failure."
+    question: "Will AI eventually replace the processing expert?"
+    answer: "It already replaces much repetitive clicking. What it cannot replace is the judgement about whether a result answers the biological question — that requires independent evidence."
+
+  - id: s16
+    title: "References and questions"
+    stage: null
+    target_seconds: 25
+    evidence: true
+    labels: []
+    citation: "Full bibliography: references.bib · claims: src/data/claims.yaml · provenance: provenance/assets.json"
+    claims: []
+    script: >-
+      These are the key sources: the reviews and datasets I built on, and the primary papers for
+      each tool. The full bibliography, the claim ledger and the data provenance come with the
+      deck, and I can open any data panel again if it helps. Thank you. I'm happy to take questions.
+    clicks:
+      - "Open the expandable full bibliography if asked (button, bottom right)."
+    source: "references.bib"
+    qualification: "—"
+    deeper: "—"
+    question: "Where can I get the code and data you used?"
+    answer: "All public: EMPIAR-10017, EMPIAR-10204 and EMD-72202; Topaz and DeepEMhancer are open source; the scripts are in production/data-pipeline."

@@ -1,0 +1,602 @@
+{
+ "picks_file": "picks_pretrained.txt",
+ "micrographs": [
+  "Falcon_2012_06_12-14_33_35_0",
+  "Falcon_2012_06_12-14_57_34_0",
+  "Falcon_2012_06_12-15_07_41_0",
+  "Falcon_2012_06_12-15_14_01_0",
+  "Falcon_2012_06_12-15_17_31_0",
+  "Falcon_2012_06_12-15_27_22_0",
+  "Falcon_2012_06_12-15_30_21_0",
+  "Falcon_2012_06_12-15_33_42_0",
+  "Falcon_2012_06_12-15_36_26_0",
+  "Falcon_2012_06_12-15_41_22_0",
+  "Falcon_2012_06_12-15_43_48_0",
+  "Falcon_2012_06_12-15_46_37_0"
+ ],
+ "n_truth": 6829,
+ "match_radius_px": 40.0,
+ "pixel_A": 1.77,
+ "best_f1": {
+  "threshold": 2.0,
+  "picks": 7995,
+  "tp": 6108,
+  "fp": 1887,
+  "fn": 721,
+  "precision": 0.764,
+  "recall": 0.8944,
+  "f1": 0.8241
+ },
+ "curve": [
+  {
+   "threshold": -6.0,
+   "picks": 62188,
+   "tp": 6825,
+   "fp": 55363,
+   "fn": 4,
+   "precision": 0.1097,
+   "recall": 0.9994,
+   "f1": 0.1978
+  },
+  {
+   "threshold": -5.75,
+   "picks": 60992,
+   "tp": 6825,
+   "fp": 54167,
+   "fn": 4,
+   "precision": 0.1119,
+   "recall": 0.9994,
+   "f1": 0.2013
+  },
+  {
+   "threshold": -5.5,
+   "picks": 59526,
+   "tp": 6825,
+   "fp": 52701,
+   "fn": 4,
+   "precision": 0.1147,
+   "recall": 0.9994,
+   "f1": 0.2057
+  },
+  {
+   "threshold": -5.25,
+   "picks": 57749,
+   "tp": 6825,
+   "fp": 50924,
+   "fn": 4,
+   "precision": 0.1182,
+   "recall": 0.9994,
+   "f1": 0.2114
+  },
+  {
+   "threshold": -5.0,
+   "picks": 55574,
+   "tp": 6823,
+   "fp": 48751,
+   "fn": 6,
+   "precision": 0.1228,
+   "recall": 0.9991,
+   "f1": 0.2187
+  },
+  {
+   "threshold": -4.75,
+   "picks": 53196,
+   "tp": 6823,
+   "fp": 46373,
+   "fn": 6,
+   "precision": 0.1283,
+   "recall": 0.9991,
+   "f1": 0.2273
+  },
+  {
+   "threshold": -4.5,
+   "picks": 50521,
+   "tp": 6823,
+   "fp": 43698,
+   "fn": 6,
+   "precision": 0.1351,
+   "recall": 0.9991,
+   "f1": 0.2379
+  },
+  {
+   "threshold": -4.25,
+   "picks": 47701,
+   "tp": 6823,
+   "fp": 40878,
+   "fn": 6,
+   "precision": 0.143,
+   "recall": 0.9991,
+   "f1": 0.2502
+  },
+  {
+   "threshold": -4.0,
+   "picks": 44734,
+   "tp": 6823,
+   "fp": 37911,
+   "fn": 6,
+   "precision": 0.1525,
+   "recall": 0.9991,
+   "f1": 0.2646
+  },
+  {
+   "threshold": -3.75,
+   "picks": 41626,
+   "tp": 6823,
+   "fp": 34803,
+   "fn": 6,
+   "precision": 0.1639,
+   "recall": 0.9991,
+   "f1": 0.2816
+  },
+  {
+   "threshold": -3.5,
+   "picks": 38604,
+   "tp": 6820,
+   "fp": 31784,
+   "fn": 9,
+   "precision": 0.1767,
+   "recall": 0.9987,
+   "f1": 0.3002
+  },
+  {
+   "threshold": -3.25,
+   "picks": 35625,
+   "tp": 6820,
+   "fp": 28805,
+   "fn": 9,
+   "precision": 0.1914,
+   "recall": 0.9987,
+   "f1": 0.3213
+  },
+  {
+   "threshold": -3.0,
+   "picks": 32798,
+   "tp": 6817,
+   "fp": 25981,
+   "fn": 12,
+   "precision": 0.2078,
+   "recall": 0.9982,
+   "f1": 0.3441
+  },
+  {
+   "threshold": -2.75,
+   "picks": 30098,
+   "tp": 6817,
+   "fp": 23281,
+   "fn": 12,
+   "precision": 0.2265,
+   "recall": 0.9982,
+   "f1": 0.3692
+  },
+  {
+   "threshold": -2.5,
+   "picks": 27487,
+   "tp": 6815,
+   "fp": 20672,
+   "fn": 14,
+   "precision": 0.2479,
+   "recall": 0.9979,
+   "f1": 0.3972
+  },
+  {
+   "threshold": -2.25,
+   "picks": 25178,
+   "tp": 6813,
+   "fp": 18365,
+   "fn": 16,
+   "precision": 0.2706,
+   "recall": 0.9977,
+   "f1": 0.4257
+  },
+  {
+   "threshold": -2.0,
+   "picks": 23019,
+   "tp": 6811,
+   "fp": 16208,
+   "fn": 18,
+   "precision": 0.2959,
+   "recall": 0.9974,
+   "f1": 0.4564
+  },
+  {
+   "threshold": -1.75,
+   "picks": 21097,
+   "tp": 6809,
+   "fp": 14288,
+   "fn": 20,
+   "precision": 0.3227,
+   "recall": 0.9971,
+   "f1": 0.4876
+  },
+  {
+   "threshold": -1.5,
+   "picks": 19221,
+   "tp": 6802,
+   "fp": 12419,
+   "fn": 27,
+   "precision": 0.3539,
+   "recall": 0.996,
+   "f1": 0.5222
+  },
+  {
+   "threshold": -1.25,
+   "picks": 17628,
+   "tp": 6793,
+   "fp": 10835,
+   "fn": 36,
+   "precision": 0.3854,
+   "recall": 0.9947,
+   "f1": 0.5555
+  },
+  {
+   "threshold": -1.0,
+   "picks": 16192,
+   "tp": 6785,
+   "fp": 9407,
+   "fn": 44,
+   "precision": 0.419,
+   "recall": 0.9936,
+   "f1": 0.5895
+  },
+  {
+   "threshold": -0.75,
+   "picks": 14948,
+   "tp": 6775,
+   "fp": 8173,
+   "fn": 54,
+   "precision": 0.4532,
+   "recall": 0.9921,
+   "f1": 0.6222
+  },
+  {
+   "threshold": -0.5,
+   "picks": 13850,
+   "tp": 6765,
+   "fp": 7085,
+   "fn": 64,
+   "precision": 0.4884,
+   "recall": 0.9906,
+   "f1": 0.6543
+  },
+  {
+   "threshold": -0.25,
+   "picks": 12938,
+   "tp": 6753,
+   "fp": 6185,
+   "fn": 76,
+   "precision": 0.522,
+   "recall": 0.9889,
+   "f1": 0.6833
+  },
+  {
+   "threshold": 0.0,
+   "picks": 12163,
+   "tp": 6727,
+   "fp": 5436,
+   "fn": 102,
+   "precision": 0.5531,
+   "recall": 0.9851,
+   "f1": 0.7084
+  },
+  {
+   "threshold": 0.25,
+   "picks": 11439,
+   "tp": 6699,
+   "fp": 4740,
+   "fn": 130,
+   "precision": 0.5856,
+   "recall": 0.981,
+   "f1": 0.7334
+  },
+  {
+   "threshold": 0.5,
+   "picks": 10863,
+   "tp": 6670,
+   "fp": 4193,
+   "fn": 159,
+   "precision": 0.614,
+   "recall": 0.9767,
+   "f1": 0.754
+  },
+  {
+   "threshold": 0.75,
+   "picks": 10280,
+   "tp": 6620,
+   "fp": 3660,
+   "fn": 209,
+   "precision": 0.644,
+   "recall": 0.9694,
+   "f1": 0.7739
+  },
+  {
+   "threshold": 1.0,
+   "picks": 9796,
+   "tp": 6566,
+   "fp": 3230,
+   "fn": 263,
+   "precision": 0.6703,
+   "recall": 0.9615,
+   "f1": 0.7899
+  },
+  {
+   "threshold": 1.25,
+   "picks": 9343,
+   "tp": 6487,
+   "fp": 2856,
+   "fn": 342,
+   "precision": 0.6943,
+   "recall": 0.9499,
+   "f1": 0.8023
+  },
+  {
+   "threshold": 1.5,
+   "picks": 8895,
+   "tp": 6390,
+   "fp": 2505,
+   "fn": 439,
+   "precision": 0.7184,
+   "recall": 0.9357,
+   "f1": 0.8128
+  },
+  {
+   "threshold": 1.75,
+   "picks": 8454,
+   "tp": 6266,
+   "fp": 2188,
+   "fn": 563,
+   "precision": 0.7412,
+   "recall": 0.9176,
+   "f1": 0.82
+  },
+  {
+   "threshold": 2.0,
+   "picks": 7995,
+   "tp": 6108,
+   "fp": 1887,
+   "fn": 721,
+   "precision": 0.764,
+   "recall": 0.8944,
+   "f1": 0.8241
+  },
+  {
+   "threshold": 2.25,
+   "picks": 7480,
+   "tp": 5867,
+   "fp": 1613,
+   "fn": 962,
+   "precision": 0.7844,
+   "recall": 0.8591,
+   "f1": 0.82
+  },
+  {
+   "threshold": 2.5,
+   "picks": 6952,
+   "tp": 5596,
+   "fp": 1356,
+   "fn": 1233,
+   "precision": 0.8049,
+   "recall": 0.8194,
+   "f1": 0.8121
+  },
+  {
+   "threshold": 2.75,
+   "picks": 6364,
+   "tp": 5255,
+   "fp": 1109,
+   "fn": 1574,
+   "precision": 0.8257,
+   "recall": 0.7695,
+   "f1": 0.7966
+  },
+  {
+   "threshold": 3.0,
+   "picks": 5744,
+   "tp": 4852,
+   "fp": 892,
+   "fn": 1977,
+   "precision": 0.8447,
+   "recall": 0.7105,
+   "f1": 0.7718
+  },
+  {
+   "threshold": 3.25,
+   "picks": 5059,
+   "tp": 4363,
+   "fp": 696,
+   "fn": 2466,
+   "precision": 0.8624,
+   "recall": 0.6389,
+   "f1": 0.734
+  },
+  {
+   "threshold": 3.5,
+   "picks": 4338,
+   "tp": 3809,
+   "fp": 529,
+   "fn": 3020,
+   "precision": 0.8781,
+   "recall": 0.5578,
+   "f1": 0.6822
+  },
+  {
+   "threshold": 3.75,
+   "picks": 3567,
+   "tp": 3177,
+   "fp": 390,
+   "fn": 3652,
+   "precision": 0.8907,
+   "recall": 0.4652,
+   "f1": 0.6112
+  },
+  {
+   "threshold": 4.0,
+   "picks": 2829,
+   "tp": 2563,
+   "fp": 266,
+   "fn": 4266,
+   "precision": 0.906,
+   "recall": 0.3753,
+   "f1": 0.5308
+  },
+  {
+   "threshold": 4.25,
+   "picks": 2170,
+   "tp": 1974,
+   "fp": 196,
+   "fn": 4855,
+   "precision": 0.9097,
+   "recall": 0.2891,
+   "f1": 0.4387
+  },
+  {
+   "threshold": 4.5,
+   "picks": 1581,
+   "tp": 1442,
+   "fp": 139,
+   "fn": 5387,
+   "precision": 0.9121,
+   "recall": 0.2112,
+   "f1": 0.3429
+  },
+  {
+   "threshold": 4.75,
+   "picks": 1085,
+   "tp": 995,
+   "fp": 90,
+   "fn": 5834,
+   "precision": 0.9171,
+   "recall": 0.1457,
+   "f1": 0.2515
+  },
+  {
+   "threshold": 5.0,
+   "picks": 690,
+   "tp": 629,
+   "fp": 61,
+   "fn": 6200,
+   "precision": 0.9116,
+   "recall": 0.0921,
+   "f1": 0.1673
+  },
+  {
+   "threshold": 5.25,
+   "picks": 422,
+   "tp": 384,
+   "fp": 38,
+   "fn": 6445,
+   "precision": 0.91,
+   "recall": 0.0562,
+   "f1": 0.1059
+  },
+  {
+   "threshold": 5.5,
+   "picks": 236,
+   "tp": 216,
+   "fp": 20,
+   "fn": 6613,
+   "precision": 0.9153,
+   "recall": 0.0316,
+   "f1": 0.0611
+  },
+  {
+   "threshold": 5.75,
+   "picks": 153,
+   "tp": 139,
+   "fp": 14,
+   "fn": 6690,
+   "precision": 0.9085,
+   "recall": 0.0204,
+   "f1": 0.0398
+  },
+  {
+   "threshold": 6.0,
+   "picks": 82,
+   "tp": 75,
+   "fp": 7,
+   "fn": 6754,
+   "precision": 0.9146,
+   "recall": 0.011,
+   "f1": 0.0217
+  },
+  {
+   "threshold": 6.25,
+   "picks": 49,
+   "tp": 44,
+   "fp": 5,
+   "fn": 6785,
+   "precision": 0.898,
+   "recall": 0.0064,
+   "f1": 0.0128
+  },
+  {
+   "threshold": 6.5,
+   "picks": 25,
+   "tp": 23,
+   "fp": 2,
+   "fn": 6806,
+   "precision": 0.92,
+   "recall": 0.0034,
+   "f1": 0.0067
+  },
+  {
+   "threshold": 6.75,
+   "picks": 10,
+   "tp": 8,
+   "fp": 2,
+   "fn": 6821,
+   "precision": 0.8,
+   "recall": 0.0012,
+   "f1": 0.0023
+  },
+  {
+   "threshold": 7.0,
+   "picks": 5,
+   "tp": 4,
+   "fp": 1,
+   "fn": 6825,
+   "precision": 0.8,
+   "recall": 0.0006,
+   "f1": 0.0012
+  },
+  {
+   "threshold": 7.25,
+   "picks": 2,
+   "tp": 2,
+   "fp": 0,
+   "fn": 6827,
+   "precision": 1.0,
+   "recall": 0.0003,
+   "f1": 0.0006
+  },
+  {
+   "threshold": 7.5,
+   "picks": 0,
+   "tp": 0,
+   "fp": 0,
+   "fn": 6829,
+   "precision": 1.0,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  {
+   "threshold": 7.75,
+   "picks": 0,
+   "tp": 0,
+   "fp": 0,
+   "fn": 6829,
+   "precision": 1.0,
+   "recall": 0.0,
+   "f1": 0.0
+  },
+  {
+   "threshold": 8.0,
+   "picks": 0,
+   "tp": 0,
+   "fp": 0,
+   "fn": 6829,
+   "precision": 1.0,
+   "recall": 0.0,
+   "f1": 0.0
+  }
+ ]
+}

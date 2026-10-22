@@ -1,0 +1,330 @@
+# Claim ledger. Every quantitative or evidence-bearing statement in the script or on a slide.
+# type: reported | recomputed | experimental | simulation | interpretation | definition
+# status: verified (checked against the source text/data on verified_on) | flagged (see note)
+# QA (scripts/qa-check.mjs) fails if a slide lists a claim id missing here, if a claim lacks a
+# source, or if a 'reported' claim lacks a locator.
+verified_on: "2026-10-21"
+claims:
+  - id: c01-empiar10017
+    slide: s01
+    type: experimental
+    text: "Micrograph is EMPIAR-10017 β-galactosidase, Falcon II, 1.77 Å/px, unaligned average of 24 frames (24 e⁻/Å²), with manually selected coordinates by R. Henderson."
+    source: empiar10017
+    locator: "EMPIAR API imagesets[0].details; pixel_width 1.77"
+    status: verified
+  - id: c01-topaz-run
+    slide: s01
+    type: recomputed
+    text: "Picks from Topaz 0.3.20 pretrained ResNet16 model, preprocessed with 4× downsampling, extraction radius 12 px (binned)."
+    source: bepler2019topaz
+    locator: "production/data-pipeline (run log in provenance/assets.json)"
+    status: verified
+  - id: c02-empiar-size
+    slide: s02
+    type: reported
+    text: "EMPIAR contained 1,879 entries (4.83 PB) as of 14 Jan 2025."
+    source: iqbal2026aicryoem
+    locator: "Section 'Data processing, model building, and refinement', paragraph on template matching"
+    status: verified
+  - id: c02-max-picks
+    slide: s02
+    type: reported
+    text: "Topaz picked 437,235 particles on full EMPIAR-10093."
+    source: dhakal2025picking
+    locator: "Table 3"
+    status: verified
+  - id: c02-dose
+    slide: s02
+    type: experimental
+    text: "EMPIAR-10017 micrographs accumulate 24 e⁻/Å² in a 1.5 s exposure (24 frames)."
+    source: empiar10017
+    locator: "EMPIAR imageset details"
+    status: verified
+  - id: c02-henderson-rate
+    slide: s02
+    type: recomputed
+    text: "6,829 expert coordinates in the 12 downloaded micrographs (≈569 per micrograph; 'roughly five hundred' in script)."
+    source: empiar10017
+    locator: "wc -l of 12 .coord files"
+    status: verified
+  - id: c03-tilt-range
+    slide: s03
+    type: definition
+    text: "Tilt series typically span about ±60°, leaving a missing wedge."
+    source: rice2023tomotwin
+    locator: "General cryo-ET background; simulation uses −60…+60° in 3° steps"
+    status: verified
+  - id: c03-et-context
+    slide: s03
+    type: interpretation
+    text: "Cryo-ET reconstructs cellular structures in situ from tilt series; challenges include noise, missing wedge and crowded backgrounds."
+    source: iqbal2026aicryoem
+    locator: "Section 'Cryo-electron tomography (cryo-ET) and AI'"
+    status: verified
+  - id: c04-model
+    slide: s04
+    type: simulation
+    text: "Simulation from PDB 6CVM via ChimeraX molmap (4 Å, 2 Å/px); 300 kV, Cs 2.7 mm, 7% amplitude contrast, 1.5 µm defocus (1.0–2.0 µm for reconstructions), SNR 0.05, seed 561; correlation of central slice with truth 0.26 (30 views) → 0.76 (30,000 views)."
+    source: bartesaghi2018bgal
+    locator: "production/data-pipeline/image_formation_sim.py"
+    status: verified
+  - id: c04-central-slice
+    slide: s04
+    type: definition
+    text: "Projections from many directions fill 3D Fourier space (central-slice theorem), allowing 3D reconstruction."
+    source: derosier1968
+    locator: "DeRosier & Klug 1968 (as cited in Iqbal et al. 2026 Introduction)"
+    status: verified
+  - id: c05-empiar10204
+    slide: s05
+    type: experimental
+    text: "EMPIAR-10204 raw movies: 49 frames, 0.885 Å/px, CRYO ARM 200, gain reference provided; 1.277 e⁻/Å² per frame."
+    source: empiar10204
+    locator: "EMPIAR imageset metadata; dose per frame from RELION-3 tutorial (zivanov2018relion3)"
+    status: flagged
+    note: "Dose per frame is taken from the RELION-3.0 tutorial for this dataset, not from EMPIAR metadata (which does not list it)."
+  - id: c05-emd72202
+    slide: s05
+    type: experimental
+    text: "EMD-72202: β2AR dimer with AP-7-168 in nanodisc; 360³ box, 0.834 Å/px, author resolution 2.5 Å (FSC 0.143, cryoSPARC), 237,408 particles."
+    source: emd72202
+    locator: "EMDB API entry"
+    status: verified
+  - id: c06-cryoai-speed
+    slide: s06
+    type: reported
+    text: "CryoAI: learned pose encoder + physics-based decoder; quality on par with state-of-the-art solvers, one order of magnitude faster for large datasets, lower memory."
+    source: levy2022cryoai
+    locator: "Abstract (arXiv:2203.08138v4, identical in LNCS chapter)"
+    status: verified
+  - id: c06-cryo2struct-size
+    slide: s06
+    type: reported
+    text: "Cryo2StructData: 7,600 preprocessed cryo-EM density maps with voxels labelled by their atomic structures."
+    source: giri2024cryo2structdata
+    locator: "Abstract"
+    status: verified
+  - id: c07-drift
+    slide: s07
+    type: recomputed
+    text: "Whole-frame drift of EMPIAR-10204 movie 20170629_00021 ≈ 21 Å over 49 frames (our cross-correlation alignment on 4×-binned frames, B=150 Å² filter)."
+    source: empiar10204
+    locator: "production/data-pipeline/motioncorr_demo.py → mc_00021.npz"
+    status: verified
+  - id: c07-conventional
+    slide: s07
+    type: interpretation
+    text: "MotionCor2, RELION Bayesian polishing and cryoSPARC patch motion are optimization-based, not deep learning; no widely used DL motion-correction method was found."
+    source: zheng2017motioncor2
+    locator: "MotionCor2 paper; Zivanov 2019; bibliography.json 'no-dl-motion-correction'"
+    status: verified
+  - id: c07-doseweight
+    slide: s07
+    type: definition
+    text: "Dose weighting down-weights high-frequency information in later frames using the critical exposure curve."
+    source: grant2015dose
+    locator: "Grant & Grigorieff 2015, critical exposure Ne(k) = 0.245 k^-1.665 + 2.81 (300 kV)"
+    status: verified
+  - id: c08-challenges
+    slide: s08
+    type: reported
+    text: "Picking challenges: low SNR, ice contamination, carbon, overlapping particles, heterogeneity, orientation diversity."
+    source: dhakal2025picking
+    locator: "Introduction and Fig. 1 legend (A–E)"
+    status: verified
+  - id: c08-categories
+    slide: s08
+    type: recomputed
+    text: "At threshold 2.0 over 12 micrographs: 6,108 matched picks, 1,887 Topaz-only, 721 expert-only (40 px match radius)."
+    source: empiar10017
+    locator: "eval_pretrained.json"
+    status: verified
+  - id: c09-topaz-pu
+    slide: s09
+    type: reported
+    text: "Topaz trains CNNs with positive-unlabeled learning; hyperparameters are the positive class prior π and constraint strength λ (generalized-expectation criterion)."
+    source: bepler2019topaz
+    locator: "Methods; Results"
+    status: verified
+  - id: c09-cryolo-speed
+    slide: s09
+    type: reported
+    text: "crYOLO: after training with 200–2,500 particles per dataset, up to five micrographs per second."
+    source: wagner2019cryolo
+    locator: "Abstract"
+    status: verified
+  - id: c09-cryolo-general
+    slide: s09
+    type: reported
+    text: "crYOLO general model trained on more than 40 datasets; picks previously unseen species."
+    source: wagner2019cryolo
+    locator: "Abstract"
+    status: verified
+  - id: c09-tomotwin-embed
+    slide: s09
+    type: reported
+    text: "TomoTwin embeds each 37×37×37 subvolume as a 32-length vector on a 32-D hypersphere (deep metric learning, triplet training)."
+    source: rice2023tomotwin
+    locator: "Results, 'TomoTwin' overview; Extended Data Fig. 1b"
+    status: verified
+  - id: c09-tomotwin-train
+    slide: s09
+    type: reported
+    text: "Trained on simulated tomograms: 120 structurally dissimilar proteins (30 kDa–2.7 MDa), 84 tomograms, 120,000 particles."
+    source: rice2023tomotwin
+    locator: "Results"
+    status: verified
+  - id: c09-tomotwin-limit
+    slide: s09
+    type: reported
+    text: "Expected lower limit of accurate picking ≈150 kDa because picking runs on ~10 Å/px tomograms; cannot separate conformations at picking level."
+    source: rice2023tomotwin
+    locator: "Discussion (limitations)"
+    status: verified
+  - id: c10-pr-curve
+    slide: s10
+    type: recomputed
+    text: "Pretrained Topaz vs expert coordinates, 12 micrographs: threshold 4 → 2,829 picks (P 0.91, R 0.38); threshold 0 → 12,163 picks (P 0.55, R 0.99)."
+    source: empiar10017
+    locator: "eval_pretrained.json"
+    status: verified
+  - id: c10-bestf1
+    slide: s10
+    type: recomputed
+    text: "Best F1 0.824 at threshold 2.0 with 7,995 picks (precision 0.764, recall 0.894)."
+    source: empiar10017
+    locator: "eval_pretrained.json"
+    status: verified
+  - id: c10-pu25
+    slide: s10
+    type: recomputed
+    text: "Topaz trained (PU) on 25% of expert labels in 8 micrographs (1,093 positives, 10 epochs, seed 561) reached best F1 0.863 (P 0.79, R 0.95) on 4 held-out micrographs vs 0.823 for the pretrained general model."
+    source: bepler2019topaz
+    locator: "eval_pu25_test.json, eval_pretrained_test.json"
+    status: verified
+  - id: c10-fp-classes
+    slide: s10
+    type: recomputed
+    text: "Simplified 2D classification of 1,496 'Topaz-only' picks: several classes resemble β-galactosidase views; the largest class shows off-centre/overlapping neighbours."
+    source: empiar10017
+    locator: "classes_thr2.npz; visual judgement"
+    status: verified
+  - id: c10-fsc
+    slide: s10
+    type: definition
+    text: "Gold-standard FSC compares independently refined half maps; 0.143 threshold corresponds to 0.5 between full map and a perfect reference."
+    source: rosenthal2003fsc
+    locator: "Rosenthal & Henderson 2003; Scheres & Chen 2012"
+    status: verified
+  - id: c11-demh-training
+    slide: s11
+    type: reported
+    text: "DeepEMhancer was trained on pairs of experimental maps and maps sharpened using their atomic models; it performs masking-like and sharpening-like operations in one step; tested on 20 held-out maps."
+    source: sanchezgarcia2021deepemhancer
+    locator: "Abstract/Results"
+    status: verified
+  - id: c11-fsc
+    slide: s11
+    type: recomputed
+    text: "Our half-map FSC0.143 for EMD-72202: 3.12 Å unmasked, 2.62 Å with a soft mask; Guinier B = 66.5 Å² (deposited: 2.5 Å)."
+    source: emd72202
+    locator: "val/validation.json"
+    status: verified
+  - id: c11-locres
+    slide: s11
+    type: recomputed
+    text: "Local resolution (24-voxel windows, FSC 0.5): 2.39–2.85 Å (5th–95th percentile) at the model atoms, but 2.45–7.66 Å over the whole soft mask, which includes the nanodisc."
+    source: emd72202
+    locator: "val/validation.json; production/chimerax/renders/levels.json"
+    status: verified
+  - id: c11-bias
+    slide: s11
+    type: reported
+    text: "DL post-processing (DeepEMhancer, EMReady) 'can introduce model bias, particularly when dealing with structures underrepresented in the data'."
+    source: iqbal2026aicryoem
+    locator: "Section 'Cryo-EM and AI: advancing structural biology into the future'"
+    status: verified
+  - id: c12-protocol
+    slide: s12
+    type: reported
+    text: "Six pickers; four EMPIAR datasets; CryoPPP (~300 micrographs) and full EMPIAR; cryoSPARC ab initio + homogeneous refinement; best of three random-seed trials."
+    source: dhakal2025picking
+    locator: "Methods; Table 3 header"
+    status: verified
+  - id: c12-averages
+    slide: s12
+    type: reported
+    text: "Average best resolution (CryoPPP / full EMPIAR): Deep Picker 6.19/4.75; crYOLO 5.22/4.07; Topaz 4.48/3.46; CASSPER 5.18/4.13; CryoTransformer 4.75/3.76; CryoSegNet 4.11/3.28 Å."
+    source: dhakal2025picking
+    locator: "Table 3, Average rows (re-derived from per-dataset rows; consistent)"
+    status: verified
+  - id: c12-counts
+    slide: s12
+    type: reported
+    text: "Average picked particles on full EMPIAR: Topaz 206,880; CryoSegNet 106,429; CryoTransformer 149,428; crYOLO 114,361; CASSPER 97,400; Deep Picker 40,655."
+    source: dhakal2025picking
+    locator: "Table 3"
+    status: verified
+  - id: c12-hemagglutinin
+    slide: s12
+    type: reported
+    text: "EMPIAR-10532 full: CryoTransformer 259,757 particles → 3.21 Å; CryoSegNet 90,477 → 3.20 Å."
+    source: dhakal2025picking
+    locator: "Table 3"
+    status: verified
+  - id: c12-conflict
+    slide: s12
+    type: reported
+    text: "Text says CryoTransformer best on EMPIAR-10093 (CryoPPP); Table 3 shows Topaz 6.12 Å vs CryoTransformer 6.81 Å. Table value used. Topaz also best on full EMPIAR-10093 (4.40 Å)."
+    source: dhakal2025picking
+    locator: "Results text vs Table 3"
+    status: verified
+  - id: c12-orientation
+    slide: s12
+    type: reported
+    text: "Authors attribute better performance to capturing a wider range of orientations; Deep Picker picked fewer particles with sparser orientation coverage; CASSPER struggled with diverse orientations on EMPIAR-10028."
+    source: dhakal2025picking
+    locator: "Results, viewing-direction evaluation (Fig. 3)"
+    status: verified
+  - id: c12-coi
+    slide: s12
+    type: interpretation
+    text: "CryoSegNet (Gyawali et al. 2024) and CryoTransformer were developed by the review authors' group."
+    source: gyawali2024cryosegnet
+    locator: "Author lists (Gyawali, Dhakal, Wang, Cheng)"
+    status: verified
+  - id: c13-decision
+    slide: s13
+    type: interpretation
+    text: "Decision framework synthesised from the method papers' stated use cases."
+    source: bepler2019topaz
+    locator: "Synthesis"
+    status: verified
+  - id: c14-domain
+    slide: s14
+    type: reported
+    text: "Pickers trained on few proteins (e.g. apoferritin, KLH) may not generalize to irregular real-world particles; AI methods face rare-state scarcity and compute cost."
+    source: iqbal2026aicryoem
+    locator: "Sections on particle picking challenges; 'Limitations and future directions'"
+    status: verified
+  - id: c14-leakage
+    slide: s14
+    type: interpretation
+    text: "Benchmarks can leak when training and test proteins/datasets overlap."
+    source: dhakal2025picking
+    locator: "General ML principle; review discusses dataset scarcity and benchmark standardisation"
+    status: verified
+  - id: c14-wedge
+    slide: s14
+    type: simulation
+    text: "Missing wedge (±60°) elongates and streaks densities in x–z (presenter's simulation)."
+    source: anger2013ribosome
+    locator: "production/data-pipeline/tomo_sim.py"
+    status: verified
+  - id: c14-compute
+    slide: s14
+    type: reported
+    text: "Computational expense of training models such as CryoSegNet is a barrier for smaller labs."
+    source: iqbal2026aicryoem
+    locator: "'Limitations and future directions'"
+    status: verified

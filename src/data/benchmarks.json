@@ -1,0 +1,273 @@
+{
+ "source": {
+  "key": "dhakal2025picking",
+  "doi": "10.1093/bib/bbaf011",
+  "table": "Table 3",
+  "extracted_from": "Europe PMC full-text XML PMC11736895 (table-wrap TB3); cross-checked against values supplied in the assignment brief",
+  "label": "Reported best resolution among three reconstruction trials; average across four test proteins; lower Å is better.",
+  "protocol": "Picked particles imported into cryoSPARC; ab initio reconstruction + homogeneous refinement; three trials with random seed initialisation; best resolution of the three reported.",
+  "caveats": [
+   "Benchmark- and protocol-specific",
+   "Best of three trials, not mean",
+   "CryoSegNet was not best on every dataset (Topaz best on EMPIAR-10093 for both subsets)",
+   "Particle count did not determine resolution",
+   "Paper text states CryoTransformer best on EMPIAR-10093/CryoPPP, but Table 3 shows Topaz 6.12 Å < CryoTransformer 6.81 Å; table value used",
+   "CryoSegNet and CryoTransformer were developed by the same group that wrote the review (Cheng lab)"
+  ],
+  "text_conflict": {
+   "dataset": "10093",
+   "subset": "CryoPPP",
+   "text_claim": "CryoTransformer performs the best on EMPIAR-10093 in CryoPPP.",
+   "table": {
+    "Topaz": 6.12,
+    "CryoTransformer": 6.81
+   }
+  }
+ },
+ "datasets": {
+  "10028": {
+   "empiar": "EMPIAR-10028",
+   "protein": "Plasmodium falciparum 80S ribosome",
+   "micrographs_cryoppp": 300,
+   "micrographs_empiar": 600,
+   "results": [
+    {
+     "method": "Deep Picker",
+     "cryoppp_res_A": 4.08,
+     "cryoppp_particles": 30242,
+     "empiar_res_A": 4.09,
+     "empiar_particles": 43027
+    },
+    {
+     "method": "crYOLO",
+     "cryoppp_res_A": 4.11,
+     "cryoppp_particles": 31699,
+     "empiar_res_A": 3.94,
+     "empiar_particles": 63562
+    },
+    {
+     "method": "Topaz",
+     "cryoppp_res_A": 3.93,
+     "cryoppp_particles": 35514,
+     "empiar_res_A": 2.72,
+     "empiar_particles": 96352
+    },
+    {
+     "method": "CASSPER",
+     "cryoppp_res_A": 4.42,
+     "cryoppp_particles": 15637,
+     "empiar_res_A": 4.16,
+     "empiar_particles": 29906
+    },
+    {
+     "method": "CryoTransformer",
+     "cryoppp_res_A": 3.82,
+     "cryoppp_particles": 40488,
+     "empiar_res_A": 3.72,
+     "empiar_particles": 52134
+    },
+    {
+     "method": "CryoSegNet",
+     "cryoppp_res_A": 2.72,
+     "cryoppp_particles": 45218,
+     "empiar_res_A": 2.72,
+     "empiar_particles": 92532
+    }
+   ]
+  },
+  "10345": {
+   "empiar": "EMPIAR-10345",
+   "protein": "αVβ8 integrin + two Fabs",
+   "micrographs_cryoppp": 295,
+   "micrographs_empiar": 1644,
+   "results": [
+    {
+     "method": "Deep Picker",
+     "cryoppp_res_A": 8.54,
+     "cryoppp_particles": 2470,
+     "empiar_res_A": 4.16,
+     "empiar_particles": 8399
+    },
+    {
+     "method": "crYOLO",
+     "cryoppp_res_A": 3.83,
+     "cryoppp_particles": 11369,
+     "empiar_res_A": 3.54,
+     "empiar_particles": 40047
+    },
+    {
+     "method": "Topaz",
+     "cryoppp_res_A": 3.64,
+     "cryoppp_particles": 21343,
+     "empiar_res_A": 3.45,
+     "empiar_particles": 87472
+    },
+    {
+     "method": "CASSPER",
+     "cryoppp_res_A": 5.12,
+     "cryoppp_particles": 9876,
+     "empiar_res_A": 3.99,
+     "empiar_particles": 56728
+    },
+    {
+     "method": "CryoTransformer",
+     "cryoppp_res_A": 4.39,
+     "cryoppp_particles": 15739,
+     "empiar_res_A": 3.45,
+     "empiar_particles": 81465
+    },
+    {
+     "method": "CryoSegNet",
+     "cryoppp_res_A": 2.84,
+     "cryoppp_particles": 15209,
+     "empiar_res_A": 2.67,
+     "empiar_particles": 73377
+    }
+   ]
+  },
+  "10532": {
+   "empiar": "EMPIAR-10532",
+   "protein": "Influenza hemagglutinin trimer",
+   "micrographs_cryoppp": 300,
+   "micrographs_empiar": 1556,
+   "results": [
+    {
+     "method": "Deep Picker",
+     "cryoppp_res_A": 4.88,
+     "cryoppp_particles": 28711,
+     "empiar_res_A": 3.42,
+     "empiar_particles": 95469
+    },
+    {
+     "method": "crYOLO",
+     "cryoppp_res_A": 4.08,
+     "cryoppp_particles": 29434,
+     "empiar_res_A": 3.22,
+     "empiar_particles": 161497
+    },
+    {
+     "method": "Topaz",
+     "cryoppp_res_A": 4.23,
+     "cryoppp_particles": 38372,
+     "empiar_res_A": 3.27,
+     "empiar_particles": 206460
+    },
+    {
+     "method": "CASSPER",
+     "cryoppp_res_A": 3.94,
+     "cryoppp_particles": 29290,
+     "empiar_res_A": 3.27,
+     "empiar_particles": 146022
+    },
+    {
+     "method": "CryoTransformer",
+     "cryoppp_res_A": 3.96,
+     "cryoppp_particles": 38345,
+     "empiar_res_A": 3.21,
+     "empiar_particles": 259757
+    },
+    {
+     "method": "CryoSegNet",
+     "cryoppp_res_A": 3.89,
+     "cryoppp_particles": 30155,
+     "empiar_res_A": 3.2,
+     "empiar_particles": 90477
+    }
+   ]
+  },
+  "10093": {
+   "empiar": "EMPIAR-10093",
+   "protein": "Ion channel in nanodisc",
+   "micrographs_cryoppp": 295,
+   "micrographs_empiar": 1873,
+   "results": [
+    {
+     "method": "Deep Picker",
+     "cryoppp_res_A": 7.25,
+     "cryoppp_particles": 2360,
+     "empiar_res_A": 7.34,
+     "empiar_particles": 15725
+    },
+    {
+     "method": "crYOLO",
+     "cryoppp_res_A": 8.87,
+     "cryoppp_particles": 33183,
+     "empiar_res_A": 5.57,
+     "empiar_particles": 192337
+    },
+    {
+     "method": "Topaz",
+     "cryoppp_res_A": 6.12,
+     "cryoppp_particles": 61698,
+     "empiar_res_A": 4.4,
+     "empiar_particles": 437235
+    },
+    {
+     "method": "CASSPER",
+     "cryoppp_res_A": 7.23,
+     "cryoppp_particles": 32383,
+     "empiar_res_A": 5.1,
+     "empiar_particles": 156945
+    },
+    {
+     "method": "CryoTransformer",
+     "cryoppp_res_A": 6.81,
+     "cryoppp_particles": 51545,
+     "empiar_res_A": 4.65,
+     "empiar_particles": 204355
+    },
+    {
+     "method": "CryoSegNet",
+     "cryoppp_res_A": 6.99,
+     "cryoppp_particles": 27745,
+     "empiar_res_A": 4.54,
+     "empiar_particles": 169330
+    }
+   ]
+  }
+ },
+ "average": [
+  {
+   "method": "Deep Picker",
+   "cryoppp_res_A": 6.19,
+   "cryoppp_particles": 15946,
+   "empiar_res_A": 4.75,
+   "empiar_particles": 40655
+  },
+  {
+   "method": "crYOLO",
+   "cryoppp_res_A": 5.22,
+   "cryoppp_particles": 26421,
+   "empiar_res_A": 4.07,
+   "empiar_particles": 114361
+  },
+  {
+   "method": "Topaz",
+   "cryoppp_res_A": 4.48,
+   "cryoppp_particles": 39232,
+   "empiar_res_A": 3.46,
+   "empiar_particles": 206880
+  },
+  {
+   "method": "CASSPER",
+   "cryoppp_res_A": 5.18,
+   "cryoppp_particles": 21797,
+   "empiar_res_A": 4.13,
+   "empiar_particles": 97400
+  },
+  {
+   "method": "CryoTransformer",
+   "cryoppp_res_A": 4.75,
+   "cryoppp_particles": 36529,
+   "empiar_res_A": 3.76,
+   "empiar_particles": 149428
+  },
+  {
+   "method": "CryoSegNet",
+   "cryoppp_res_A": 4.11,
+   "cryoppp_particles": 29582,
+   "empiar_res_A": 3.28,
+   "empiar_particles": 106429
+  }
+ ]
+}

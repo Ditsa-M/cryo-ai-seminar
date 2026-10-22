@@ -1,0 +1,151 @@
+{
+ "when": "2026-10-22T06:45:35.840Z",
+ "chrome": "/usr/bin/google-chrome",
+ "results": [
+  {
+   "name": "16 slides",
+   "ok": true,
+   "detail": "found 16"
+  },
+  {
+   "name": "speaker notes on all slides with all fields",
+   "ok": true,
+   "detail": "16 notes"
+  },
+  {
+   "name": "data-timing on every slide, sums to 900 s",
+   "ok": true,
+   "detail": "sum 900"
+  },
+  {
+   "name": "no automatic slide advancement (6 s idle)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "keyboard (arrow/space) reaches final slide",
+   "ok": true,
+   "detail": "70 presses, ended at 15"
+  },
+  {
+   "name": "ArrowLeft goes back (fragment, then slide)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "no element overflows the 1920×1080 slide",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "citation strips ≥18 px at slide scale",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "citation strip present on evidence slides",
+   "ok": true,
+   "detail": "15 slides with strip"
+  },
+  {
+   "name": "scientific video: paused until click",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "scientific video: plays on click",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "scientific video: plays once and holds final frame",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "scientific video: resets when presenter goes back",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "scientific video: replayable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "videos pause when slide inactive",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "decorative loop plays muted on its slide",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "all videos muted with WebM+MP4 sources and poster",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "fragment-driven animation reverses and replays",
+   "ok": true,
+   "detail": "{\"a\":\"12,163 picks · P 0.55 · R 0.99\",\"b\":\"7,995 picks · P 0.76 · R 0.89\",\"c\":\"12,163 picks · P 0.55 · R 0.99\"}"
+  },
+  {
+   "name": "speaker view: current + next slide, timer, pacing, notes",
+   "ok": true,
+   "detail": "{\"current\":true,\"upcoming\":true,\"timer\":true,\"pacing\":true,\"notes\":\"TARGET TIME: 0:50 (50 s) — be done by 2:05\\n\\nWORD COUNT: 104\\n\"}"
+  },
+  {
+   "name": "offline: no non-local requests",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "no missing files (HTTP ≥400)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "no console errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "1366×768 renders scaled deck",
+   "ok": true,
+   "detail": "scale 0.700"
+  },
+  {
+   "name": "1366×768 citation text ≥ 12 px on screen",
+   "ok": true,
+   "detail": "13.3 px"
+  },
+  {
+   "name": "1366×768 no console errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "reduced motion (OS setting): posters instead of video",
+   "ok": true,
+   "detail": "{\"videos\":0,\"posters\":4,\"cls\":true}"
+  },
+  {
+   "name": "reduced motion ('M' key toggle)",
+   "ok": true,
+   "detail": "{\"videos\":0,\"cls\":true}"
+  },
+  {
+   "name": "PDF backup has 16 pages",
+   "ok": true,
+   "detail": "16 pages"
+  },
+  {
+   "name": "MP4 backup exists",
+   "ok": false,
+   "detail": "run npm run export:mp4"
+  }
+ ]
+}

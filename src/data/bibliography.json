@@ -1,0 +1,648 @@
+[
+ {
+  "key": "iqbal2026aicryoem",
+  "doi": "10.1186/s44398-025-00017-2",
+  "title": "Artificial intelligence in cryo-EM: emerging deep neural network methods from sample preparation, particle picking, map reconstruction, modelling to enhanced resolution",
+  "authors": [
+   "Iqbal, Saleem",
+   "Eng, Edward T.",
+   "Kamal, Mohammad Amjad",
+   "Shen, Bairong"
+  ],
+  "year": 2026,
+  "venue": "BMC Artificial Intelligence",
+  "volume": "2",
+  "issue": "1",
+  "pages": "2",
+  "type": "journal-article",
+  "role": "required source: broad review",
+  "slides": [
+   "s02",
+   "s03",
+   "s06",
+   "s11",
+   "s14"
+  ],
+  "licence_note": "CC BY-NC-ND 4.0 — figures not modified or reproduced",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "dhakal2025picking",
+  "doi": "10.1093/bib/bbaf011",
+  "title": "Artificial intelligence in cryo-EM protein particle picking: recent advances and remaining challenges",
+  "authors": [
+   "Dhakal, Ashwin",
+   "Gyawali, Rajan",
+   "Wang, Liguo",
+   "Cheng, Jianlin"
+  ],
+  "year": 2025,
+  "venue": "Briefings in Bioinformatics",
+  "volume": "26",
+  "issue": "1",
+  "pages": "bbaf011",
+  "type": "journal-article",
+  "role": "required source: picking review + benchmark (Table 3)",
+  "slides": [
+   "s02",
+   "s08",
+   "s12",
+   "s14"
+  ],
+  "licence_note": "CC BY-NC 4.0 — Table 3 values re-plotted, figures not reproduced",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "levy2022cryoai",
+  "doi": "10.1007/978-3-031-19803-8_32",
+  "title": "CryoAI: Amortized Inference of Poses for Ab Initio Reconstruction of 3D Molecular Volumes from Real Cryo-EM Images",
+  "authors": [
+   "Levy, Axel",
+   "Poitevin, Frédéric",
+   "Martel, Julien",
+   "Nashed, Youssef",
+   "Peck, Ariana",
+   "Miolane, Nina",
+   "Ratner, Daniel",
+   "Dunne, Mike",
+   "Wetzstein, Gordon"
+  ],
+  "year": 2022,
+  "venue": "Computer Vision – ECCV 2022",
+  "volume": "",
+  "issue": "",
+  "pages": "540-557",
+  "type": "book-chapter",
+  "role": "required source: CryoAI chapter (read via arXiv:2203.08138v4)",
+  "slides": [
+   "s04",
+   "s06"
+  ],
+  "licence_note": "Springer chapter — figures not reproduced or animated",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "giri2024cryo2structdata",
+  "doi": "10.1038/s41597-024-03299-9",
+  "title": "Cryo2StructData: A Large Labeled Cryo-EM Density Map Dataset for AI-based Modeling of Protein Structures",
+  "authors": [
+   "Giri, Nabin",
+   "Wang, Liguo",
+   "Cheng, Jianlin"
+  ],
+  "year": 2024,
+  "venue": "Scientific Data",
+  "volume": "11",
+  "issue": "1",
+  "pages": "458",
+  "type": "journal-article",
+  "role": "required source: Cryo2StructData",
+  "slides": [
+   "s06"
+  ],
+  "licence_note": "CC BY 4.0",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "bepler2019topaz",
+  "doi": "10.1038/s41592-019-0575-8",
+  "title": "Positive-unlabeled convolutional neural networks for particle picking in cryo-electron micrographs",
+  "authors": [
+   "Bepler, Tristan",
+   "Morin, Andrew",
+   "Rapp, Micah",
+   "Brasch, Julia",
+   "Shapiro, Lawrence",
+   "Noble, Alex J.",
+   "Berger, Bonnie"
+  ],
+  "year": 2019,
+  "venue": "Nature Methods",
+  "volume": "16",
+  "issue": "11",
+  "pages": "1153-1160",
+  "type": "journal-article",
+  "role": "primary method: Topaz",
+  "slides": [
+   "s01",
+   "s08",
+   "s09",
+   "s10",
+   "s13"
+  ],
+  "licence_note": "author manuscript PMC6858545",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "wagner2019cryolo",
+  "doi": "10.1038/s42003-019-0437-z",
+  "title": "SPHIRE-crYOLO is a fast and accurate fully automated particle picker for cryo-EM",
+  "authors": [
+   "Wagner, Thorsten",
+   "Merino, Felipe",
+   "Stabrin, Markus",
+   "Moriya, Toshio",
+   "Antoni, Claudia",
+   "Apelbaum, Amir",
+   "Hagel, Philine",
+   "Sitsel, Oleg",
+   "Raisch, Tobias",
+   "Prumbaum, Daniel",
+   "Quentin, Dennis",
+   "Roderer, Daniel",
+   "Tacke, Sebastian",
+   "Siebolds, Birte",
+   "Schubert, Evelyn",
+   "Shaikh, Tanvir R.",
+   "Lill, Pascal",
+   "Gatsogiannis, Christos",
+   "Raunser, Stefan"
+  ],
+  "year": 2019,
+  "venue": "Communications Biology",
+  "volume": "2",
+  "issue": "1",
+  "pages": "218",
+  "type": "journal-article",
+  "role": "primary method: crYOLO",
+  "slides": [
+   "s09",
+   "s13"
+  ],
+  "licence_note": "CC BY 4.0",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "rice2023tomotwin",
+  "doi": "10.1038/s41592-023-01878-z",
+  "title": "TomoTwin: generalized 3D localization of macromolecules in cryo-electron tomograms with structural data mining",
+  "authors": [
+   "Rice, Gavin",
+   "Wagner, Thorsten",
+   "Stabrin, Markus",
+   "Sitsel, Oleg",
+   "Prumbaum, Daniel",
+   "Raunser, Stefan"
+  ],
+  "year": 2023,
+  "venue": "Nature Methods",
+  "volume": "20",
+  "issue": "6",
+  "pages": "871-880",
+  "type": "journal-article",
+  "role": "primary method: TomoTwin",
+  "slides": [
+   "s03",
+   "s09",
+   "s13",
+   "s14"
+  ],
+  "licence_note": "CC BY 4.0",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "sanchezgarcia2021deepemhancer",
+  "doi": "10.1038/s42003-021-02399-1",
+  "title": "DeepEMhancer: a deep learning solution for cryo-EM volume post-processing",
+  "authors": [
+   "Sanchez-Garcia, Ruben",
+   "Gomez-Blanco, Josue",
+   "Cuervo, Ana",
+   "Carazo, Jose Maria",
+   "Sorzano, Carlos Oscar S.",
+   "Vargas, Javier"
+  ],
+  "year": 2021,
+  "venue": "Communications Biology",
+  "volume": "4",
+  "issue": "1",
+  "pages": "874",
+  "type": "journal-article",
+  "role": "primary method: DeepEMhancer",
+  "slides": [
+   "s11",
+   "s14"
+  ],
+  "licence_note": "CC BY 4.0",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "zheng2017motioncor2",
+  "doi": "10.1038/nmeth.4193",
+  "title": "MotionCor2: anisotropic correction of beam-induced motion for improved cryo-electron microscopy",
+  "authors": [
+   "Zheng, Shawn Q",
+   "Palovcak, Eugene",
+   "Armache, Jean-Paul",
+   "Verba, Kliment A",
+   "Cheng, Yifan",
+   "Agard, David A"
+  ],
+  "year": 2017,
+  "venue": "Nature Methods",
+  "volume": "14",
+  "issue": "4",
+  "pages": "331-332",
+  "type": "journal-article",
+  "role": "motion correction (conventional optimization)",
+  "slides": [
+   "s07"
+  ],
+  "licence_note": "",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "li2013counting",
+  "doi": "10.1038/nmeth.2472",
+  "title": "Electron counting and beam-induced motion correction enable near-atomic-resolution single-particle cryo-EM",
+  "authors": [
+   "Li, Xueming",
+   "Mooney, Paul",
+   "Zheng, Shawn",
+   "Booth, Christopher R",
+   "Braunfeld, Michael B",
+   "Gubbens, Sander",
+   "Agard, David A",
+   "Cheng, Yifan"
+  ],
+  "year": 2013,
+  "venue": "Nature Methods",
+  "volume": "10",
+  "issue": "6",
+  "pages": "584-590",
+  "type": "journal-article",
+  "role": "electron counting + motion correction",
+  "slides": [
+   "s05",
+   "s07"
+  ],
+  "licence_note": "",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "zivanov2019polishing",
+  "doi": "10.1107/S205225251801463X",
+  "title": "A Bayesian approach to beam-induced motion correction in cryo-EM single-particle analysis",
+  "authors": [
+   "Zivanov, Jasenko",
+   "Nakane, Takanori",
+   "Scheres, Sjors H. W."
+  ],
+  "year": 2019,
+  "venue": "IUCrJ",
+  "volume": "6",
+  "issue": "1",
+  "pages": "5-17",
+  "type": "journal-article",
+  "role": "Bayesian polishing (conventional)",
+  "slides": [
+   "s07"
+  ],
+  "licence_note": "CC BY 4.0",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "grant2015dose",
+  "doi": "10.7554/eLife.06980",
+  "title": "Measuring the optimal exposure for single particle cryo-EM using a 2.6 Å reconstruction of rotavirus VP6",
+  "authors": [
+   "Grant, Timothy",
+   "Grigorieff, Nikolaus"
+  ],
+  "year": 2015,
+  "venue": "eLife",
+  "volume": "4",
+  "issue": "",
+  "pages": "e06980",
+  "type": "journal-article",
+  "role": "dose weighting / critical exposure",
+  "slides": [
+   "s07"
+  ],
+  "licence_note": "CC BY 4.0",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "rosenthal2003fsc",
+  "doi": "10.1016/j.jmb.2003.07.013",
+  "title": "Optimal Determination of Particle Orientation, Absolute Hand, and Contrast Loss in Single-particle Electron Cryomicroscopy",
+  "authors": [
+   "Rosenthal, Peter B.",
+   "Henderson, Richard"
+  ],
+  "year": 2003,
+  "venue": "Journal of Molecular Biology",
+  "volume": "333",
+  "issue": "4",
+  "pages": "721-745",
+  "type": "journal-article",
+  "role": "FSC 0.143 criterion, B-factor",
+  "slides": [
+   "s10",
+   "s11"
+  ],
+  "licence_note": "",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "scheres2012goldstandard",
+  "doi": "10.1038/nmeth.2115",
+  "title": "Prevention of overfitting in cryo-EM structure determination",
+  "authors": [
+   "Scheres, Sjors H W",
+   "Chen, Shaoxia"
+  ],
+  "year": 2012,
+  "venue": "Nature Methods",
+  "volume": "9",
+  "issue": "9",
+  "pages": "853-854",
+  "type": "journal-article",
+  "role": "gold-standard half-map refinement",
+  "slides": [
+   "s10",
+   "s14"
+  ],
+  "licence_note": "",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "derosier1968",
+  "doi": "10.1038/217130a0",
+  "title": "Reconstruction of Three Dimensional Structures from Electron Micrographs",
+  "authors": [
+   "DE ROSIER, D. J.",
+   "KLUG, A."
+  ],
+  "year": 1968,
+  "venue": "Nature",
+  "volume": "217",
+  "issue": "5124",
+  "pages": "130-134",
+  "type": "journal-article",
+  "role": "3D reconstruction from projections",
+  "slides": [
+   "s04"
+  ],
+  "licence_note": "",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "gyawali2024cryosegnet",
+  "doi": "10.1093/bib/bbae282",
+  "title": "CryoSegNet: accurate cryo-EM protein particle picking by integrating the foundational AI image segmentation model and attention-gated U-Net",
+  "authors": [
+   "Gyawali, Rajan",
+   "Dhakal, Ashwin",
+   "Wang, Liguo",
+   "Cheng, Jianlin"
+  ],
+  "year": 2024,
+  "venue": "Briefings in Bioinformatics",
+  "volume": "25",
+  "issue": "4",
+  "pages": "bbae282",
+  "type": "journal-article",
+  "role": "CryoSegNet (benchmark participant)",
+  "slides": [
+   "s12"
+  ],
+  "licence_note": "",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "scheres2015relion13",
+  "doi": "10.1016/j.jsb.2014.11.010",
+  "title": "Semi-automated selection of cryo-EM particles in RELION-1.3",
+  "authors": [
+   "Scheres, Sjors H.W."
+  ],
+  "year": 2015,
+  "venue": "Journal of Structural Biology",
+  "volume": "189",
+  "issue": "2",
+  "pages": "114-122",
+  "type": "journal-article",
+  "role": "paper for EMPIAR-10017 expert coordinates",
+  "slides": [
+   "s01",
+   "s08",
+   "s10"
+  ],
+  "licence_note": "",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "shen2026b2ar",
+  "doi": "10.1038/s41586-026-10892-y",
+  "title": "A biased allosteric modulator is a molecular glue for β2AR dimerization",
+  "authors": [
+   "Shen, Jiemin",
+   "Peddada, Teja Nikhil",
+   "Komolov, Konstantin E.",
+   "De Pascali, Francesco",
+   "Garces, Alexander M.",
+   "Wang, Haoqing",
+   "Ehsan, Muhammad",
+   "Chae, Pil Seok",
+   "Lerch, Michael T.",
+   "Benovic, Jeffrey L.",
+   "Xu, Jun",
+   "Kobilka, Brian K."
+  ],
+  "year": 2026,
+  "venue": "Nature",
+  "volume": "658",
+  "issue": "8135",
+  "pages": "556-564",
+  "type": "journal-article",
+  "role": "paper for EMD-72202 (β2AR dimer)",
+  "slides": [
+   "s05",
+   "s11"
+  ],
+  "licence_note": "",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "bartesaghi2018bgal",
+  "doi": "10.1016/j.str.2018.04.004",
+  "title": "Atomic Resolution Cryo-EM Structure of β-Galactosidase",
+  "authors": [
+   "Bartesaghi, Alberto",
+   "Aguerrebere, Cecilia",
+   "Falconieri, Veronica",
+   "Banerjee, Soojay",
+   "Earl, Lesley A.",
+   "Zhu, Xing",
+   "Grigorieff, Nikolaus",
+   "Milne, Jacqueline L.S.",
+   "Sapiro, Guillermo",
+   "Wu, Xiongwu",
+   "Subramaniam, Sriram"
+  ],
+  "year": 2018,
+  "venue": "Structure",
+  "volume": "26",
+  "issue": "6",
+  "pages": "848-856.e3",
+  "type": "journal-article",
+  "role": "PDB 6CVM (β-gal) used for simulations",
+  "slides": [
+   "s03",
+   "s04"
+  ],
+  "licence_note": "",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "anger2013ribosome",
+  "doi": "10.1038/nature12104",
+  "title": "Structures of the human and Drosophila 80S ribosome",
+  "authors": [
+   "Anger, Andreas M.",
+   "Armache, Jean-Paul",
+   "Berninghausen, Otto",
+   "Habeck, Michael",
+   "Subklewe, Marion",
+   "Wilson, Daniel N.",
+   "Beckmann, Roland"
+  ],
+  "year": 2013,
+  "venue": "Nature",
+  "volume": "497",
+  "issue": "7447",
+  "pages": "80-85",
+  "type": "journal-article",
+  "role": "PDB 4V6X (80S) used for tomogram simulation",
+  "slides": [
+   "s03",
+   "s14"
+  ],
+  "licence_note": "",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "meng2023chimerax",
+  "doi": "10.1002/pro.4792",
+  "title": "UCSF ChimeraX\n                    : Tools for structure building and analysis",
+  "authors": [
+   "Meng, Elaine C.",
+   "Goddard, Thomas D.",
+   "Pettersen, Eric F.",
+   "Couch, Greg S.",
+   "Pearson, Zach J.",
+   "Morris, John H.",
+   "Ferrin, Thomas E."
+  ],
+  "year": 2023,
+  "venue": "Protein Science",
+  "volume": "32",
+  "issue": "11",
+  "pages": "e4792",
+  "type": "journal-article",
+  "role": "ChimeraX (rendering, molmap)",
+  "slides": [
+   "s04",
+   "s11"
+  ],
+  "licence_note": "",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "zivanov2018relion3",
+  "doi": "10.7554/eLife.42166",
+  "title": "New tools for automated high-resolution cryo-EM structure determination in RELION-3",
+  "authors": [
+   "Zivanov, Jasenko",
+   "Nakane, Takanori",
+   "Forsberg, Björn O",
+   "Kimanius, Dari",
+   "Hagen, Wim JH",
+   "Lindahl, Erik",
+   "Scheres, Sjors HW"
+  ],
+  "year": 2018,
+  "venue": "eLife",
+  "volume": "7",
+  "issue": "",
+  "pages": "e42166",
+  "type": "journal-article",
+  "role": "RELION-3 (tutorial dataset = part of EMPIAR-10204)",
+  "slides": [
+   "s05",
+   "s07"
+  ],
+  "licence_note": "CC BY 4.0",
+  "verified": "crossref",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "empiar10017",
+  "title": "EMPIAR-10017: Beta-galactosidase Falcon-II micrographs plus manually selected coordinates by Richard Henderson",
+  "url": "https://www.ebi.ac.uk/empiar/EMPIAR-10017/",
+  "type": "dataset",
+  "slides": [
+   "s01",
+   "s05",
+   "s08",
+   "s10"
+  ],
+  "verified": "archive API",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "empiar10204",
+  "title": "EMPIAR-10204: The first reconstruction of beta-galactosidase solved by cryoARM200",
+  "url": "https://www.ebi.ac.uk/empiar/EMPIAR-10204/",
+  "type": "dataset",
+  "slides": [
+   "s05",
+   "s07"
+  ],
+  "verified": "archive API",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "emd72202",
+  "title": "EMD-72202: CryoEM structure of beta2-adrenergic receptor dimer mediated by a biased allosteric modulator in lipid nanodisc (half maps)",
+  "url": "https://www.ebi.ac.uk/emdb/EMD-72202",
+  "type": "dataset",
+  "slides": [
+   "s05",
+   "s11"
+  ],
+  "verified": "archive API",
+  "verified_on": "2026-10-21"
+ },
+ {
+  "key": "no-dl-motion-correction",
+  "type": "verified-absence",
+  "note": "Europe PMC searches (title 'beam-induced motion'; motion + cryo-EM + neural network) on 2026-10-21 found no primary deep-learning motion-correction method in common use; MotionCor2, RELION polishing and cryoSPARC patch motion are optimization-based.",
+  "slides": [
+   "s06",
+   "s07"
+  ]
+ }
+]

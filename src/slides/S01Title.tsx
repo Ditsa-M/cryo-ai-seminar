@@ -1,0 +1,28 @@
+import { SlideFrame } from "../components/SlideFrame";
+import { Micrograph, ParticleLegend } from "../components/Micrograph";
+import { useStep } from "../lib/useStep";
+import { story } from "../lib/story";
+
+export function S01Title() {
+  const { ref, step } = useStep<HTMLDivElement>(2);
+  return (
+    <SlideFrame id="s01" className="title-slide">
+      <div ref={ref} className="row" style={{ gap: 56, marginTop: 10 }}>
+        <div className="col" style={{ paddingTop: 40 }}>
+          <div className="kicker">BCH 561 · Biochemical technique seminar</div>
+          <h1 style={{ fontSize: 92, fontWeight: 800, fontStretch: "82%", lineHeight: 0.98 }}>AI in cryo-EM<br />and cryo-ET<br />data processing</h1>
+          <p className="muted" style={{ fontSize: 28, marginTop: 26 }}>{story.meta.presenter} · {story.meta.course} · {story.meta.date}</p>
+          <div className="callout stepfade" style={{ opacity: step >= 2 ? 1 : 0, fontSize: 34, marginTop: 40, lineHeight: 1.28, maxWidth: 820 }}>
+            Where does deep learning add <b>trustworthy</b> structural information — and how can we tell whether an apparent improvement is <b>real</b>?
+          </div>
+        </div>
+        <div style={{ width: 840 }}>
+          <Micrograph size={840} filtered={step >= 0 ? 1 : 0} show={step >= 1 ? ["matched", "model_only", "expert_only"] : []} />
+          <div className="stepfade" style={{ opacity: step >= 1 ? 1 : 0, marginTop: 10 }}>
+            <ParticleLegend items={["matched", "model_only", "expert_only"]} />
+          </div>
+        </div>
+      </div>
+    </SlideFrame>
+  );
+}

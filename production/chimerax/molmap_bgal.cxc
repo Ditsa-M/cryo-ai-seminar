@@ -1,0 +1,8 @@
+# Simulated density for beta-galactosidase from PDB 6CVM (no experimental pixels), used for SIMULATION panels.
+cd /home/ditsa/cryo-ai-seminar-data/sim
+open 6cvm
+molmap #1 4 gridSpacing 2
+save bgal_6cvm_4A_2apix.mrc models #2
+open 4v6x
+molmap #3 6 gridSpacing 4
+save ribo80S_4v6x_6A_4apix.mrc models #4
