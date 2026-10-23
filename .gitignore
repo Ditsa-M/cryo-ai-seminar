@@ -6,4 +6,9 @@ production/remotion/out/
 production/remotion/public/backup/
 production/data-pipeline/out/*.npz
 backup/deck-backup.mp4
+backup/deck.pdf
+production/remotion/public/opening_raw.mp4
+docs/HANDOFF_previous_windows_attempt.md
+__pycache__/
+*.pyc
 sources/

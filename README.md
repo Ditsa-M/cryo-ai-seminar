@@ -36,7 +36,8 @@ Opening `dist/index.html` from `file://` is not supported (browser module/video 
 
 Backups (in `backup/`): `deck.pdf` (16 pages, final click state of each slide),
 `deck-backup.mp4` (silent run-through: 15 s opening + 15:00 at the scripted timing), `transcript.md`,
-`speaker-notes.md`.
+`speaker-notes.md`. The PDF and MP4 are build outputs, so they are not in git; download them from the
+[v1.0 release](https://github.com/Ditsa-M/cryo-ai-seminar/releases/tag/v1.0).
 
 ## Commands
 
