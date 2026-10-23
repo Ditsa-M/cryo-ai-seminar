@@ -8,6 +8,7 @@ The deck is built on **real data that I processed myself** (not stock figures):
 
 | Slide | What is shown | Kind |
 |---|---|---|
+| 1 (opening) | 14 s pre-roll: EMD-72202 density emerges from noise, then the PDB 9Q3L model (helix cylinders) rotates and the title appears; ChimeraX render + Remotion text | experimental |
 | 1, 3, 8 | EMPIAR-10017 β-galactosidase micrograph; Topaz 0.3.20 picks vs. R. Henderson's 6,829 expert picks | experimental + recomputed |
 | 7 | EMPIAR-10204 raw 49-frame movie: 21 Å drift, Thon rings before/after alignment, patch trajectories | experimental + recomputed |
 | 10 | Precision/recall/F1 vs. threshold; 2D classes of agreed / "false-positive" / missed picks; Topaz retrained on 25 % of labels | recomputed |
@@ -25,7 +26,7 @@ npm run build                            # QA gate + type-check + offline static
 npm run preview                          # http://localhost:4173  (works with networking off)
 ```
 
-Open the URL in Chrome, press **F** for full screen, **S** for the speaker view (current slide,
+Open the URL in Chrome, press **F** for full screen. Slide 1 starts dark: the **first click plays the 14 s opening** (outside the 15:00; it holds on the title), the second click fades to the micrograph — start your timer there. Press **S** for the speaker view (current slide,
 next slide, timer with per-slide pacing, full notes), **→ / Space** to advance one click,
 **←** to go back (animations reverse and replay), **M** to toggle reduced motion, **Esc** for the
 overview. Nothing auto-advances; there is no audio.
@@ -34,7 +35,7 @@ Without a server: any static server works on `dist/` (e.g. `python3 -m http.serv
 Opening `dist/index.html` from `file://` is not supported (browser module/video restrictions).
 
 Backups (in `backup/`): `deck.pdf` (16 pages, final click state of each slide),
-`deck-backup.mp4` (silent 15:00 run-through with the scripted timing), `transcript.md`,
+`deck-backup.mp4` (silent run-through: 15 s opening + 15:00 at the scripted timing), `transcript.md`,
 `speaker-notes.md`.
 
 ## Commands

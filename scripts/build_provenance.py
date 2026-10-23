@@ -63,7 +63,7 @@ for k in ("unsharpened", "globalB", "deepemhancer"):
              "render only; PNG→WebP max 900 px", SW["chimerax"] + ("; " + SW["demh"] if k == "deepemhancer" else ""))
 A += rec(["figures/s11_locres_overview.webp"], "s11", "recomputed", "Unsharpened map coloured by local resolution (windowed half-map FSC, 24 voxels, 0.5 threshold)", EMD["source"], EMD["doi"], None, EMD["accession"], EMD["version"],
          "halfmap_validation.py; fill_locres.py; render_maps.py", "viridis, range = 5th–95th percentile at model atoms (2.39–2.85 Å)", None, EMD["licence"], "nearest-neighbour fill outside estimated grid (display only)", SW["chimerax"])
-A += rec(["video/motion-align.webm", "video/motion-align.mp4", "posters/motion-align.webp"], "s07", "experimental",
+A += rec(["video/motion-align.webm", "video/motion-align.mp4", "posters/motion-align.webp", "posters/motion-align-start.webp"], "s07", "experimental",
          "Scientific animation (plays once, holds): real 7-frame group sums with fixed reticle; cumulative unaligned vs aligned sums", EMP204["source"], EMP204["doi"], "movie 00021", EMP204["accession"], EMP204["version"],
          "production/data-pipeline/export_motion_frames.py; production/remotion/src/MotionAlign.tsx", "1280×720, 30 fps, 10 s; crop 300 px of 512 export centred on darkest feature; low-pass σ=2.2 px", None, EMP204["licence"],
          "layout, labels; poster = final frame", SW["remotion"])
@@ -73,6 +73,12 @@ A += rec(["video/tomo-scan.webm", "video/tomo-scan.mp4", "posters/tomo-scan.webp
 A += rec(["video/bgal-spin.webm", "video/bgal-spin.mp4", "posters/bgal-spin.webp"], "s04", "simulation",
          "Decorative 12 s seamless turntable of β-galactosidase density simulated from PDB 6CVM (molmap 6 Å)", SIMSRC["source"], SIMSRC["doi"], None, "PDB 6CVM", None,
          "production/chimerax/bgal_spin.cxc", "720×720, 360 frames at 1°/frame", None, SIMSRC["licence"], "none", SW["chimerax"] + "; FFmpeg")
+
+A += rec(["video/opening.webm", "video/opening.mp4", "posters/opening.webp", "posters/opening-start.webp"], "s01", "experimental",
+         "Opening scene (pre-roll, plays once on click, holds on title): EMD-72202 half-map average contoured from 0.02 to the 80% atom-inclusion level (0.0678), then the deposited model PDB 9Q3L (helices as cylinders) with AP-7-168 and the agonist; title text added in Remotion",
+         EMD["source"], EMD["doi"], "EMD-72202 half maps 1 & 2; PDB 9Q3L", EMD["accession"], EMD["version"],
+         "production/chimerax/opening.cxc; production/remotion/src/Opening.tsx", "1920x1080, 30 fps, 420 frames, 0.6 deg/frame rotation; contour and transparency interpolated with ChimeraX perframe", None,
+         EMD["licence"], "styling (colours, cylinder helices), text overlay; poster = final (title) frame", SW["chimerax"] + "; " + SW["remotion"])
 
 out = dict(generated=datetime.date.today().isoformat(), policy="No generative AI imagery. Every pixel derives from deposited experimental data, deterministic simulation from deposited models, or reproducible computation; schematics are hand-coded SVG in src/.",
            schematic_svg=["s02 pipeline", "s06 workflow", "s09 Topaz/crYOLO/embedding sketches", "s12 benchmark chart (values from Dhakal et al. 2025 Table 3)", "s04/s07/s10/s11 D3 charts (data in src/data/generated)"],

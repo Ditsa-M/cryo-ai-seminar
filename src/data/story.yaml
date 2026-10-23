@@ -26,7 +26,10 @@ slides:
       expert agree on most particles, but not all. So my question today is: where does
       deep learning add trustworthy structural information to cryo-EM and cryo-ET, and
       how can we tell whether an apparent improvement is real?
+    preroll_seconds: 15
     clicks:
+      - "PRE-ROLL (not in the 15:00): play the opening scene — 14 s, silent, holds on the title. Say nothing, or one line. Start your timer on the next click."
+      - "Fade to the real micrograph (start speaking)."
       - "Low-pass filter fades in over the raw micrograph."
       - "Outlines appear: cyan solid = expert and Topaz agree; amber dashed = Topaz only; white dotted = expert only."
       - "Central question appears."

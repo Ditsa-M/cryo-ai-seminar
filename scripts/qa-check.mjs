@@ -74,6 +74,7 @@ for (const m of code.matchAll(/(src|href)=\{?["'`](https?:\/\/[^"'`]+)/g)) err(`
 const report = [
   `QA ${new Date().toISOString()}`,
   ...info,
+  `PRE-ROLL ${slides.reduce((a, s) => a + (s.preroll_seconds ?? 0), 0)} s (opening scene, outside the timed talk)`,
   `TOTAL ${t} s (${Math.floor(t / 60)}:${String(t % 60).padStart(2, "0")}), take-home ends ${Math.floor(takeHomeEnd / 60)}:${String(takeHomeEnd % 60).padStart(2, "0")}, ${totalWords} words (${(totalWords / 140).toFixed(1)} min at 140 wpm)`,
   `${claims.length} claims, ${bib.length} bibliography records, ${prov.assets.length} provenance records, ${shipped.length} shipped assets`,
   ...warnings.map((w) => "WARN  " + w),

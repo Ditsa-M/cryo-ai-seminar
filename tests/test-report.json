@@ -1,5 +1,5 @@
 {
- "when": "2026-10-22T08:30:04.104Z",
+ "when": "2026-10-23T02:02:19.753Z",
  "chrome": "/usr/bin/google-chrome",
  "results": [
   {
@@ -25,7 +25,7 @@
   {
    "name": "keyboard (arrow/space) reaches final slide",
    "ok": true,
-   "detail": "70 presses, ended at 15"
+   "detail": "72 presses, ended at 15"
   },
   {
    "name": "ArrowLeft goes back (fragment, then slide)",
@@ -115,12 +115,12 @@
   {
    "name": "1366×768 renders scaled deck",
    "ok": true,
-   "detail": "scale 0.700"
+   "detail": "scale 0.710"
   },
   {
    "name": "1366×768 citation text ≥ 12 px on screen",
    "ok": true,
-   "detail": "13.3 px"
+   "detail": "13.5 px"
   },
   {
    "name": "1366×768 no console errors",
@@ -130,7 +130,7 @@
   {
    "name": "reduced motion (OS setting): posters instead of video",
    "ok": true,
-   "detail": "{\"videos\":0,\"posters\":4,\"cls\":true}"
+   "detail": "{\"videos\":0,\"posters\":5,\"cls\":true}"
   },
   {
    "name": "reduced motion ('M' key toggle)",
@@ -143,9 +143,9 @@
    "detail": "16 pages"
   },
   {
-   "name": "MP4 backup decodes, H.264 1920×1080, silent, ≈15 min",
+   "name": "MP4 backup decodes, H.264 1920×1080, silent, 15:00 + pre-roll",
    "ok": true,
-   "detail": "900.0 s"
+   "detail": "915.0 s (pre-roll 15 s)"
   }
  ]
 }

@@ -39,7 +39,7 @@ export function Presentation() {
     <Deck
       plugins={[RevealNotes]}
       config={{
-        width: 1920, height: 1080, margin: 0.02, minScale: 0.2, maxScale: 2,
+        width: 1920, height: 1080, margin: 0, minScale: 0.2, maxScale: 2,
         hash: true, controls: true, controlsTutorial: false, progress: true, slideNumber: "c/t",
         transition: "fade", transitionSpeed: "fast", backgroundTransition: "none",
         autoSlide: 0, autoSlideStoppable: true, loop: false, center: false,

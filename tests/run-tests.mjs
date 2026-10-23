@@ -155,7 +155,8 @@ if (existsSync(mp4)) {
   const v = p.streams.find((s) => s.codec_type === "video"), audio = p.streams.some((s) => s.codec_type === "audio");
   const dur = +p.format.duration;
   execFileSync("ffmpeg", ["-v", "error", "-i", mp4, "-f", "null", "-"]);   // full decode = playback check
-  check("MP4 backup decodes, H.264 1920×1080, silent, ≈15 min", v.codec_name === "h264" && v.width === 1920 && !audio && Math.abs(dur - 900) < 5, `${dur.toFixed(1)} s`);
+  const pre = (await import("js-yaml")).default.load((await import("node:fs")).readFileSync(path.join(root, "src/data/story.yaml"), "utf8")).slides.reduce((a, s) => a + (s.preroll_seconds ?? 0), 0);
+  check("MP4 backup decodes, H.264 1920×1080, silent, 15:00 + pre-roll", v.codec_name === "h264" && v.width === 1920 && !audio && Math.abs(dur - 900 - pre) < 5, `${dur.toFixed(1)} s (pre-roll ${pre} s)`);
 } else check("MP4 backup exists", false, "run npm run export:mp4");
 
 writeFileSync(path.join(root, "tests/test-report.json"), JSON.stringify({ when: new Date().toISOString(), chrome: CHROME, results }, null, 1));

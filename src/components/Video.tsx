@@ -11,8 +11,10 @@ const base = import.meta.env.BASE_URL;
  *    plays once and holds the final frame; resets only when `play` goes false (presenter goes back).
  * Only the current and next slide preload. Reduced motion shows the poster (final/representative frame).
  */
-export function Video({ name, kind, play = true, className, alt, width, height }: {
+export function Video({ name, kind, play = true, className, alt, width, height, startPoster }: {
   name: string; kind: "loop" | "once"; play?: boolean; className?: string; alt: string; width?: number | string; height?: number;
+  /** for "once" clips: show the clip's FIRST frame (posters/<name>-start.webp) before it is played */
+  startPoster?: boolean;
 }) {
   const { ref: wrap, current, near } = useSlideProximity<HTMLDivElement>();
   const v = useRef<HTMLVideoElement | null>(null);
@@ -32,7 +34,7 @@ export function Video({ name, kind, play = true, className, alt, width, height }
       {still ? (
         <img src={poster} alt={alt} style={height ? { height, display: "block" } : { width: "100%" }} />
       ) : (
-        <video ref={v} muted playsInline loop={kind === "loop"} preload={near ? "auto" : "none"} poster={poster}
+        <video ref={v} muted playsInline loop={kind === "loop"} preload={near ? "auto" : "none"} poster={startPoster ? `${base}posters/${name}-start.webp` : poster}
           aria-label={alt} style={height ? { height, display: "block" } : { width: "100%", display: "block" }} disablePictureInPicture>
           <source src={`${base}video/${name}.webm`} type="video/webm; codecs=vp9" />
           <source src={`${base}video/${name}.mp4`} type="video/mp4" />

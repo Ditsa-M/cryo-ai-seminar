@@ -5,9 +5,11 @@
 - **TARGET TIME:** 30 s (0:00–0:30)
 - **WORD COUNT:** 64
 - **SCRIPT:** This is a real cryo-EM image of beta-galactosidase. Can you see the proteins? Filtered, they start to emerge. Now look at the outlines: a neural network and an expert agree on most particles, but not all. So my question today is: where does deep learning add trustworthy structural information to cryo-EM and cryo-ET, and how can we tell whether an apparent improvement is real?
-- **CLICK 1:** Low-pass filter fades in over the raw micrograph.
-- **CLICK 2:** Outlines appear: cyan solid = expert and Topaz agree; amber dashed = Topaz only; white dotted = expert only.
-- **CLICK 3:** Central question appears.
+- **CLICK 1:** PRE-ROLL (not in the 15:00): play the opening scene — 14 s, silent, holds on the title. Say nothing, or one line. Start your timer on the next click.
+- **CLICK 2:** Fade to the real micrograph (start speaking).
+- **CLICK 3:** Low-pass filter fades in over the raw micrograph.
+- **CLICK 4:** Outlines appear: cyan solid = expert and Topaz agree; amber dashed = Topaz only; white dotted = expert only.
+- **CLICK 5:** Central question appears.
 - **SOURCE:** EMPIAR-10017 entry and data; Topaz (Bepler et al. 2019). Pick comparison recomputed by the presenter (production/data-pipeline/eval_picks.py).
 - **ESSENTIAL QUALIFICATION:** The micrograph is an unaligned 24-frame average from 2012 — older and noisier than modern data, which makes the point about low SNR but is not state of the art.
 - **OPTIONAL DEEPER EXPLANATION:** The 'expert' labels are one person's choices for a 2015 semi-automated picking paper; they were never meant to be exhaustive ground truth.

@@ -15,12 +15,12 @@ const rem = path.join(root, "production/remotion");
 const shots = path.join(rem, "public/backup");
 if (existsSync(shots)) rmSync(shots, { recursive: true });
 mkdirSync(shots, { recursive: true }); mkdirSync(path.join(root, "backup"), { recursive: true });
-for (const f of ["motion-align", "tomo-scan", "bgal-spin"]) {
+for (const f of ["motion-align", "tomo-scan", "bgal-spin", "opening"]) {
   copyFileSync(path.join(root, `public/video/${f}.mp4`), path.join(shots, `${f}.mp4`));
   copyFileSync(path.join(root, `public/posters/${f}.webp`), path.join(shots, `${f}.webp`));
 }
 const story = yaml.load(readFileSync(path.join(root, "src/data/story.yaml"), "utf8"));
-const FPS = 30, CLIP = { "motion-align": 300, "tomo-scan": 240, "bgal-spin": 360 };
+const FPS = 30, CLIP = { "motion-align": 300, "tomo-scan": 240, "bgal-spin": 360, opening: 420 };
 const srv = await startPreview(root, 4175);
 const browser = await chromium.launch({ executablePath: process.env.CHROME ?? "/usr/bin/google-chrome" });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
@@ -31,8 +31,10 @@ const segments = [], overlays = [];
 let frame = 0;
 for (let h = 0; h < 16; h++) {
   const s = story.slides[h], states = s.clicks.length + 1;
-  const total = Math.round(s.target_seconds * FPS);
-  const per = Array.from({ length: states }, (_, i) => Math.floor(total / states) + (i < total % states ? 1 : 0));
+  // optional pre-roll (slide 1 opening): 1 s on the first frame + the clip, outside the timed 15:00
+  const pre = s.preroll_seconds ? [FPS, Math.round((s.preroll_seconds - 1) * FPS)] : [];
+  const rest = states - pre.length, total = Math.round(s.target_seconds * FPS);
+  const per = [...pre, ...Array.from({ length: rest }, (_, i) => Math.floor(total / rest) + (i < total % rest ? 1 : 0))];
   const slideStart = frame; const seen = new Map();
   for (let f = -1; f < s.clicks.length; f++) {
     await page.evaluate(([h, f]) => window.__deck.slide(h, 0, f), [h, f]);
@@ -41,13 +43,17 @@ for (let h = 0; h < 16; h++) {
     await page.screenshot({ path: path.join(rem, "public", img) });
     const vids = await page.evaluate(() => [...window.__deck.getCurrentSlide().querySelectorAll("video")].map((v) => {
       const r = v.getBoundingClientRect(); const name = v.querySelector("source").getAttribute("src").split("/").pop().replace(".webm", "");
-      return { name, x: r.left, y: r.top, w: r.width, h: r.height, loop: v.loop, visible: parseFloat(getComputedStyle(v.closest(".stepfade") ?? v).opacity) > 0.5 };
+      return { name, x: r.left, y: r.top, w: r.width, h: r.height, loop: v.loop, playing: !v.paused, visible: parseFloat(getComputedStyle(v.closest(".stepfade") ?? v).opacity) > 0.5 };
     }));
-    for (const v of vids) if (v.visible && !seen.has(v.name)) seen.set(v.name, { ...v, from: frame });
+    // a clip starts when it is visible AND playing (loops: when visible) and ends when it stops being visible
+    for (const v of vids) {
+      if (v.visible && (v.loop || v.playing) && !seen.has(v.name)) seen.set(v.name, { ...v, from: frame, to: null });
+      if (!v.visible && seen.has(v.name) && seen.get(v.name).to === null) seen.get(v.name).to = frame;
+    }
     segments.push({ img, frames: per[f + 1] });
     frame += per[f + 1];
   }
-  for (const [name, v] of seen) overlays.push({ src: `backup/${name}.mp4`, poster: `backup/${name}.webp`, from: v.from, frames: frame - v.from, clipFrames: CLIP[name],
+  for (const [name, v] of seen) overlays.push({ src: `backup/${name}.mp4`, poster: `backup/${name}.webp`, from: v.from, frames: (v.to ?? frame) - v.from, clipFrames: CLIP[name],
     x: Math.round(v.x), y: Math.round(v.y), w: Math.round(v.w), h: Math.round(v.h), loop: v.loop });
   console.log(`${s.id}: ${states} states, ${((frame - slideStart) / FPS).toFixed(1)} s, overlays ${[...seen.keys()].join(",") || "-"}`);
 }
