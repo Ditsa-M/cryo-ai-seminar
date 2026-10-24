@@ -8,7 +8,7 @@ import path from "node:path";
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const CHROME = process.env.CHROME ?? "/usr/bin/google-chrome";
-const PORT = 4173, URL0 = `http://localhost:${PORT}/`;
+const PORT = Number(process.env.TEST_PORT ?? 4173), URL0 = `http://localhost:${PORT}/`;
 const results = [];
 const check = (name, ok, detail = "") => { results.push({ name, ok: !!ok, detail }); console.log(`${ok ? "PASS" : "FAIL"}  ${name}${detail ? "  — " + detail : ""}`); };
 

@@ -18,7 +18,7 @@ export function S04Principle() {
   return (
     <SlideFrame id="s04">
       <div ref={ref}>
-        <h2>Image formation: one equation, three unknowns</h2>
+        <h2>How a cryo-EM image forms</h2>
         <div className="row" style={{ gap: 40 }}>
           <div style={{ width: 640 }}>
             <div className="eq"><Tex display>{String.raw`y_i \;=\; \mathrm{CTF}_i \ast \mathcal{P}_{\phi_i}\, V \;+\; n_i`}</Tex></div>

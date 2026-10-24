@@ -1,6 +1,6 @@
 # QA report — AI in cryo-EM and cryo-ET data processing
 
-Date: 2026-10-22. Automated outputs: `provenance/qa-last-run.txt` (timing/claims/provenance gate)
+Date: 2026-10-22, updated 2026-10-24. Automated outputs: `provenance/qa-last-run.txt` (timing/claims/provenance gate)
 and `tests/test-report.json` (end-to-end tests). This document summarises both and adds the
 scientific checks that cannot be automated.
 
@@ -38,6 +38,11 @@ scientific checks that cannot be automated.
   * TomoTwin's training set: the abstract-level figure is 120 proteins; a 108-protein curated subset is mentioned in Methods. The notes give both.
   * The DeepEMhancer training target is quoted from the paper.
 
+### Presenter's script (updated 2026-10-24)
+* The spoken script in `story.yaml` is now the presenter's own text: 2,219 words, with slide timings set by the presenter (take-home ends 14:40, total 15:00). The QA gate's limits were widened to 1,800–2,450 words and ≤170 wpm per slide to match.
+* One factual correction was made to that text on slide 2. It attributed Topaz's >400,000 picks to the β-galactosidase dataset; the number is Topaz on EMPIAR-10093 in Dhakal et al. Table 3. The rest of the script was checked against the claim ledger.
+* `backup/cue-sheet.md` (`node scripts/make-cue-sheet.mjs`) splits the script at every key press with its clock time.
+
 ### Recomputed results — what they are and are not
 | Result | Method | Caveat |
 |---|---|---|
@@ -66,7 +71,7 @@ The three prototype slides (title micrograph, benchmark chart, picking/tomograph
 
 ## 2. Technical QA
 
-Automated run: 2026-10-22T08:30:04 UTC, headless Chrome (/usr/bin/google-chrome), production build served by `vite preview`, every non-localhost request blocked (offline). 29/29 checks passed.
+Automated run: 2026-10-24 22:28:06 UTC, headless Chrome (/usr/bin/google-chrome), production build served by `vite preview`, every non-localhost request blocked (offline). 29/29 checks passed.
 
 | Result | Check | Detail |
 |---|---|---|
@@ -74,7 +79,7 @@ Automated run: 2026-10-22T08:30:04 UTC, headless Chrome (/usr/bin/google-chrome)
 | PASS | speaker notes on all slides with all fields | 16 notes |
 | PASS | data-timing on every slide, sums to 900 s | sum 900 |
 | PASS | no automatic slide advancement (6 s idle) |  |
-| PASS | keyboard (arrow/space) reaches final slide | 70 presses, ended at 15 |
+| PASS | keyboard (arrow/space) reaches final slide | 72 presses, ended at 15 |
 | PASS | ArrowLeft goes back (fragment, then slide) |  |
 | PASS | no element overflows the 1920×1080 slide |  |
 | PASS | citation strips ≥18 px at slide scale |  |
@@ -88,17 +93,17 @@ Automated run: 2026-10-22T08:30:04 UTC, headless Chrome (/usr/bin/google-chrome)
 | PASS | decorative loop plays muted on its slide |  |
 | PASS | all videos muted with WebM+MP4 sources and poster |  |
 | PASS | fragment-driven animation reverses and replays | {"a":"12,163 picks · P 0.55 · R 0.99","b":"7,995 picks · P 0.76 · R 0.89","c":"12,163 picks · P 0.55 · R 0.99" |
-| PASS | speaker view: current + next slide, timer, pacing, notes | {"current":true,"upcoming":true,"timer":true,"pacing":true,"notes":"TARGET TIME: 0:50 (50 s) — be done by 2:05 |
+| PASS | speaker view: current + next slide, timer, pacing, notes | {"current":true,"upcoming":true,"timer":true,"pacing":true,"notes":"TARGET TIME: 0:55 (55 s) — be done by 2:25 |
 | PASS | offline: no non-local requests |  |
 | PASS | no missing files (HTTP ≥400) |  |
 | PASS | no console errors |  |
-| PASS | 1366×768 renders scaled deck | scale 0.700 |
-| PASS | 1366×768 citation text ≥ 12 px on screen | 13.3 px |
+| PASS | 1366×768 renders scaled deck | scale 0.710 |
+| PASS | 1366×768 citation text ≥ 12 px on screen | 13.5 px |
 | PASS | 1366×768 no console errors |  |
-| PASS | reduced motion (OS setting): posters instead of video | {"videos":0,"posters":4,"cls":true} |
+| PASS | reduced motion (OS setting): posters instead of video | {"videos":0,"posters":5,"cls":true} |
 | PASS | reduced motion ('M' key toggle) | {"videos":0,"cls":true} |
 | PASS | PDF backup has 16 pages | 16 pages |
-| PASS | MP4 backup decodes, H.264 1920×1080, silent, ≈15 min | 900.0 s |
+| PASS | MP4 backup decodes, H.264 1920×1080, silent, 15:00 + pre-roll | 915.0 s (pre-roll 15 s) |
 
 Bugs found by these checks and fixed:
 * **Speaker view showed no notes.** The page's Content-Security-Policy had `frame-src 'none'`, which blocked the speaker window's own preview iframes. It is now `'self'`. URL-query config (used by those iframes) is also merged back into the React config.

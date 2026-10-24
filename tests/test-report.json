@@ -1,5 +1,5 @@
 {
- "when": "2026-10-23T02:02:19.753Z",
+ "when": "2026-10-24T22:28:06.692Z",
  "chrome": "/usr/bin/google-chrome",
  "results": [
   {
@@ -95,7 +95,7 @@
   {
    "name": "speaker view: current + next slide, timer, pacing, notes",
    "ok": true,
-   "detail": "{\"current\":true,\"upcoming\":true,\"timer\":true,\"pacing\":true,\"notes\":\"TARGET TIME: 0:50 (50 s) — be done by 2:05\\n\\nWORD COUNT: 104\\n\"}"
+   "detail": "{\"current\":true,\"upcoming\":true,\"timer\":true,\"pacing\":true,\"notes\":\"TARGET TIME: 0:55 (55 s) — be done by 2:25\\n\\nWORD COUNT: 134\\n\"}"
   },
   {
    "name": "offline: no non-local requests",
