@@ -14,11 +14,11 @@ Once I apply a low-pass filter, the particles become easier to see. The cyan out
 They agree often—but not always. That disagreement leads to my main question: where can deep learning improve cryo-EM and cryo-ET analysis, and how can we tell whether the improvement is scientifically trustworthy?
 
 ## S02 · Why AI-assisted processing matters  
-*0:40–1:30 · 50 s · 123 words*
+*0:40–1:30 · 50 s · 137 words*
 
 Why automate this process at all? There are three pressures: weak signal, enormous data volume, and human time.
 
-Radiation damages biological samples, so the total electron dose must remain limited. As a result, each particle image is extremely noisy. At the same time, modern microscopes can generate thousands of movies and very large datasets. In one benchmark dataset I will show later, Topaz selected more than four hundred thousand candidate particles. Manually examining all of them is unrealistic.
+Radiation damages biological samples, so the total electron dose must remain limited. Fine detail is clearest after about ten electrons per square ångström, then degrades, while coarse shape keeps improving—so every particle image stays noisy. At the same time, modern microscopes can generate thousands of movies and very large datasets. In one benchmark dataset I will show later, Topaz selected more than four hundred thousand candidate particles. Manually examining all of them is unrealistic.
 
 But speed alone is not the goal. A false particle pick, an inaccurate motion estimate, or an aggressively enhanced map can influence every later stage—from classification and refinement to the biological conclusion. Automation is useful only when we preserve a way to detect its mistakes.
 
@@ -187,4 +187,4 @@ These are the main reviews, datasets, and primary papers behind the talk. All of
 Thank you. I’m happy to take questions.
 
 ---
-Total: 2219 words, 15:00 scheduled (≈15.8 min of speech at 140 wpm).
+Total: 2233 words, 15:00 scheduled (≈15.9 min of speech at 140 wpm).

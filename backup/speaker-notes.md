@@ -23,10 +23,10 @@ They agree often—but not always. That disagreement leads to my main question: 
 ## S02 · Why AI-assisted processing matters
 
 - **TARGET TIME:** 50 s (0:40–1:30)
-- **WORD COUNT:** 123
+- **WORD COUNT:** 137
 - **SCRIPT:** Why automate this process at all? There are three pressures: weak signal, enormous data volume, and human time.
 
-Radiation damages biological samples, so the total electron dose must remain limited. As a result, each particle image is extremely noisy. At the same time, modern microscopes can generate thousands of movies and very large datasets. In one benchmark dataset I will show later, Topaz selected more than four hundred thousand candidate particles. Manually examining all of them is unrealistic.
+Radiation damages biological samples, so the total electron dose must remain limited. Fine detail is clearest after about ten electrons per square ångström, then degrades, while coarse shape keeps improving—so every particle image stays noisy. At the same time, modern microscopes can generate thousands of movies and very large datasets. In one benchmark dataset I will show later, Topaz selected more than four hundred thousand candidate particles. Manually examining all of them is unrealistic.
 
 But speed alone is not the goal. A false particle pick, an inaccurate motion estimate, or an aggressively enhanced map can influence every later stage—from classification and refinement to the biological conclusion. Automation is useful only when we preserve a way to detect its mistakes.
 - **CLICK 1:** Dose chart: SNR at 3/4/8/20 Å vs total dose; dots mark each resolution's best dose; amber line = this micrograph's 24 e⁻/Å².

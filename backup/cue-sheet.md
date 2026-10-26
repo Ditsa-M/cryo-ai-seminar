@@ -29,12 +29,12 @@ That disagreement leads to my main question: where can deep learning improve cry
 Why automate this process at all? There are three pressures: weak signal, enormous data volume, and human time.
 
 **7. [0:47] — Dose chart: SNR at 3/4/8/20 Å vs total dose; dots mark each resolution's best dose; amber line = this micrograph's 24 e⁻/Å².**  
-Radiation damages biological samples, so the total electron dose must remain limited. As a result, each particle image is extremely noisy.
+Radiation damages biological samples, so the total electron dose must remain limited. Fine detail is clearest after about ten electrons per square ångström, then degrades, while coarse shape keeps improving—so every particle image stays noisy.
 
-**8. [0:56] — Scale numbers appear: archive size, picks on one dataset, expert picks per micrograph.**  
+**8. [0:59] — Scale numbers appear: archive size, picks on one dataset, expert picks per micrograph.**  
 At the same time, modern microscopes can generate thousands of movies and very large datasets. In one benchmark dataset I will show later, Topaz selected more than four hundred thousand candidate particles. Manually examining all of them is unrealistic.
 
-**9. [1:12] — Pipeline strip appears; an error marker at 'pick' propagates to 'interpret'.**  
+**9. [1:14] — Pipeline strip appears; an error marker at 'pick' propagates to 'interpret'.**  
 But speed alone is not the goal. A false particle pick, an inaccurate motion estimate, or an aggressively enhanced map can influence every later stage—from classification and refinement to the biological conclusion. Automation is useful only when we preserve a way to detect its mistakes.
 
 
