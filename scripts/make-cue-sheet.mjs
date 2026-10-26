@@ -10,7 +10,7 @@ const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..")
 const story = yaml.load(readFileSync(path.join(root, "src/data/story.yaml"), "utf8"));
 const CUES = {
   s01: [null, null, "Let me start", "Once I apply", "The cyan outlines", "That disagreement leads"],
-  s02: ["Why automate", "Radiation damages", "But speed alone"],
+  s02: ["Why automate", "Radiation damages", "At the same time, modern", "But speed alone"],
   s03: ["Before discussing", "Cryo-electron tomography is different", "So single-particle analysis usually"],
   s04: ["This equation summarizes", "The microscope records", "The contrast transfer function", "Finally, we add noise", "The rescue is averaging", "Projections from many orientations"],
   s05: ["It is useful", "The detector records", "Particle coordinates, extracted", "This is not a perfectly"],

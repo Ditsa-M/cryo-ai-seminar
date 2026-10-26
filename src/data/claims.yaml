@@ -19,6 +19,13 @@ claims:
     source: bepler2019topaz
     locator: "production/data-pipeline (run log in provenance/assets.json)"
     status: verified
+  - id: c02-dose-curve
+    slide: s02
+    type: reported
+    text: "Signal at resolution d fades with accumulated exposure N as exp(-N/Ne) per frame; Ne(k) = 0.245 k^-1.665 + 2.81 e⁻/Å² at 300 kV; the SNR of the summed image peaks near 2.5 Ne (3 Å: ≈11, 4 Å: ≈13, 8 Å: ≈27 e⁻/Å²). Curves on slide 2 are computed from these equations, not reproduced."
+    source: grant2015dose
+    locator: "Eq. 1 (SNR decay), Eq. 3 fit a=0.245, b=-1.665, c=2.81 (300 kV); optimal exposure ≈2.5 Ne (Results, Fig. 5B, after Hayward & Glaeser 1979)"
+    status: verified
   - id: c02-empiar-size
     slide: s02
     type: reported

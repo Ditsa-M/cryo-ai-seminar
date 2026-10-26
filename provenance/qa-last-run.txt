@@ -1,4 +1,4 @@
-QA 2026-10-24T23:25:40.953Z
+QA 2026-10-26T15:40:44.340Z
 s01   40 s   101 w  152 wpm  ends 0:40  Title and central question
 s02   50 s   123 w  148 wpm  ends 1:30  Why AI-assisted processing matters
 s03   55 s   134 w  146 wpm  ends 2:25  What cryo-EM and cryo-ET reveal
@@ -17,6 +17,6 @@ s15   40 s   107 w  161 wpm  ends 14:40  Take-home decision framework
 s16   20 s    45 w  135 wpm  ends 15:00  References and questions
 PRE-ROLL 15 s (opening scene, outside the timed talk)
 TOTAL 900 s (15:00), take-home ends 14:40, 2219 words (14.8 min at 150 wpm)
-46 claims, 26 bibliography records, 45 provenance records, 45 shipped assets
+47 claims, 26 bibliography records, 45 provenance records, 45 shipped assets
 WARN  claim c05-empiar10204 is flagged: Dose per frame is taken from the RELION-3.0 tutorial for this dataset, not from EMPIAR metadata (which does not list it).
 PASSED

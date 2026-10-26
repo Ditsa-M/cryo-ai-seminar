@@ -29,8 +29,9 @@ They agree often—but not always. That disagreement leads to my main question: 
 Radiation damages biological samples, so the total electron dose must remain limited. As a result, each particle image is extremely noisy. At the same time, modern microscopes can generate thousands of movies and very large datasets. In one benchmark dataset I will show later, Topaz selected more than four hundred thousand candidate particles. Manually examining all of them is unrealistic.
 
 But speed alone is not the goal. A false particle pick, an inaccurate motion estimate, or an aggressively enhanced map can influence every later stage—from classification and refinement to the biological conclusion. Automation is useful only when we preserve a way to detect its mistakes.
-- **CLICK 1:** Three numbers appear: dose, archive size, picks per dataset.
-- **CLICK 2:** Pipeline strip appears; an error marker at 'pick' propagates to 'interpret'.
+- **CLICK 1:** Dose chart: SNR at 3/4/8/20 Å vs total dose; dots mark each resolution's best dose; amber line = this micrograph's 24 e⁻/Å².
+- **CLICK 2:** Scale numbers appear: archive size, picks on one dataset, expert picks per micrograph.
+- **CLICK 3:** Pipeline strip appears; an error marker at 'pick' propagates to 'interpret'.
 - **SOURCE:** Iqbal et al. 2026 (EMPIAR: 1,879 entries, 4.83 PB as of 14 Jan 2025); Dhakal et al. 2025 Table 3 (Topaz, EMPIAR-10093 full: 437,235 picks); EMPIAR-10017 metadata (24 e⁻/Å²); presenter count of 6,829 expert coordinates in 12 micrographs.
 - **ESSENTIAL QUALIFICATION:** Archive size is a review's snapshot; it grows continuously. The 400,000 picks are one tool on one dataset, not typical of every project.
 - **OPTIONAL DEEPER EXPLANATION:** Dose is limited because high-energy electrons break bonds; at ~20–60 e⁻/Å² high-resolution features are already being destroyed, so you cannot simply 'expose longer'.

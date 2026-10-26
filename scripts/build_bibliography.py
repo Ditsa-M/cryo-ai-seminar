@@ -18,7 +18,7 @@ ENTRIES = [
     ("zheng2017motioncor2", "10.1038/nmeth.4193", "motion correction (conventional optimization)", ["s07"], ""),
     ("li2013counting", "10.1038/nmeth.2472", "electron counting + motion correction", ["s05", "s07"], ""),
     ("zivanov2019polishing", "10.1107/S205225251801463X", "Bayesian polishing (conventional)", ["s07"], "CC BY 4.0"),
-    ("grant2015dose", "10.7554/eLife.06980", "dose weighting / critical exposure", ["s07"], "CC BY 4.0"),
+    ("grant2015dose", "10.7554/eLife.06980", "dose weighting / critical exposure", ["s02", "s07"], "CC BY 4.0"),
     ("rosenthal2003fsc", "10.1016/j.jmb.2003.07.013", "FSC 0.143 criterion, B-factor", ["s10", "s11"], ""),
     ("scheres2012goldstandard", "10.1038/nmeth.2115", "gold-standard half-map refinement", ["s10", "s14"], ""),
     ("derosier1968", "10.1038/217130a0", "3D reconstruction from projections", ["s04"], ""),

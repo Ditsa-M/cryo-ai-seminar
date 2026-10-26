@@ -16,7 +16,7 @@ export function Pipeline({ errorAt = -1, spread = -1, width = 1780 }: { errorAt?
             <text x={x + w / 2} y={10 + h / 2 + 8} textAnchor="middle" fill="#EEF3F6" fontSize={24} fontFamily="Archivo" fontWeight={600}>{s}</text>
             {i < n - 1 && <line x1={x + w + 1} x2={x + w + gap - 1} y1={10 + h / 2} y2={10 + h / 2} stroke="#8EA2B1" strokeWidth={2} markerEnd="url(#arr)" />}
             {bad && i === errorAt && <text x={x + w / 2} y={h + 46} textAnchor="middle" fill="#E8559A" fontSize={22} fontFamily="JetBrains Mono">✕ error enters</text>}
-            {bad && i === spread && i > errorAt && <text x={x + w / 2} y={h + 46} textAnchor="middle" fill="#E8559A" fontSize={22} fontFamily="JetBrains Mono">→ claim affected</text>}
+            {bad && i === spread && i > errorAt && <text x={i === n - 1 ? x + w : x + w / 2} y={h + 46} textAnchor={i === n - 1 ? "end" : "middle"} fill="#E8559A" fontSize={22} fontFamily="JetBrains Mono">→ claim affected</text>}
           </g>
         );
       })}

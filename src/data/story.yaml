@@ -45,8 +45,8 @@ slides:
     target_seconds: 50
     evidence: true
     labels: [REPORTED RESULT, CONCEPTUAL SCHEMATIC]
-    citation: "Iqbal et al. 2026 BMC Artif Intell 2:2 (EMPIAR size, Jan 2025) · Dhakal et al. 2025 Brief Bioinform 26:bbaf011 Table 3 · EMPIAR-10017 metadata"
-    claims: [c02-empiar-size, c02-max-picks, c02-dose, c02-henderson-rate]
+    citation: "Dose curves computed from Grant & Grigorieff 2015 eLife 4:e06980 (critical-exposure fit, 300 kV) · Iqbal et al. 2026 BMC Artif Intell 2:2 (EMPIAR size, Jan 2025) · Dhakal et al. 2025 Brief Bioinform 26:bbaf011 Table 3 · EMPIAR-10017 metadata"
+    claims: [c02-dose-curve, c02-empiar-size, c02-max-picks, c02-dose, c02-henderson-rate]
     script: |-
       Why automate this process at all? There are three pressures: weak signal, enormous data volume, and human time.
       
@@ -54,7 +54,8 @@ slides:
       
       But speed alone is not the goal. A false particle pick, an inaccurate motion estimate, or an aggressively enhanced map can influence every later stage—from classification and refinement to the biological conclusion. Automation is useful only when we preserve a way to detect its mistakes.
     clicks:
-      - "Three numbers appear: dose, archive size, picks per dataset."
+      - "Dose chart: SNR at 3/4/8/20 Å vs total dose; dots mark each resolution's best dose; amber line = this micrograph's 24 e⁻/Å²."
+      - "Scale numbers appear: archive size, picks on one dataset, expert picks per micrograph."
       - "Pipeline strip appears; an error marker at 'pick' propagates to 'interpret'."
     source: "Iqbal et al. 2026 (EMPIAR: 1,879 entries, 4.83 PB as of 14 Jan 2025); Dhakal et al. 2025 Table 3 (Topaz, EMPIAR-10093 full: 437,235 picks); EMPIAR-10017 metadata (24 e⁻/Å²); presenter count of 6,829 expert coordinates in 12 micrographs."
     qualification: "Archive size is a review's snapshot; it grows continuously. The 400,000 picks are one tool on one dataset, not typical of every project."

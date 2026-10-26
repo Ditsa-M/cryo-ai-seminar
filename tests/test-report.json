@@ -1,5 +1,5 @@
 {
- "when": "2026-10-25T01:08:12.188Z",
+ "when": "2026-10-26T15:42:04.986Z",
  "chrome": "/usr/bin/google-chrome",
  "results": [
   {
@@ -25,7 +25,7 @@
   {
    "name": "keyboard (arrow/space) reaches final slide",
    "ok": true,
-   "detail": "72 presses, ended at 15"
+   "detail": "73 presses, ended at 15"
   },
   {
    "name": "ArrowLeft goes back (fragment, then slide)",
