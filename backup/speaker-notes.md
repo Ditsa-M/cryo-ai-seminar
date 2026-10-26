@@ -29,7 +29,7 @@ They agree often—but not always. That disagreement leads to my main question: 
 Radiation damages biological samples, so the total electron dose must remain limited. Fine detail is clearest after about ten electrons per square ångström, then degrades, while coarse shape keeps improving—so every particle image stays noisy. At the same time, modern microscopes can generate thousands of movies and very large datasets. In one benchmark dataset I will show later, Topaz selected more than four hundred thousand candidate particles. Manually examining all of them is unrealistic.
 
 But speed alone is not the goal. A false particle pick, an inaccurate motion estimate, or an aggressively enhanced map can influence every later stage—from classification and refinement to the biological conclusion. Automation is useful only when we preserve a way to detect its mistakes.
-- **CLICK 1:** Dose chart: SNR at 3/4/8/20 Å vs total dose; dots mark each resolution's best dose; amber line = this micrograph's 24 e⁻/Å².
+- **CLICK 1:** Microscope schematic (electrons fall from the gun through the sample to the detector; pink flashes = bonds breaking) + dose chart: SNR at 3/4/8/20 Å vs total dose; dots mark each resolution's best dose; amber line = slide 1's 24 e⁻/Å².
 - **CLICK 2:** Scale numbers appear: archive size, picks on one dataset, expert picks per micrograph.
 - **CLICK 3:** Pipeline strip appears; an error marker at 'pick' propagates to 'interpret'.
 - **SOURCE:** Iqbal et al. 2026 (EMPIAR: 1,879 entries, 4.83 PB as of 14 Jan 2025); Dhakal et al. 2025 Table 3 (Topaz, EMPIAR-10093 full: 437,235 picks); EMPIAR-10017 metadata (24 e⁻/Å²); presenter count of 6,829 expert coordinates in 12 micrographs.

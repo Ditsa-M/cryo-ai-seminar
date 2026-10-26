@@ -28,7 +28,7 @@ That disagreement leads to my main question: where can deep learning improve cry
 **6. [0:40] — Arrive on slide**  
 Why automate this process at all? There are three pressures: weak signal, enormous data volume, and human time.
 
-**7. [0:47] — Dose chart: SNR at 3/4/8/20 Å vs total dose; dots mark each resolution's best dose; amber line = this micrograph's 24 e⁻/Å².**  
+**7. [0:47] — Microscope schematic (electrons fall from the gun through the sample to the detector; pink flashes = bonds breaking) + dose chart: SNR at 3/4/8/20 Å vs total dose; dots mark each resolution's best dose; amber line = slide 1's 24 e⁻/Å².**  
 Radiation damages biological samples, so the total electron dose must remain limited. Fine detail is clearest after about ten electrons per square ångström, then degrades, while coarse shape keeps improving—so every particle image stays noisy.
 
 **8. [0:59] — Scale numbers appear: archive size, picks on one dataset, expert picks per micrograph.**  

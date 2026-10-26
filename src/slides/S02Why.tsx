@@ -1,6 +1,7 @@
 import { SlideFrame } from "../components/SlideFrame";
 import { Pipeline } from "../components/Pipeline";
 import { LineChart } from "../components/LineChart";
+import { Microscope } from "../components/Microscope";
 import { useStep } from "../lib/useStep";
 import bench from "../data/benchmarks.json";
 
@@ -37,7 +38,10 @@ export function S02Why() {
         <div style={{ display: "flex", gap: 44, marginTop: 18 }}>
           <div className="stepfade" style={{ width: 1060, opacity: step >= 0 ? 1 : 0.08 }}>
             <p className="panel-label">Signal: the electrons that form the image also destroy the specimen</p>
-            <div style={{ display: "flex", gap: 26, fontSize: 20, margin: "6px 0 0 78px" }}>
+            <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+            <div style={{ width: 340, marginTop: 4 }}><Microscope width={340} /></div>
+            <div>
+            <div style={{ display: "flex", gap: 22, fontSize: 19, margin: "6px 0 0 78px" }}>
               {RES.map((r) => (
                 <span key={r.d} style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
                   <svg width={28} height={10}><line x1={0} x2={28} y1={5} y2={5} stroke={r.color} strokeWidth={3} /></svg>
@@ -45,19 +49,21 @@ export function S02Why() {
                 </span>
               ))}
             </div>
-            <LineChart w={1060} h={380} xLabel="total electron dose (e⁻/Å²)" yLabel="SNR (rel. to its best)" xDomain={[0, 60]} yDomain={[0, 1.05]}
+            <LineChart w={706} h={400} xLabel="total electron dose (e⁻/Å²)" yLabel="SNR (rel. to its best)" xDomain={[0, 60]} yDomain={[0, 1.05]}
               xTicks={[0, 10, 20, 30, 40, 50, 60]} yTicks={[0, 0.5, 1]}
               refLines={[{ x: 24, label: "", color: "#F2B347" }]}
               series={RES.map((r) => ({ key: `d${r.d}`, label: `${r.d} Å`, x: DOSE, y: r.y, color: r.color, width: 3 }))}>
               {(sx, sy) => [
-                <text key="mark" x={sx(24) + 10} y={sy(0.08)} fill="#F2B347" fontSize={18} fontFamily="JetBrains Mono">24 e⁻/Å²: the micrograph you just saw</text>,
+                <text key="mark" x={sx(24) + 10} y={sy(0.08)} fill="#F2B347" fontSize={18} fontFamily="JetBrains Mono">24 e⁻/Å²: slide 1</text>,
                 ...RES.filter((r) => r.opt <= 60).map((r) => (
                 <g key={r.d}>
                   <circle cx={sx(r.opt)} cy={sy(1)} r={7} fill={r.color} stroke="#0B141C" strokeWidth={2} />
-                  <text x={sx(r.opt)} y={sy(1) - 16} textAnchor="middle" fill="#C3D0D9" fontSize={17} fontFamily="JetBrains Mono">{Math.round(r.opt)}</text>
+                  <text x={sx(r.opt) + (r.d === 3 ? -6 : r.d === 4 ? 6 : 0)} y={sy(1) - 16} textAnchor={r.d === 3 ? "end" : r.d === 4 ? "start" : "middle"} fill="#C3D0D9" fontSize={17} fontFamily="JetBrains Mono">{Math.round(r.opt)}</text>
                 </g>
               ))]}
             </LineChart>
+            </div>
+            </div>
             <p className="figcap" style={{ fontSize: 19 }}>
               Dots: the best total dose for each resolution (≈2.5 × its critical exposure). Fine detail peaks after ~11 e⁻/Å² and is then
               destroyed faster than new electrons add to it; coarse detail, which alignment needs, keeps improving. So the dose is capped

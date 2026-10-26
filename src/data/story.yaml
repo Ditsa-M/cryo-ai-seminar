@@ -54,7 +54,7 @@ slides:
       
       But speed alone is not the goal. A false particle pick, an inaccurate motion estimate, or an aggressively enhanced map can influence every later stage—from classification and refinement to the biological conclusion. Automation is useful only when we preserve a way to detect its mistakes.
     clicks:
-      - "Dose chart: SNR at 3/4/8/20 Å vs total dose; dots mark each resolution's best dose; amber line = this micrograph's 24 e⁻/Å²."
+      - "Microscope schematic (electrons fall from the gun through the sample to the detector; pink flashes = bonds breaking) + dose chart: SNR at 3/4/8/20 Å vs total dose; dots mark each resolution's best dose; amber line = slide 1's 24 e⁻/Å²."
       - "Scale numbers appear: archive size, picks on one dataset, expert picks per micrograph."
       - "Pipeline strip appears; an error marker at 'pick' propagates to 'interpret'."
     source: "Iqbal et al. 2026 (EMPIAR: 1,879 entries, 4.83 PB as of 14 Jan 2025); Dhakal et al. 2025 Table 3 (Topaz, EMPIAR-10093 full: 437,235 picks); EMPIAR-10017 metadata (24 e⁻/Å²); presenter count of 6,829 expert coordinates in 12 micrographs."
