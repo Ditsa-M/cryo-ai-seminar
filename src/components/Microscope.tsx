@@ -25,7 +25,7 @@ export function Microscope({ width = 340 }: { width?: number }) {
       <path d={`M${CX - 4},46 L${BEAM[0]},112 L${BEAM[0]},222 L${BEAM[1]},222 L${BEAM[1]},112 L${CX + 4},46 Z`} fill="rgba(79,209,232,.10)" />
       <path d={`M${BEAM[0]},244 L${BEAM[0]},330 L${CX - 8},372 L38,420 L162,420 L${CX + 8},372 L${BEAM[1]},330 L${BEAM[1]},244 Z`} fill="rgba(79,209,232,.07)" />
       {/* gun */}
-      <rect x={70} y={6} width={60} height={34} rx={5} fill="#1C2E3B" stroke="#8EA2B1" strokeWidth={1.5} />
+      <rect data-hand="gun" x={70} y={6} width={60} height={34} rx={5} fill="#1C2E3B" stroke="#8EA2B1" strokeWidth={1.5} />
       <path d={`M${CX - 8},40 L${CX},50 L${CX + 8},40 Z`} fill="#8EA2B1" />
       <circle cx={CX} cy={52} r={4} fill="#4FD1E8">{!still && <animate attributeName="opacity" values="1;.4;1" dur="0.9s" repeatCount="indefinite" />}</circle>
       {/* lenses */}
@@ -34,7 +34,7 @@ export function Microscope({ width = 340 }: { width?: number }) {
       {/* sample: thin ice across a grid hole, particles inside */}
       <rect x={24} y={222} width={14} height={22} fill="#5A6B78" />
       <rect x={162} y={222} width={14} height={22} fill="#5A6B78" />
-      <rect x={38} y={224} width={124} height={18} fill="rgba(160,205,235,.20)" stroke="rgba(160,205,235,.5)" strokeWidth={1} />
+      <rect data-hand="sample" x={38} y={224} width={124} height={18} fill="rgba(160,205,235,.20)" stroke="rgba(160,205,235,.5)" strokeWidth={1} />
       {PROTEINS.map(([x, y], i) => (
         <g key={i}>
           <circle cx={x} cy={y} r={5.5} fill="#4FD1E8" />
@@ -64,7 +64,7 @@ export function Microscope({ width = 340 }: { width?: number }) {
         );
       })}
       {/* detector: pixels light up as single electrons are counted */}
-      <rect x={30} y={420} width={140} height={26} rx={2} fill="#14232F" stroke="#8EA2B1" strokeWidth={1.5} />
+      <rect data-hand="det" x={30} y={420} width={140} height={26} rx={2} fill="#14232F" stroke="#8EA2B1" strokeWidth={1.5} />
       {PIX.map(([x, d], i) => (
         <rect key={i} x={x - 4} y={428} width={8} height={10} fill="#E0F9FD" opacity={still ? (i % 3 ? 0.25 : 0.9) : 0}>
           {!still && <animate attributeName="opacity" values="0;1;0.15" dur="1.6s" begin={`${d}s`} repeatCount="indefinite" />}

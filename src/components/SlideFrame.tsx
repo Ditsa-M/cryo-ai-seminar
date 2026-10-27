@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Slide } from "@revealjs/react";
+import { Hand } from "./Hand";
 import { getSlide, endTime, fmtTime, words, type ProvLabel, type Stage } from "../lib/story";
 
 const STAGES: { key: Exclude<Stage, null>; label: string }[] = [
@@ -62,6 +63,7 @@ export function SlideFrame({ id, children, className, steps, hideChrome }: {
       {!hideChrome && <Chips labels={s.labels} />}
       {children}
       <Markers n={nSteps} />
+      <Hand id={id} steps={nSteps} />
       {s.evidence && s.citation && <div className="cite">{s.citation}</div>}
     </Slide>
   );

@@ -57,7 +57,7 @@ export function S02Why() {
                 <text key="mark" x={sx(24) + 10} y={sy(0.08)} fill="#F2B347" fontSize={18} fontFamily="JetBrains Mono">24 e⁻/Å²: slide 1</text>,
                 ...RES.filter((r) => r.opt <= 60).map((r) => (
                 <g key={r.d}>
-                  <circle cx={sx(r.opt)} cy={sy(1)} r={7} fill={r.color} stroke="#0B141C" strokeWidth={2} />
+                  <circle data-hand="dose-opt" cx={sx(r.opt)} cy={sy(1)} r={7} fill={r.color} stroke="#0B141C" strokeWidth={2} />
                   <text x={sx(r.opt) + (r.d === 3 ? -6 : r.d === 4 ? 6 : 0)} y={sy(1) - 16} textAnchor={r.d === 3 ? "end" : r.d === 4 ? "start" : "middle"} fill="#C3D0D9" fontSize={17} fontFamily="JetBrains Mono">{Math.round(r.opt)}</text>
                 </g>
               ))]}
@@ -72,7 +72,7 @@ export function S02Why() {
           </div>
           <div className="stepfade" style={{ flex: 1, display: "flex", flexDirection: "column", gap: 14, opacity: step >= 1 ? 1 : 0.08 }}>
             {nums.map((n) => (
-              <div key={n.big} className="card">
+              <div key={n.big} data-hand="num" className="card">
                 <div className="big-number" style={{ fontSize: 60 }}>{n.big}</div>
                 <p style={{ fontSize: 23, margin: "8px 0 2px" }}>{n.txt}</p>
                 <p className="tiny muted" style={{ fontFamily: "var(--mono)", margin: 0 }}>{n.src}</p>
@@ -82,7 +82,7 @@ export function S02Why() {
         </div>
         <div style={{ marginTop: 18 }}>
           <p className="panel-label">Speed is not the goal — errors propagate</p>
-          <Pipeline errorAt={step >= 2 ? 3 : -1} spread={step >= 2 ? 7 : -1} />
+          <div data-hand="pipe"><Pipeline errorAt={step >= 2 ? 3 : -1} spread={step >= 2 ? 7 : -1} /></div>
         </div>
       </div>
     </SlideFrame>

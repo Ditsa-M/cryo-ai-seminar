@@ -75,9 +75,9 @@ export function S09Tools() {
       <div ref={ref}>
         <h2>Topaz, crYOLO and TomoTwin: three learning ideas</h2>
         <div className="grid3">
-          <div className="card nn stepfade" style={{ opacity: step >= 0 ? 1 : 0.1 }}><h3>Topaz <span className="tiny muted">Bepler 2019</span></h3><TopazSketch /></div>
-          <div className="card nn stepfade" style={{ opacity: step >= 1 ? 1 : 0.1 }}><h3>crYOLO <span className="tiny muted">Wagner 2019</span></h3><YoloSketch /></div>
-          <div className="card nn stepfade" style={{ opacity: step >= 2 ? 1 : 0.1 }}><h3>TomoTwin <span className="tiny muted">Rice 2023</span></h3>
+          <div data-hand="topaz" className="card nn stepfade" style={{ opacity: step >= 0 ? 1 : 0.1 }}><h3>Topaz <span className="tiny muted">Bepler 2019</span></h3><TopazSketch /></div>
+          <div data-hand="yolo" className="card nn stepfade" style={{ opacity: step >= 1 ? 1 : 0.1 }}><h3>crYOLO <span className="tiny muted">Wagner 2019</span></h3><YoloSketch /></div>
+          <div data-hand="tomotwin" className="card nn stepfade" style={{ opacity: step >= 2 ? 1 : 0.1 }}><h3>TomoTwin <span className="tiny muted">Rice 2023</span></h3>
             <div className="row" style={{ gap: 10 }}>
               <div style={{ width: 270 }}><Video name="tomo-scan" kind="loop" alt="37-voxel search box scanning a simulated tomogram (decorative loop)" /><p className="tiny muted">37³ subvolumes → 3D CNN</p></div>
               <div className="col"><EmbeddingSketch /></div>

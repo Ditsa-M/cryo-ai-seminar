@@ -22,7 +22,7 @@ export function Micrograph({ size, filtered, show, dim }: { size: number; filter
   const cls: Record<Cat, string> = { matched: "p-acc", model_only: "p-unc", expert_only: "p-mis", rejected: "p-rej" };
   const scalePx = (overlay.scale_bar_A / (overlay.apix * overlay.crop_px)) * size;
   return (
-    <div style={{ position: "relative", width: size, height: size }}>
+    <div data-hand="mic" style={{ position: "relative", width: size, height: size }}>
       <img src={`${base}figures/s01_mic_raw.webp`} alt="Raw cryo-EM micrograph of beta-galactosidase (EMPIAR-10017)" style={{ position: "absolute", inset: 0, width: size, height: size, opacity: dim ? 0.55 : 1 }} />
       <img src={`${base}figures/s01_mic_lp.webp`} alt="Same micrograph after low-pass filtering" className="stepfade" style={{ position: "absolute", inset: 0, width: size, height: size, opacity: filtered * (dim ? 0.55 : 1) }} />
       <svg viewBox={`0 0 ${size} ${size}`} width={size} height={size} style={{ position: "absolute", inset: 0 }}>
@@ -61,7 +61,7 @@ export function ParticleLegend({ items }: { items: Cat[] }) {
   return (
     <div className="legend">
       {items.map((c) => (
-        <span key={c}><svg className="sw" width={26} height={26}><HatchDefs />{sw(c)}</svg>{label[c]}</span>
+        <span key={c} data-hand={`leg leg-${c}`}><svg className="sw" width={26} height={26}><HatchDefs />{sw(c)}</svg>{label[c]}</span>
       ))}
     </div>
   );

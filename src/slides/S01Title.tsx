@@ -14,7 +14,7 @@ export function S01Title() {
           <div className="kicker">BCH 561 · Biochemical technique seminar</div>
           <h1 style={{ fontSize: 92, fontWeight: 800, fontStretch: "82%", lineHeight: 0.98 }}>AI in cryo-EM<br />and cryo-ET<br />data processing</h1>
           <p className="muted" style={{ fontSize: 28, marginTop: 26 }}>{story.meta.presenter} · {story.meta.course} · {story.meta.date}</p>
-          <div className="callout stepfade" style={{ opacity: step >= 4 ? 1 : 0, fontSize: 34, marginTop: 40, lineHeight: 1.28, maxWidth: 820 }}>
+          <div data-hand="question" className="callout stepfade" style={{ opacity: step >= 4 ? 1 : 0, fontSize: 34, marginTop: 40, lineHeight: 1.28, maxWidth: 820 }}>
             Where does deep learning add <b>trustworthy</b> structural information — and how can we tell whether an apparent improvement is <b>real</b>?
           </div>
         </div>

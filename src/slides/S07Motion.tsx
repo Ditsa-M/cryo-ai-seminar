@@ -28,7 +28,7 @@ function Patches({ size }: { size: number }) {
         const cx = (p.j + 0.5) * cell, cy = (p.i + 0.5) * cell;
         return (
           <g key={`${p.i}-${p.j}`}>
-            <rect x={p.j * cell + 2} y={p.i * cell + 2} width={cell - 4} height={cell - 4} fill="#14232F" stroke={out ? "#F2B347" : "#2A3D4C"} strokeWidth={out ? 3 : 1} strokeDasharray={out ? "7 5" : undefined} />
+            <rect data-hand={out ? "outlier" : undefined} x={p.j * cell + 2} y={p.i * cell + 2} width={cell - 4} height={cell - 4} fill="#14232F" stroke={out ? "#F2B347" : "#2A3D4C"} strokeWidth={out ? 3 : 1} strokeDasharray={out ? "7 5" : undefined} />
             <polyline points={p.traj.map(([y, x]) => `${cx + x * k},${cy + y * k}`).join(" ")} fill="none" stroke={out ? "#F2B347" : "#4FD1E8"} strokeWidth={2} />
           </g>
         );
@@ -46,20 +46,20 @@ export function S07Motion() {
         <div className="row" style={{ gap: 30 }}>
           <div style={{ width: 820 }}>
             <p className="panel-label">Real movie, 7 groups of 7 frames (1.77 Å/px crop)</p>
-            <Video name="motion-align" kind="once" play={step >= 0} alt="Frame groups drift, then are aligned and summed (real EMPIAR-10204 data)" />
+            <div data-hand="vid"><Video name="motion-align" kind="once" play={step >= 0} alt="Frame groups drift, then are aligned and summed (real EMPIAR-10204 data)" /></div>
             <p className="figcap">Plays once and holds. Drift measured by presenter's cross-correlation alignment (not MotionCor2).</p>
           </div>
           <div className="stepfade" style={{ opacity: step >= 1 ? 1 : 0, width: 520 }}>
             <p className="panel-label">Global trajectory · power spectra (Thon rings)</p>
             <div className="row" style={{ gap: 10 }}>
-              <Trajectory size={220} />
+              <div data-hand="traj"><Trajectory size={220} /></div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-                <div><img src={`${base}figures/s07_psd_unaligned.webp`} alt="Power spectrum of unaligned sum" style={{ width: 140 }} /><p className="tiny muted">unaligned</p></div>
-                <div><img src={`${base}figures/s07_psd_aligned.webp`} alt="Power spectrum of aligned sum" style={{ width: 140 }} /><p className="tiny muted">aligned</p></div>
+                <div><img data-hand="psd" src={`${base}figures/s07_psd_unaligned.webp`} alt="Power spectrum of unaligned sum" style={{ width: 140 }} /><p className="tiny muted">unaligned</p></div>
+                <div><img data-hand="psd" src={`${base}figures/s07_psd_aligned.webp`} alt="Power spectrum of aligned sum" style={{ width: 140 }} /><p className="tiny muted">aligned</p></div>
               </div>
             </div>
-            <LineChart w={520} h={250} xLabel="spatial frequency (1/Å)" yLabel="Thon-ring amplitude" xDomain={[0.02, 0.16]} yDomain={[-0.4, 0.8]} yTicks={[0, 0.5]} xTicks={[0.05, 0.1, 0.15]}
-              series={[{ key: "u", label: "unaligned", x: thon.freq, y: thon.unaligned, color: "#E8559A", dash: "6 5" }, { key: "a", label: "aligned", x: thon.freq, y: thon.aligned, color: "#4FD1E8" }]} />
+            <div data-hand="thon"><LineChart w={520} h={250} xLabel="spatial frequency (1/Å)" yLabel="Thon-ring amplitude" xDomain={[0.02, 0.16]} yDomain={[-0.4, 0.8]} yTicks={[0, 0.5]} xTicks={[0.05, 0.1, 0.15]}
+              series={[{ key: "u", label: "unaligned", x: thon.freq, y: thon.unaligned, color: "#E8559A", dash: "6 5" }, { key: "a", label: "aligned", x: thon.freq, y: thon.aligned, color: "#4FD1E8" }]} /></div>
             <div className="legend tiny"><span style={{ color: "#4FD1E8" }}>━ aligned</span><span style={{ color: "#E8559A" }}>╍ unaligned</span></div>
           </div>
           <div className="stepfade col" style={{ opacity: step >= 2 ? 1 : 0 }}>

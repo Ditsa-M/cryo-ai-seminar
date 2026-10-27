@@ -32,7 +32,7 @@ export function S04Principle() {
                 <tr><td><Tex>{"n_i"}</Tex></td><td>shot noise (unknown, large)</td></tr>
               </tbody>
             </table>
-            <div className="stepfade" style={{ opacity: step >= 1 ? 1 : 0.0, marginTop: 8 }}>
+            <div data-hand="ctf" className="stepfade" style={{ opacity: step >= 1 ? 1 : 0.0, marginTop: 8 }}>
               <LineChart w={640} h={230} xLabel="spatial frequency (1/Å)" yLabel="CTF" xDomain={[0, 0.25]} yDomain={[-1, 1]} yTicks={[-1, 0, 1]} xTicks={[0, 0.05, 0.1, 0.15, 0.2, 0.25]}
                 series={[{ key: "ctf", label: "CTF", x: ctf.k, y: ctf.ctf, color: "#4FD1E8" }]} />
               <p className="figcap">{ctf.kv} kV, C<sub>s</sub> {ctf.cs_mm} mm, defocus {ctf.defocus_um} µm. Varying defocus moves the zeros.</p>
@@ -45,11 +45,11 @@ export function S04Principle() {
                   <div style={{ fontWeight: 700, fontSize: 24 }}>{r.label}</div>
                   <div className="tiny muted">{r.note}</div>
                 </div>
-                <img src={`${base}figures/${r.img}.webp`} alt={r.label} style={{ height: 134 }} />
+                <img data-hand={`row${r.step}`} src={`${base}figures/${r.img}.webp`} alt={r.label} style={{ height: 134 }} />
               </div>
             ))}
           </div>
-          <div style={{ width: 200, position: "absolute", right: 64, top: 150 }}>
+          <div data-hand="vid" style={{ width: 200, position: "absolute", right: 64, top: 150 }}>
             <Video name="bgal-spin" kind="loop" alt="Rotating beta-galactosidase density simulated from PDB 6CVM (decorative loop)" />
             <p className="figcap" style={{ textAlign: "center" }}>V: β-galactosidase<br />(PDB 6CVM, simulated)</p>
           </div>

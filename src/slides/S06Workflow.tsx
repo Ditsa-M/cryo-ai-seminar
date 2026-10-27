@@ -26,7 +26,7 @@ export function S06Workflow() {
   const X = (b: Box) => 10 + b.x * 222, Y = (b: Box) => 40 + b.y * 220;
   const draw = (b: Box, vis: boolean, i: number, arr: Box[]) => (
     <g key={b.id} className="stepfade" style={{ opacity: vis ? 1 : 0 }}>
-      <rect x={X(b)} y={Y(b)} width={W} height={H} rx={4} fill="#14232F" stroke={b.focus ? "#4FD1E8" : "#2A3D4C"} strokeWidth={b.focus ? 3 : 1.5} />
+      <rect data-hand={b.focus ? (b.y ? "et-focus" : "spa-focus") : undefined} x={X(b)} y={Y(b)} width={W} height={H} rx={4} fill="#14232F" stroke={b.focus ? "#4FD1E8" : "#2A3D4C"} strokeWidth={b.focus ? 3 : 1.5} />
       <text x={X(b) + W / 2} y={Y(b) + H / 2 + (b.label.length > 15 ? -4 : 8)} textAnchor="middle" fontSize={21} fontWeight={600} fill="#EEF3F6">
         {b.label.length > 15 ? (() => { const w = b.label.split(" "); const k = Math.ceil(w.length / 2); return [w.slice(0, k).join(" "), w.slice(k).join(" ")].map((t, j) => <tspan key={j} x={X(b) + W / 2} dy={j ? 24 : 0}>{t}</tspan>); })() : b.label}
       </text>
@@ -52,9 +52,9 @@ export function S06Workflow() {
           {ET.map((b, i, a) => draw(b, step >= 1, i, a))}
         </svg>
         <div className="row stepfade" style={{ opacity: step >= 2 ? 1 : 0, gap: 28, marginTop: 4 }}>
-          <div className="card nn col"><b>CryoAI</b> (Levy et al. 2022): learned encoder predicts each particle's pose; physics-based decoder; ab initio, homogeneous; reported ≈ one order of magnitude faster on large datasets.</div>
-          <div className="card nn col"><b>Cryo2StructData</b> (Giri et al. 2024): 7,600 density maps with voxels labelled from atomic structures, to train and test model-building networks.</div>
-          <div className="card acc col"><b>Today's focus</b> (cyan boxes): motion → picking → enhancement — where errors are born and propagate.</div>
+          <div data-hand="dl" className="card nn col"><b>CryoAI</b> (Levy et al. 2022): learned encoder predicts each particle's pose; physics-based decoder; ab initio, homogeneous; reported ≈ one order of magnitude faster on large datasets.</div>
+          <div data-hand="dl" className="card nn col"><b>Cryo2StructData</b> (Giri et al. 2024): 7,600 density maps with voxels labelled from atomic structures, to train and test model-building networks.</div>
+          <div data-hand="dl" className="card acc col"><b>Today's focus</b> (cyan boxes): motion → picking → enhancement — where errors are born and propagate.</div>
         </div>
       </div>
     </SlideFrame>

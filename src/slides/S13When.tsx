@@ -24,11 +24,11 @@ export function S13When() {
         <div className="grid2" style={{ gap: 44 }}>
           <div className="card acc stepfade" style={{ opacity: step >= 0 ? 1 : 0.1 }}>
             <h3 style={{ color: "var(--accept)", fontSize: 36 }}>● Reach for deep learning when…</h3>
-            <table><tbody>{USE.map(([a, b]) => <tr key={a}><td style={{ fontSize: 31, padding: "14px 10px" }}>{a}</td><td className="muted" style={{ fontSize: 25, padding: "14px 10px" }}>{b}</td></tr>)}</tbody></table>
+            <table><tbody>{USE.map(([a, b]) => <tr key={a} data-hand="use"><td style={{ fontSize: 31, padding: "14px 10px" }}>{a}</td><td className="muted" style={{ fontSize: 25, padding: "14px 10px" }}>{b}</td></tr>)}</tbody></table>
           </div>
           <div className="card unc stepfade" style={{ opacity: step >= 1 ? 1 : 0.1 }}>
             <h3 style={{ color: "var(--uncertain)", fontSize: 36 }}>◇ Prefer simpler or conventional methods when…</h3>
-            <table><tbody>{SIMPLE.map(([a, b]) => <tr key={a}><td style={{ fontSize: 31, padding: "14px 10px" }}>{a}</td><td className="muted" style={{ fontSize: 25, padding: "14px 10px" }}>{b}</td></tr>)}</tbody></table>
+            <table><tbody>{SIMPLE.map(([a, b]) => <tr key={a} data-hand="simple"><td style={{ fontSize: 31, padding: "14px 10px" }}>{a}</td><td className="muted" style={{ fontSize: 25, padding: "14px 10px" }}>{b}</td></tr>)}</tbody></table>
           </div>
         </div>
         <p className="tiny muted" style={{ marginTop: 18 }}>Presenter's synthesis of the use cases stated in each method paper — not a published decision tree.</p>

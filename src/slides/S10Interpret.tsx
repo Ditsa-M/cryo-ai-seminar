@@ -31,10 +31,10 @@ export function S10Interpret() {
               {(sx, sy) => (
                 <g className="stepfade" style={{ opacity: step >= 0 ? 1 : 0 }}>
                   <line x1={sx(m.t)} x2={sx(m.t)} y1={sy(1)} y2={sy(0)} stroke="#A88BFA" strokeWidth={3} style={{ transition: "all .9s ease" }} />
-                  <text data-testid="thr-label" x={sx(m.t) + (m.t < 4 ? -8 : 8)} textAnchor={m.t < 4 ? "end" : "start"} y={sy(0.06)} fill="#D9C2FF" fontSize={19} fontFamily="JetBrains Mono" style={{ transition: "all .9s ease" }}>
+                  <text data-testid="thr-label" data-hand="thr" x={sx(m.t) + (m.t < 4 ? -8 : 8)} textAnchor={m.t < 4 ? "end" : "start"} y={sy(0.06)} fill="#D9C2FF" fontSize={19} fontFamily="JetBrains Mono" style={{ transition: "all .9s ease" }}>
                     {m.n.toLocaleString("en-US")} picks · P {m.p.toFixed(2)} · R {m.r.toFixed(2)}
                   </text>
-                  {step >= 1 && <circle cx={sx(b.threshold)} cy={sy(b.f1)} r={9} fill="none" stroke="#fff" strokeWidth={3} />}
+                  {step >= 1 && <circle data-hand="best" cx={sx(b.threshold)} cy={sy(b.f1)} r={9} fill="none" stroke="#fff" strokeWidth={3} />}
                 </g>
               )}
             </LineChart>
@@ -47,7 +47,7 @@ export function S10Interpret() {
               {([["tp", "Agreed picks", ctp, "p-acc"], ["fp", "\"False positives\" (model only)", cfp, "p-unc"], ["fn", "Missed (expert only)", cfn, "p-mis"]] as const).map(([k, label, meta]) => (
                 <div key={k} style={{ marginBottom: 8 }}>
                   <div className="tiny"><b>{label}</b> · {meta.total.toLocaleString("en-US")} picks</div>
-                  <img src={`${base}figures/s10_classes_${k}.webp`} alt={`2D class averages: ${label}`} style={{ height: 112 }} />
+                  <img data-hand="cls" src={`${base}figures/s10_classes_${k}.webp`} alt={`2D class averages: ${label}`} style={{ height: 112 }} />
                 </div>
               ))}
               <p className="tiny" style={{ color: "var(--uncertain)" }}>Several "false-positive" classes look like real β-galactosidase views: the labels were incomplete. Largest class = off-centre / overlapping neighbours.</p>

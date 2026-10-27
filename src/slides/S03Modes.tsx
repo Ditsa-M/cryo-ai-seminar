@@ -19,9 +19,9 @@ export function S03Modes() {
         <div className="grid2" style={{ gap: 48 }}>
           <div>
             <p className="panel-label">Single-particle analysis · EXPERIMENTAL (EMPIAR-10017)</p>
-            <img src={`${base}figures/s01_mic_lp.webp`} alt="Purified beta-galactosidase particles in ice" style={{ width: "100%", height: 340, objectFit: "cover" }} />
+            <img data-hand="spa" src={`${base}figures/s01_mic_lp.webp`} alt="Purified beta-galactosidase particles in ice" style={{ width: "100%", height: 340, objectFit: "cover" }} />
           </div>
-          <div className="stepfade" style={{ opacity: step >= 0 ? 1 : 0, transform: step >= 0 ? "none" : "translateX(40px)" }}>
+          <div data-hand="tomo" className="stepfade" style={{ opacity: step >= 0 ? 1 : 0, transform: step >= 0 ? "none" : "translateX(40px)" }}>
             <p className="panel-label">Cryo-ET · SIMULATION (PDB 6CVM + 4V6X, ±60° tilt, membrane slab)</p>
             <Video name="tomo-scan" kind="loop" height={340} alt="Simulated tomogram slab with a 3D search box scanning (decorative loop)" />
           </div>
@@ -31,8 +31,8 @@ export function S03Modes() {
           <tbody>{rows.map((r) => <tr key={r[0]}><td className="muted">{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>)}</tbody>
         </table>
         <div className="grid2 stepfade" style={{ gap: 48, marginTop: 16, opacity: step >= 1 ? 1 : 0 }}>
-          <div className="callout cyan">What is the <b>atomic mechanism</b> of this purified complex?</div>
-          <div className="callout">Where is it, what is it bound to, what <b>state</b> is it in — inside the cell?</div>
+          <div data-hand="q" className="callout cyan">What is the <b>atomic mechanism</b> of this purified complex?</div>
+          <div data-hand="q" className="callout">Where is it, what is it bound to, what <b>state</b> is it in — inside the cell?</div>
         </div>
       </div>
     </SlideFrame>

@@ -22,15 +22,15 @@ export function S12Benchmark() {
             return (
               <g key={r.method} className="stepfade" style={{ opacity: step >= 0 ? (step >= 3 && !hi(r.method) ? 0.35 : 1) : 0 }}>
                 {hi(r.method) && <rect x={0} y={y + 2} width={W} height={rowH - 4} fill="rgba(242,179,71,.10)" stroke="#F2B347" strokeDasharray="6 5" />}
-                <text x={12} y={y + rowH / 2 + 8} fill="#fff" fontSize={26} fontWeight={700}>{r.method}</text>
+                <text data-hand="name" x={12} y={y + rowH / 2 + 8} fill="#fff" fontSize={26} fontWeight={700}>{r.method}</text>
                 <g className="stepfade" style={{ opacity: step >= 1 ? 1 : 0 }}>
-                  <rect x={nameW} y={y + 14} width={sCount(r.empiar_particles)} height={rowH - 28} fill="#5A6E7D" rx={3} />
+                  <rect data-hand={`bar-${r.method}`} x={nameW} y={y + 14} width={sCount(r.empiar_particles)} height={rowH - 28} fill="#5A6E7D" rx={3} />
                   <text x={nameW + sCount(r.empiar_particles) + 10} y={y + rowH / 2 + 7} fill="#EEF3F6" fontSize={20} fontFamily="JetBrains Mono">{r.empiar_particles.toLocaleString("en-US")}</text>
                 </g>
                 <g className="stepfade" style={{ opacity: step >= 2 ? 1 : 0 }}>
                   <line x1={dotX0 + sRes(r.empiar_res_A)} x2={dotX0 + sRes(r.cryoppp_res_A)} y1={y + rowH / 2} y2={y + rowH / 2} stroke="#2A3D4C" strokeWidth={4} />
                   <circle cx={dotX0 + sRes(r.cryoppp_res_A)} cy={y + rowH / 2} r={10} fill="none" stroke="#F2B347" strokeWidth={3} strokeDasharray="4 3" />
-                  <circle cx={dotX0 + sRes(r.empiar_res_A)} cy={y + rowH / 2} r={10} fill="#4FD1E8" />
+                  <circle data-hand={`res-${r.method}`} cx={dotX0 + sRes(r.empiar_res_A)} cy={y + rowH / 2} r={10} fill="#4FD1E8" />
                   <text x={dotX0 + sRes(r.empiar_res_A) - 16} y={y + rowH / 2 + 7} fill="#4FD1E8" fontSize={19} textAnchor="end" fontFamily="JetBrains Mono">{r.empiar_res_A.toFixed(2)}</text>
                   <text x={dotX0 + sRes(r.cryoppp_res_A) + 16} y={y + rowH / 2 + 7} fill="#F2B347" fontSize={19} fontFamily="JetBrains Mono">{r.cryoppp_res_A.toFixed(2)}</text>
                 </g>
@@ -44,13 +44,13 @@ export function S12Benchmark() {
           </g>
         </svg>
         <div className="grid3" style={{ gap: 20, marginTop: 6 }}>
-          <div className="callout stepfade" style={{ opacity: step >= 3 ? 1 : 0, fontSize: 21 }}>
+          <div data-hand="c1" className="callout stepfade" style={{ opacity: step >= 3 ? 1 : 0, fontSize: 21 }}>
             <b>More particles ≠ better map.</b> Topaz picked ~2× CryoSegNet's particles yet averaged 3.46 vs 3.28 Å. Hemagglutinin: 259,757 vs 90,477 particles → 3.21 vs 3.20 Å.
           </div>
-          <div className="callout mag stepfade" style={{ opacity: step >= 4 ? 1 : 0, fontSize: 21 }}>
+          <div data-hand="c2" className="callout mag stepfade" style={{ opacity: step >= 4 ? 1 : 0, fontSize: 21 }}>
             <b>Benchmark-specific:</b> best of 3 seeds; 4 proteins; CryoSegNet not best everywhere — on EMPIAR-10093 Topaz is best in both subsets. Text credits CryoTransformer; Table 3 says Topaz <b>6.12</b> vs 6.81 Å (table used). Two winners are from the reviewers' own group.
           </div>
-          <div className="callout cyan stepfade" style={{ opacity: step >= 5 ? 1 : 0, fontSize: 21 }}>
+          <div data-hand="c3" className="callout cyan stepfade" style={{ opacity: step >= 5 ? 1 : 0, fontSize: 21 }}>
             <b>What explained the differences?</b> The authors point to <b>viewing-direction coverage</b>: pickers that missed orientations lost resolution. Validate with orientation plots and half-map FSC, not counts.
           </div>
         </div>

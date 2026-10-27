@@ -22,7 +22,7 @@ export function S11Enhance() {
           {MAPS.map((m) => (
             <div key={m.k} className="stepfade" style={{ opacity: step >= m.s ? 1 : 0.06 }}>
               <p className="panel-label">{m.t}</p>
-              <div style={{ position: "relative", height: 380, background: "#0B1620" }}>
+              <div data-hand={`map-${m.k}`} style={{ position: "relative", height: 380, background: "#0B1620" }}>
                 <img src={`${base}figures/s11_${m.k}_overview.webp`} alt={`${m.t}, contoured at 80% atom inclusion`} className="stepfade" style={{ position: "absolute", inset: 0, height: 380, margin: "0 auto", opacity: half ? 0 : 1 }} />
                 <img src={`${base}figures/s11_${m.k}_halflevel.webp`} alt={`${m.t} at half contour level`} className="stepfade" style={{ position: "absolute", inset: 0, height: 380, margin: "0 auto", opacity: half ? 1 : 0 }} />
               </div>
@@ -31,7 +31,7 @@ export function S11Enhance() {
         </div>
         <p className="figcap">EMD-72202 (β2AR dimer, nanodisc). Each map contoured where 80% of PDB 9Q3L atoms lie inside{half ? <b style={{ color: "var(--uncertain)" }}> — now at HALF that level: the conventional maps show the lipid nanodisc; DeepEMhancer removed it.</b> : "."}</p>
         <div className="row stepfade" style={{ opacity: step >= 3 ? 1 : 0, gap: 30, marginTop: 6 }}>
-          <div style={{ width: 660 }}>
+          <div data-hand="fsc" style={{ width: 660 }}>
             <div style={{ display: "flex", gap: 26, fontSize: 19, margin: "0 0 2px 96px" }}>
               <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}><svg width={28} height={10}><line x1={0} x2={28} y1={5} y2={5} stroke="#4FD1E8" strokeWidth={3} /></svg>soft mask · {fsc.res_masked} Å</span>
               <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}><svg width={28} height={10}><line x1={0} x2={28} y1={5} y2={5} stroke="#8EA2B1" strokeWidth={3} strokeDasharray="6 5" /></svg>unmasked · {fsc.res_unmasked} Å</span>

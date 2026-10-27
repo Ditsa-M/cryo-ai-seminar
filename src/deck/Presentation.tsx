@@ -5,6 +5,7 @@ import "reveal.js/reveal.css";
 import "../styles/theme.css";
 import { toggleReduced, isReduced } from "../lib/reducedMotion";
 import { story } from "../lib/story";
+import { toggleHand } from "../components/Hand";
 import { S01Title } from "../slides/S01Title";
 import { S02Why } from "../slides/S02Why";
 import { S03Modes } from "../slides/S03Modes";
@@ -28,7 +29,7 @@ import { S16Refs } from "../slides/S16Refs";
 function queryConfig(): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   new URLSearchParams(window.location.search).forEach((v, k) => {
-    if (k === "print-pdf" || k === "reduced-motion") return;
+    if (k === "print-pdf" || k === "reduced-motion" || k === "no-hand") return;
     out[k] = v === "" || v === "true" ? true : v === "false" ? false : /^-?\d+(\.\d+)?$/.test(v) ? Number(v) : v;
   });
   return out;
@@ -45,7 +46,7 @@ export function Presentation() {
         autoSlide: 0, autoSlideStoppable: true, loop: false, center: false,
         viewDistance: 2, mobileViewDistance: 2, preloadIframes: false,
         pdfSeparateFragments: false, pdfMaxPagesPerSlide: 1, showNotes: false,
-        keyboard: { 77: () => toggleReduced() },  // M: reduced-motion toggle
+        keyboard: { 77: () => toggleReduced(), 88: () => toggleHand() },  // M: reduced-motion toggle · X: show/hide pointing hand
         // speaker-view pacing: per-slide data-timing from story.yaml; totalTime is read by the notes plugin
         ...({ totalTime: story.meta.total_seconds } as object),
         ...queryConfig(),

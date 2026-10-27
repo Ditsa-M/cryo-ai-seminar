@@ -106,3 +106,13 @@ html.reveal-print .reveal, html.print-pdf .reveal { height: auto !important; }
 html.reveal-print .pdf-page, html.print-pdf .pdf-page, html.reveal-print .reveal .slides section, html.print-pdf .reveal .slides section { background: var(--bg) !important; }
 html.reveal-print body, html.print-pdf body { background: var(--bg) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 html.reveal-print .reveal .slides section, html.print-pdf .reveal .slides section { padding: 104px 64px 70px !important; box-sizing: border-box !important; height: 1080px !important; }
+
+/* presenter's pointing hand (src/components/Hand.tsx): fingertip at the element's top-left + 19px */
+.hand { position: absolute; z-index: 40; pointer-events: none; width: 64px; height: 92px; transform-origin: 19px 0; transform: rotate(-26deg);
+  transition: left .75s cubic-bezier(.45,.05,.3,1), top .75s cubic-bezier(.45,.05,.3,1), opacity .35s ease; filter: drop-shadow(0 4px 8px rgba(0,0,0,.55)); }
+.hand-svg { display: block; transform-origin: 19px 0; animation: hand-tap 1.1s ease-in-out infinite; }
+.hand-ring { position: absolute; left: 4px; top: -15px; width: 30px; height: 30px; border-radius: 50%; border: 3px solid #4FD1E8; animation: hand-ring 1.1s ease-out infinite; }
+@keyframes hand-tap { 0%, 100% { transform: translateY(10px); } 45% { transform: translateY(0); } }
+@keyframes hand-ring { 0%, 40% { transform: scale(.3); opacity: 0; } 50% { opacity: .95; } 100% { transform: scale(1.5); opacity: 0; } }
+.hand.still, .hand.still .hand-svg, .hand.still .hand-ring { transition: none; animation: none; }
+.hand.still .hand-ring { opacity: .8; }

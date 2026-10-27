@@ -72,6 +72,21 @@ const idx = (page) => page.evaluate(() => window.__deck.getIndices());
     return bad;
   });
   check("no element overflows the 1920×1080 slide", overflow.length === 0, overflow.slice(0, 6).join("; "));
+  // pointing hand: on screen, inside the slide, in every click state except the silent opening (slide 1, states 0-1)
+  const handMiss = await page.evaluate(async () => {
+    const d = window.__deck, bad = [];
+    for (let h = 0; h < 16; h++) {
+      const n = d.getSlides()[h].querySelectorAll(".fragment").length;
+      for (let f = -1; f < n; f++) {
+        if (h === 0 && f < 1) continue;
+        d.slide(h, 0, f); await new Promise((r) => setTimeout(r, 200));
+        const e = d.getCurrentSlide().querySelector(".hand"), x = parseFloat(e?.style.left), y = parseFloat(e?.style.top);
+        if (e?.dataset.handOn !== "1" || !(x >= 0 && x <= 1856 && y >= 0 && y <= 988)) bad.push(`s${h + 1}.${f + 1}`);
+      }
+    }
+    return bad;
+  });
+  check("pointing hand shown in every click state", handMiss.length === 0, handMiss.join(", "));
   const citeOk = await page.evaluate(() => [...document.querySelectorAll("section .cite")].every((c) => parseFloat(getComputedStyle(c).fontSize) >= 18));
   check("citation strips ≥18 px at slide scale", citeOk);
   const evid = await page.$$eval("section", (s) => s.filter((x) => x.querySelector(".cite")).length);

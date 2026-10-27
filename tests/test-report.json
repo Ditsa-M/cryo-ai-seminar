@@ -1,5 +1,5 @@
 {
- "when": "2026-10-26T20:43:05.933Z",
+ "when": "2026-10-27T01:57:08.720Z",
  "chrome": "/usr/bin/google-chrome",
  "results": [
   {
@@ -34,6 +34,11 @@
   },
   {
    "name": "no element overflows the 1920×1080 slide",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "pointing hand shown in every click state",
    "ok": true,
    "detail": ""
   },
