@@ -12,3 +12,5 @@ docs/HANDOFF_previous_windows_attempt.md
 __pycache__/
 *.pyc
 sources/
+backup/deck.pptx
+production/pptx/

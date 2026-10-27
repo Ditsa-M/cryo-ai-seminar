@@ -37,6 +37,10 @@ last bullet, slide 12's Topaz → CryoSegNet), it sits still on the email during
 short pop-up explains EMPIAR. Its targets are in `src/data/hand.ts`. It stays still
 with reduced motion, is left out of the PDF, and `?no-hand` in the URL starts with it hidden.
 
+PowerPoint copy: `npm run build && npm run export:pptx` writes `backup/deck.pptx`. It has one slide per click, each a
+1920×1080 capture of the deck, with a fade between them, the clips embedded and starting on their own, and your script
+for each press in the speaker notes. Its text can't be edited; the web deck stays the source.
+
 Without a server: any static server works on `dist/` (e.g. `python3 -m http.server -d dist 4173`).
 Opening `dist/index.html` from `file://` is not supported (browser module/video restrictions).
 

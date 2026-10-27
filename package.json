@@ -13,7 +13,8 @@
     "export:pdf": "node scripts/export-pdf.mjs",
     "export:mp4": "node scripts/export-mp4.mjs",
     "transcript": "node scripts/make-transcript.mjs",
-    "videos": "node production/remotion/render-all.mjs"
+    "videos": "node production/remotion/render-all.mjs",
+    "export:pptx": "node scripts/make-cue-sheet.mjs && node scripts/export-pptx.mjs"
   },
   "dependencies": {
     "@revealjs/react": "0.2.2",
@@ -34,6 +35,7 @@
     "@vitejs/plugin-react": "6.1.1",
     "js-yaml": "4.1.0",
     "playwright-core": "1.63.0",
+    "pptxgenjs": "^3.12.0",
     "remotion": "4.0.532",
     "typescript": "5.9.3",
     "vite": "8.3.2"
