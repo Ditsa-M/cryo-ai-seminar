@@ -22,3 +22,6 @@ export const HAND: Record<string, string[][]> = {
   s15: [["$h2@0.5,1"], ["th0@0.3,1"], ["th1@0.3,1"], ["th2@0.3,1"], ["goal@0.4,1"]],
   s16: [["email@0.5,1", "questions@0.5,0.95"], ["email@0.5,1", "questions@0.5,0.95"]],
 };
+
+// Slides whose hand loop stops after this many rounds, then rests on the first target.
+export const HAND_ROUNDS: Record<string, number> = { s16: 2 };

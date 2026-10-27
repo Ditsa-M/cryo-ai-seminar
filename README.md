@@ -32,7 +32,8 @@ next slide, timer with per-slide pacing, full notes), **→ / Space** to advance
 overview. Nothing auto-advances; there is no audio.
 
 A pointing hand moves to whatever the script is talking about at each click and loops through the
-items for that click, tapping each one for 2.8 s. Its targets are in `src/data/hand.ts`. It stays still
+items for that click, tapping each one for 2.8 s. On the last slide it goes email → Questions? twice,
+then rests on the email. Its targets are in `src/data/hand.ts`. It stays still
 with reduced motion, is left out of the PDF, and `?no-hand` in the URL starts with it hidden.
 
 Without a server: any static server works on `dist/` (e.g. `python3 -m http.server -d dist 4173`).

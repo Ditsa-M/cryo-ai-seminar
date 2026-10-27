@@ -2,11 +2,11 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { useReveal } from "@revealjs/react";
 import { useStep, isPrint } from "../lib/useStep";
 import { useReducedMotion } from "../lib/reducedMotion";
-import { HAND } from "../data/hand";
+import { HAND, HAND_ROUNDS } from "../data/hand";
 
 // Presenter's pointing hand: glides to the target(s) for the current click state (src/data/hand.ts),
-// taps, and loops through them every DWELL ms. Hidden in the PDF; X toggles it during the talk;
-// reduced motion keeps it still on the first target.
+// taps, and loops through them every DWELL ms (or for HAND_ROUNDS rounds, then rests on the first).
+// Hidden in the PDF; X toggles it during the talk; reduced motion keeps it still on the first target.
 const DWELL = 2800, TIP_X = 19;   // fingertip x inside the 64×92 hand drawing (tip at y = 0)
 
 let hidden = typeof window !== "undefined" && /no-hand/.test(window.location.search);
@@ -28,20 +28,23 @@ export function Hand({ id, steps }: { id: string; steps: number }) {
   const specs = HAND[id]?.[step + 1] ?? [];
   const [i, setI] = useState(0);
   const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+  const [n, setN] = useState(1);   // number of targets in the current state
+  const rounds = HAND_ROUNDS[id], done = !!rounds && i >= rounds * n;
 
   useEffect(() => setI(0), [step, active]);
   useEffect(() => {
-    if (!active || still || off) return;
+    if (!active || still || off || done) return;
     const t = setInterval(() => setI((k) => k + 1), DWELL);
     return () => clearInterval(t);
-  }, [active, still, off, step]);
+  }, [active, still, off, step, done]);
   useEffect(() => {
     const section = ref.current?.closest("section");
     if (!section || !active || !specs.length) { setPos(null); return; }
     const measure = () => {
       const targets = specs.flatMap((s) => resolve(section, s));
       if (!targets.length) { setPos(null); return; }
-      const { el, fx, fy } = targets[i % targets.length];
+      setN(targets.length);
+      const { el, fx, fy } = targets[done ? 0 : i % targets.length];
       const sb = section.getBoundingClientRect(), r = el.getBoundingClientRect();
       const scale = sb.width / (section as HTMLElement).offsetWidth || 1;
       const x = (r.left - sb.left + fx * r.width) / scale, y = (r.top - sb.top + fy * r.height) / scale;
@@ -50,12 +53,12 @@ export function Hand({ id, steps }: { id: string; steps: number }) {
     const t = setTimeout(measure, 60);   // after the fragment's layout settles
     deck?.on("resize", measure);
     return () => { clearTimeout(t); deck?.off("resize", measure); };
-  }, [deck, active, step, i, specs.join("|")]);
+  }, [deck, active, step, i, done, specs.join("|")]);
 
   if (isPrint()) return null;
   const show = !!pos && !off;
   return (
-    <div ref={ref} className={"hand" + (still ? " still" : "")} aria-hidden data-hand-on={show ? "1" : "0"}
+    <div ref={ref} className={"hand" + (still || done ? " still" : "")} aria-hidden data-hand-on={show ? "1" : "0"}
       style={{ left: (pos?.x ?? 960) - TIP_X, top: pos?.y ?? 540, opacity: show ? 1 : 0 }}>
       <span className="hand-ring" />
       <svg className="hand-svg" width={64} height={92} viewBox="0 0 64 92">
