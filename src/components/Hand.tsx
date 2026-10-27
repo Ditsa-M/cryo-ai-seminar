@@ -2,13 +2,14 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { useReveal } from "@revealjs/react";
 import { useStep, isPrint } from "../lib/useStep";
 import { useReducedMotion } from "../lib/reducedMotion";
-import { HAND, HAND_ROUNDS } from "../data/hand";
+import { HAND, HAND_MODE, HAND_NOTE } from "../data/hand";
 
 // Presenter's pointer, an amber Pac-Man: glides to the target(s) for the current click state
-// (src/data/hand.ts), chomps at a pellet on the target, and loops through them every DWELL ms (or for HAND_ROUNDS rounds, then rests on the first).
+// (src/data/hand.ts), chomps at a pellet on the target, and loops through them every DWELL ms (HAND_MODE
+// can make a state play once or sit still). HAND_NOTE adds a brief pop-up beside it.
 // Hidden in the PDF; X toggles it during the talk; reduced motion keeps it still on the first target.
 // The target sits just in front of the mouth: Pac-Man's centre is OFF px below-right of it, mouth facing up-left.
-const DWELL = 2800, OFF = 31, BOX = 48, AMBER = "#F2B347";
+const DWELL = 2800, NOTE_MS = 7000, OFF = 31, BOX = 48, AMBER = "#F2B347";
 
 let hidden = typeof window !== "undefined" && /no-hand/.test(window.location.search);
 const subs = new Set<() => void>();
@@ -30,9 +31,17 @@ export function Hand({ id, steps }: { id: string; steps: number }) {
   const [i, setI] = useState(0);
   const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
   const [n, setN] = useState(1);   // number of targets in the current state
-  const rounds = HAND_ROUNDS[id], done = !!rounds && i >= rounds * n;
+  const mode = HAND_MODE[`${id}:${step + 1}`], note = HAND_NOTE[`${id}:${step + 1}`];
+  const done = mode === "still" || (mode === "once" && i >= n);
+  const [noteOn, setNoteOn] = useState(false);
 
   useEffect(() => setI(0), [step, active]);
+  useEffect(() => {
+    if (!note || !active) { setNoteOn(false); return; }
+    setNoteOn(true);
+    const t = setTimeout(() => setNoteOn(false), NOTE_MS);
+    return () => clearTimeout(t);
+  }, [note, active, step]);
   useEffect(() => {
     if (!active || still || off || done) return;
     const t = setInterval(() => setI((k) => k + 1), DWELL);
@@ -45,7 +54,7 @@ export function Hand({ id, steps }: { id: string; steps: number }) {
       const targets = specs.flatMap((s) => resolve(section, s));
       if (!targets.length) { setPos(null); return; }
       setN(targets.length);
-      const { el, fx, fy } = targets[done ? 0 : i % targets.length];
+      const { el, fx, fy } = targets[done ? targets.length - 1 : i % targets.length];
       const sb = section.getBoundingClientRect(), r = el.getBoundingClientRect();
       const scale = sb.width / (section as HTMLElement).offsetWidth || 1;
       const x = (r.left - sb.left + fx * r.width) / scale, y = (r.top - sb.top + fy * r.height) / scale;
@@ -75,6 +84,11 @@ export function Hand({ id, steps }: { id: string; steps: number }) {
         </g>
         <circle cx={12} cy={-9} r={4} fill="#0B141C" />
       </svg>
+      {note && (
+        <div className="hand-note" role="note" style={{ opacity: show && noteOn ? 1 : 0, ...((pos?.x ?? 0) > 1300 ? { right: 2 * BOX - 6 } : { left: 2 * BOX - 6 }) }}>
+          {note}
+        </div>
+      )}
     </div>
   );
 }

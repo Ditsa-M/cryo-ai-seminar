@@ -12,16 +12,27 @@ export const HAND: Record<string, string[][]> = {
   s05: [["$h2@0.3,1"], ["meas@0.5,0.8"], ["inf@0.5,0.8"], ["divider"]],
   s06: [["$h2@0.3,1"], ["spa-focus"], ["et-focus"], ["dl@0.3,0.9"]],
   s07: [["$h2@0.3,1"], ["vid@0.5,0.9"], ["traj@0.6,0.6", "psd@0.5,0.9", "thon@0.6,0.5"], ["outlier@0.5,0.5"], ["$.callout@0.6,1"]],
-  s08: [["$li"], ["leg-matched", "mic@0.45,0.45"], ["leg-model_only"], ["leg-expert_only"], ["$.callout@0.5,1"]],
+  s08: [["$li:last-child@0.3,1"], ["leg-matched", "mic@0.45,0.45"], ["leg-model_only"], ["leg-expert_only"], ["$.callout@0.5,1"]],
   s09: [["$h2@0.3,1"], ["topaz@0.5,0.9"], ["yolo@0.5,0.9"], ["tomotwin@0.5,0.9"], ["$tbody tr:last-child@0.5,1"]],
   s10: [["$h2@0.3,1"], ["thr@0.3,1"], ["best@0.5,0.5"], ["cls"], ["$.callout@0.5,1"]],
   s11: [["$h2@0.3,1"], ["map-unsharpened@0.5,0.85"], ["map-globalB@0.5,0.85"], ["map-deepemhancer@0.5,0.85"], ["fsc@0.835,0.66", "$.callout@0.5,1"], ["map-unsharpened@0.5,0.85", "map-deepemhancer@0.5,0.85"]],
-  s12: [["$h2@0.3,1"], ["name@0.5,0.9"], ["bar-Topaz@1,0.6", "bar-CryoSegNet@1,0.6"], ["res-Topaz@0.5,0.7", "res-CryoSegNet@0.5,0.7"], ["c1@0.5,1"], ["c2@0.5,1"], ["c3@0.5,1"]],
+  s12: [["$h2@0.3,1"], ["$svg[aria-label^='Average particle']@0.135,0.45"], ["bar-Topaz@1,0.6", "bar-CryoSegNet@1,0.6"], ["res-Topaz@0.5,0.7", "res-CryoSegNet@0.5,0.7"], ["c1@0.5,1"], ["c2@0.5,1"], ["c3@0.5,1"]],
   s13: [["$h2@0.3,1"], ["use"], ["simple"]],
   s14: [["$h2@0.3,1"], ["fail@0.4,0.9"], ["wedge@0.5,0.9"], ["safe@0.4,0.9"]],
   s15: [["$h2@0.5,1"], ["th0@0.3,1"], ["th1@0.3,1"], ["th2@0.3,1"], ["goal@0.4,1"]],
-  s16: [["email@0.5,1", "questions@0.5,0.95"], ["email@0.5,1", "questions@0.5,0.95"]],
+  s16: [["email@0.5,1"], ["email@0.5,1"]],
 };
 
-// Slides whose hand loop stops after this many rounds, then rests on the first target.
-export const HAND_ROUNDS: Record<string, number> = { s16: 2 };
+// Per click state ("slide:index"): "once" visits each target once, then rests still on the last;
+// "still" sits on the target without chomping. Unlisted states loop.
+export const HAND_MODE: Record<string, "once" | "still"> = {
+  "s08:0": "once",     // last bullet, briefly
+  "s12:3": "once",     // Topaz, then rest on CryoSegNet
+  "s16:0": "still",    // Q&A: no motion
+  "s16:1": "still",
+};
+
+// Short pop-up shown beside the pointer for NOTE_MS when that click state starts.
+export const HAND_NOTE: Record<string, string> = {
+  "s01:2": "EMPIAR = Electron Microscopy Public Image Archive (EMBL-EBI): a free public archive of raw cryo-EM and cryo-ET images. Entry 10017: β-galactosidase micrographs with expert particle picks.",
+};

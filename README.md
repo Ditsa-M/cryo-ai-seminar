@@ -32,8 +32,9 @@ next slide, timer with per-slide pacing, full notes), **→ / Space** to advance
 overview. Nothing auto-advances; there is no audio.
 
 An amber Pac-Man pointer moves to whatever the script is talking about at each click and loops through
-the items for that click, chomping at each one for 2.8 s. On the last slide it goes email → Questions? twice,
-then rests on the email. Its targets are in `src/data/hand.ts`. It stays still
+the items for that click, chomping at each one for 2.8 s. A few clicks play once and then rest (slide 8's
+last bullet, slide 12's Topaz → CryoSegNet), it sits still on the email during Q&A, and on slide 1 a
+short pop-up explains EMPIAR. Its targets are in `src/data/hand.ts`. It stays still
 with reduced motion, is left out of the PDF, and `?no-hand` in the URL starts with it hidden.
 
 Without a server: any static server works on `dist/` (e.g. `python3 -m http.server -d dist 4173`).

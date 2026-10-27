@@ -111,3 +111,5 @@ html.reveal-print .reveal .slides section, html.print-pdf .reveal .slides sectio
 .hand { position: absolute; z-index: 40; pointer-events: none; width: 96px; height: 96px;
   transition: left .75s cubic-bezier(.45,.05,.3,1), top .75s cubic-bezier(.45,.05,.3,1), opacity .35s ease; filter: drop-shadow(0 3px 6px rgba(0,0,0,.6)); }
 .hand.still { transition: none; }
+.hand-note { position: absolute; top: 52px; width: 440px; padding: 14px 18px; background: #FFFFFF; color: #0B141C; border: 3px solid #F2B347;
+  border-radius: 10px; font-size: 21px; line-height: 1.35; font-weight: 500; box-shadow: 0 8px 24px rgba(0,0,0,.45); transition: opacity .4s ease; }
