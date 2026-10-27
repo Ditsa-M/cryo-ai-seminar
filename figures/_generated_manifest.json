@@ -1,0 +1,149 @@
+[
+ {
+  "file": "figures/s01_mic_raw.webp",
+  "width": 960,
+  "height": 960,
+  "note": "EMPIAR-10017 Falcon_2012_06_12-15_30_21_0, binned 4x (7.08 A/px), crop",
+  "kind": "EXPERIMENTAL DATA"
+ },
+ {
+  "file": "figures/s01_mic_lp.webp",
+  "width": 960,
+  "height": 960,
+  "note": "same crop, Gaussian low-pass sigma 2.5 px (~18 A)",
+  "kind": "EXPERIMENTAL DATA (filtered)"
+ },
+ {
+  "file": "figures/s10_classes_tp.webp",
+  "width": 816,
+  "height": 136,
+  "note": "simplified 2D classes of tp picks (EMPIAR-10017, Topaz thr 2.0)",
+  "kind": "RECOMPUTED RESULT"
+ },
+ {
+  "file": "figures/s10_classes_fp.webp",
+  "width": 816,
+  "height": 136,
+  "note": "simplified 2D classes of fp picks (EMPIAR-10017, Topaz thr 2.0)",
+  "kind": "RECOMPUTED RESULT"
+ },
+ {
+  "file": "figures/s10_classes_fn.webp",
+  "width": 816,
+  "height": 136,
+  "note": "simplified 2D classes of fn picks (EMPIAR-10017, Topaz thr 2.0)",
+  "kind": "RECOMPUTED RESULT"
+ },
+ {
+  "file": "figures/s07_psd_unaligned.webp",
+  "width": 600,
+  "height": 600,
+  "note": "psd_unaligned: periodogram-averaged power spectrum (1024 px tiles), centre 300x300 of 1024 (edge = 1/6.0 A^-1), smooth radial background subtracted",
+  "kind": "RECOMPUTED RESULT"
+ },
+ {
+  "file": "figures/s07_psd_aligned.webp",
+  "width": 600,
+  "height": 600,
+  "note": "psd_aligned: periodogram-averaged power spectrum (1024 px tiles), centre 300x300 of 1024 (edge = 1/6.0 A^-1), smooth radial background subtracted",
+  "kind": "RECOMPUTED RESULT"
+ },
+ {
+  "file": "figures/s07_sum_unaligned.webp",
+  "width": 600,
+  "height": 600,
+  "note": "unaligned frame sum, binned 2x (1.77 A/px), centre crop, low-pass sigma 1.2 px",
+  "kind": "RECOMPUTED RESULT"
+ },
+ {
+  "file": "figures/s07_sum_aligned_dw.webp",
+  "width": 600,
+  "height": 600,
+  "note": "aligned_dw frame sum, binned 2x (1.77 A/px), centre crop, low-pass sigma 1.2 px",
+  "kind": "RECOMPUTED RESULT"
+ },
+ {
+  "file": "figures/s05_frame0.webp",
+  "width": 463,
+  "height": 479,
+  "note": "single raw frame 1 of 49 (gain-corrected, binned 8x)",
+  "kind": "EXPERIMENTAL DATA"
+ },
+ {
+  "file": "figures/s04_clean.webp",
+  "width": 792,
+  "height": 198,
+  "note": "clean projections, PDB 6CVM simulation (seed 561)",
+  "kind": "SIMULATION"
+ },
+ {
+  "file": "figures/s04_ctfd.webp",
+  "width": 792,
+  "height": 198,
+  "note": "ctfd projections, PDB 6CVM simulation (seed 561)",
+  "kind": "SIMULATION"
+ },
+ {
+  "file": "figures/s04_noisy.webp",
+  "width": 792,
+  "height": 198,
+  "note": "noisy projections, PDB 6CVM simulation (seed 561)",
+  "kind": "SIMULATION"
+ },
+ {
+  "file": "figures/s04_avgs.webp",
+  "width": 792,
+  "height": 198,
+  "note": "average of N aligned noisy copies, N = 1,10,100,1000",
+  "kind": "SIMULATION"
+ },
+ {
+  "file": "figures/s04_recs.webp",
+  "width": 990,
+  "height": 198,
+  "note": "central slice of reconstructions from 30, 300, 3000, 30000 views (known poses) + truth",
+  "kind": "SIMULATION"
+ },
+ {
+  "file": "figures/s03_tomo_xy.webp",
+  "width": 512,
+  "height": 512,
+  "note": "simulated tomogram, x-y slab (z 44-51), 8 A/px, +/-60 deg WBP, inverted contrast",
+  "kind": "SIMULATION"
+ },
+ {
+  "file": "figures/s14_wedge_truth.webp",
+  "width": 640,
+  "height": 240,
+  "note": "x-z slice of simulated truth",
+  "kind": "SIMULATION"
+ },
+ {
+  "file": "figures/s14_wedge_rec.webp",
+  "width": 640,
+  "height": 240,
+  "note": "x-z slice reconstructed from noise-free +/-60 deg tilt series",
+  "kind": "SIMULATION"
+ },
+ {
+  "file": "figures/s14_wedge_full.webp",
+  "width": 640,
+  "height": 240,
+  "note": "x-z slice reconstructed from full 180 deg (impossible in practice)",
+  "kind": "SIMULATION"
+ },
+ {
+  "file": "figures/s05_tilts.webp",
+  "width": 1040,
+  "height": 208,
+  "note": "simulated tilt-series images at -60,-30,0,30,60 deg",
+  "kind": "SIMULATION"
+ },
+ {
+  "file": "figures/s05_boxes.webp",
+  "width": 672,
+  "height": 84,
+  "note": "8 extracted particle boxes at expert coordinates (EMPIAR-10017, 7.08 A/px, 283 A box)",
+  "kind": "EXPERIMENTAL DATA"
+ }
+]
