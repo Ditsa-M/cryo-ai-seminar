@@ -4,10 +4,11 @@ import { useStep, isPrint } from "../lib/useStep";
 import { useReducedMotion } from "../lib/reducedMotion";
 import { HAND, HAND_ROUNDS } from "../data/hand";
 
-// Presenter's pointing hand: glides to the target(s) for the current click state (src/data/hand.ts),
-// taps, and loops through them every DWELL ms (or for HAND_ROUNDS rounds, then rests on the first).
+// Presenter's pointer, an amber Pac-Man: glides to the target(s) for the current click state
+// (src/data/hand.ts), chomps at a pellet on the target, and loops through them every DWELL ms (or for HAND_ROUNDS rounds, then rests on the first).
 // Hidden in the PDF; X toggles it during the talk; reduced motion keeps it still on the first target.
-const DWELL = 2800, TIP_X = 19;   // fingertip x inside the 64×92 hand drawing (tip at y = 0)
+// The target sits just in front of the mouth: Pac-Man's centre is OFF px below-right of it, mouth facing up-left.
+const DWELL = 2800, OFF = 31, BOX = 48, AMBER = "#F2B347";
 
 let hidden = typeof window !== "undefined" && /no-hand/.test(window.location.search);
 const subs = new Set<() => void>();
@@ -57,16 +58,22 @@ export function Hand({ id, steps }: { id: string; steps: number }) {
 
   if (isPrint()) return null;
   const show = !!pos && !off;
+  const calm = still || done;
+  const chomp = (to: string) => calm ? null : <animateTransform attributeName="transform" type="rotate" values={`${to};0;${to}`} dur="0.36s" repeatCount="indefinite" />;
   return (
-    <div ref={ref} className={"hand" + (still || done ? " still" : "")} aria-hidden data-hand-on={show ? "1" : "0"}
-      style={{ left: (pos?.x ?? 960) - TIP_X, top: pos?.y ?? 540, opacity: show ? 1 : 0 }}>
-      <span className="hand-ring" />
-      <svg className="hand-svg" width={64} height={92} viewBox="0 0 64 92">
-        <g fill="#F4F8FA" stroke="#0B141C" strokeWidth={2.5} strokeLinejoin="round">
-          <path d="M23 88 L23 80 Q10 74 8 60 L6 48 Q6 42 12 43 Q16 44 17 50 L18 56 L12 8 Q12 1 19 1 Q26 1 26 8 L27 36 Q33 32 38 36 Q44 33 48 38 Q55 36 57 43 L58 62 Q58 76 50 82 L50 88 Z" />
-          <path d="M27 36 L28 50 M38 36 L38.5 50 M48 38 L48.5 52" fill="none" strokeWidth={2} />
+    <div ref={ref} className={"hand" + (calm ? " still" : "")} aria-hidden data-hand-on={show ? "1" : "0"}
+      style={{ left: (pos?.x ?? 960) + OFF - BOX, top: (pos?.y ?? 540) + OFF - BOX, opacity: show ? 1 : 0 }}>
+      <svg width={2 * BOX} height={2 * BOX} viewBox={`${-BOX} ${-BOX} ${2 * BOX} ${2 * BOX}`}>
+        {/* pellet on the target: eaten and replaced in time with the chomping */}
+        <circle cx={-OFF} cy={-OFF} r={6} fill={AMBER}>
+          {!calm && <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.45;0.5;1" dur="0.72s" repeatCount="indefinite" />}
+        </circle>
+        {/* drawn facing left (eye on top), then turned 45° so the mouth faces up-left */}
+        <g transform="rotate(45) scale(-1,1)" fill={AMBER} stroke="#0B141C" strokeWidth={2}>
+          <g transform="rotate(-35)"><path d="M0,0 L29,0 A29,29 0 0,0 -29,0 Z" />{chomp("-35")}</g>
+          <g transform="rotate(35)"><path d="M0,0 L-29,0 A29,29 0 0,0 29,0 Z" />{chomp("35")}</g>
         </g>
-        <rect x={21} y={84} width={31} height={8} rx={2} fill="#4FD1E8" stroke="#0B141C" strokeWidth={2} />
+        <circle cx={12} cy={-9} r={4} fill="#0B141C" />
       </svg>
     </div>
   );

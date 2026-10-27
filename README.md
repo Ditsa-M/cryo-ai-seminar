@@ -28,11 +28,11 @@ npm run preview                          # http://localhost:4173  (works with ne
 
 Open the URL in Chrome, press **F** for full screen. Slide 1 starts dark: the **first click plays the 14 s opening** (outside the 15:00; it holds on the title), the second click fades to the micrograph — start your timer there. Press **S** for the speaker view (current slide,
 next slide, timer with per-slide pacing, full notes), **→ / Space** to advance one click,
-**←** to go back (animations reverse and replay), **M** to toggle reduced motion, **X** to hide or show the pointing hand, **Esc** for the
+**←** to go back (animations reverse and replay), **M** to toggle reduced motion, **X** to hide or show the Pac-Man pointer, **Esc** for the
 overview. Nothing auto-advances; there is no audio.
 
-A pointing hand moves to whatever the script is talking about at each click and loops through the
-items for that click, tapping each one for 2.8 s. On the last slide it goes email → Questions? twice,
+An amber Pac-Man pointer moves to whatever the script is talking about at each click and loops through
+the items for that click, chomping at each one for 2.8 s. On the last slide it goes email → Questions? twice,
 then rests on the email. Its targets are in `src/data/hand.ts`. It stays still
 with reduced motion, is left out of the PDF, and `?no-hand` in the URL starts with it hidden.
 
