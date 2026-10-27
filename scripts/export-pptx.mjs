@@ -1,5 +1,6 @@
-// PowerPoint copy: one PowerPoint slide per click state of the production build (1920×1080 screenshots,
-// fade between them, so → steps through exactly like the web deck). The real clips are embedded where
+// PowerPoint copy: one PowerPoint slide per click state of the production build (1920×1080 screenshots).
+// It runs by itself: every slide advances on a timer from the script, so the show lasts exactly 15:00 from
+// entering slideshow mode (→ still works by hand). The real clips are embedded where
 // they play (auto-start; loops loop); a finished once-clip shows its final frame. Speaker notes carry
 // the script segment for each press from backup/cue-sheet.md. -> backup/deck.pptx
 // Usage: npm run build && node scripts/make-cue-sheet.mjs && node scripts/export-pptx.mjs
@@ -69,6 +70,19 @@ for (let h = 0; h < 16; h++) {
 }
 await browser.close(); srv.stop();
 
+// Auto-run timing: show clock (s) at which each state starts. The opening clip (14 s) plays inside the 15:00,
+// so the scripted talk (cue-sheet clock, 0:00 = micrograph) is scaled by (900 − 14) / 900 to end on time.
+const TOTAL = story.meta.total_seconds, OPEN = 14, scale = (TOTAL - OPEN) / TOTAL;
+const sec = (c) => { const [m, x] = c.split(":").map(Number); return m * 60 + x; };
+const at = states.map((st) => {
+  if (st.id === "s01" && st.k < 2) return 0;   // dark first frame: straight into the opening
+  if (!/^\d+:\d\d$/.test(st.cue?.clock ?? "")) throw new Error(`${st.id} click ${st.k}: no cue time`);
+  return OPEN + sec(st.cue.clock) * scale;
+});
+const ms = (t) => Math.round(t * 1000);
+const advTm = at.map((t, i) => ms(at[i + 1] ?? TOTAL) - ms(t));
+const clock = (t) => `${Math.floor(Math.round(t) / 60)}:${String(Math.round(t) % 60).padStart(2, "0")}`;
+
 const pres = new PptxGenJS();
 pres.layout = "LAYOUT_WIDE";
 pres.title = story.meta.title;
@@ -88,7 +102,7 @@ states.forEach((st, i) => {
       (videoSlides.get(i + 1) ?? videoSlides.set(i + 1, []).get(i + 1)).push({ loop: m.loop });
     }
   }
-  const head = `SLIDE ${Number(st.id.slice(1))} · ${st.k === 0 ? "arrival" : `click ${st.k} of ${st.n - 1}`}${st.cue ? ` · press at ${st.cue.clock}` : ""}`;
+  const head = `SLIDE ${Number(st.id.slice(1))} · ${st.k === 0 ? "arrival" : `click ${st.k} of ${st.n - 1}`} · on screen ${clock(at[i])}–${clock(at[i] + advTm[i] / 1000)} (auto)`;
   const parts = [head];
   if (st.cue) parts.push(`ON SCREEN: ${st.cue.what}`, st.cue.say ? `SAY: ${st.cue.say}` : "");
   if (st.k === 0) parts.push(`LIKELY QUESTION: ${s.question}`, `SUGGESTED ANSWER: ${s.answer}`);
@@ -97,7 +111,8 @@ states.forEach((st, i) => {
 const out = path.join(root, "backup/deck.pptx");
 await pres.writeFile({ fileName: out });
 
-// post-process: fade transition on every slide; embedded clips start automatically (loops repeat)
+// post-process: auto-advance time on every slide (no transition effect, so the timing is exact);
+// embedded clips start automatically (loops repeat)
 const zip = await JSZip.loadAsync(readFileSync(out));
 const timing = (vids) => {
   let id = 3;
@@ -114,7 +129,7 @@ const timing = (vids) => {
 for (let i = 1; i <= states.length; i++) {
   const f = `ppt/slides/slide${i}.xml`;
   let xml = await zip.file(f).async("string");
-  let tail = '<p:transition spd="med"><p:fade/></p:transition>';
+  let tail = `<p:transition advTm="${advTm[i - 1]}"/>`;
   const vids = videoSlides.get(i);
   if (vids) {
     const ids = [...xml.matchAll(/<p:pic>\s*<p:nvPicPr>\s*<p:cNvPr id="(\d+)"[^>]*>(?:(?!<\/p:pic>)[\s\S])*?<a:videoFile/g)].map((m) => m[1]);
@@ -126,4 +141,5 @@ for (let i = 1; i <= states.length; i++) {
   zip.file(f, xml);
 }
 writeFileSync(out, await zip.generateAsync({ type: "nodebuffer", compression: "DEFLATE" }));
+console.log(`show length ${(advTm.reduce((a, b) => a + b, 0) / 1000).toFixed(1)} s`);
 console.log(`wrote ${out}: ${states.length} slides, ${[...videoSlides.values()].flat().length} embedded clips`);

@@ -38,8 +38,11 @@ short pop-up explains EMPIAR. Its targets are in `src/data/hand.ts`. It stays st
 with reduced motion, is left out of the PDF, and `?no-hand` in the URL starts with it hidden.
 
 PowerPoint copy: `npm run build && npm run export:pptx` writes `backup/deck.pptx`. It has one slide per click, each a
-1920×1080 capture of the deck, with a fade between them, the clips embedded and starting on their own, and your script
-for each press in the speaker notes. Its text can't be edited; the web deck stays the source.
+1920×1080 capture of the deck, with the clips embedded and starting on their own, and your script for each press in the
+speaker notes. It runs by itself: each slide advances on a timer taken from the script, so the show lasts exactly 15:00
+from entering slideshow mode. The 14 s opening plays inside those 15:00, so every scripted step is 1.6% shorter. To
+leave slideshow mode at 15:00 and land on the Questions slide, turn off PowerPoint's **File → Options → Advanced →
+End with black slide**. Its text can't be edited; the web deck stays the source.
 
 Without a server: any static server works on `dist/` (e.g. `python3 -m http.server -d dist 4173`).
 Opening `dist/index.html` from `file://` is not supported (browser module/video restrictions).
