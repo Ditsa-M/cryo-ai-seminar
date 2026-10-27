@@ -7,7 +7,7 @@
 export const HAND: Record<string, string[][]> = {
   s01: [[], [], ["mic@0.5,0.55"], ["mic@0.3,0.35", "mic@0.7,0.65"], ["leg"], ["question"]],
   s02: [["$h2@0.3,1"], ["gun@0.5,0.9", "sample@0.5,0.6", "det@0.5,0.7", "dose-opt@0.5,0.5"], ["num@0.2,0.6"], ["pipe@0.5,0.8", "pipe@0.95,0.8"]],
-  s03: [["spa@0.5,0.9", "$thead th:nth-child(2)"], ["tomo@0.5,0.9", "$thead th:nth-child(3)"], ["q"]],
+  s03: [[], [], []],   // no pointer on slide 3
   s04: [["$.eq@0.5,0.9", "vid@0.5,0.9"], ["row0"], ["ctf@0.5,0.6", "row1"], ["row2"], ["row3"], ["row4"]],
   s05: [["$h2@0.3,1"], ["meas@0.5,0.8"], ["inf@0.5,0.8"], ["divider"]],
   s06: [["$h2@0.3,1"], ["spa-focus"], ["et-focus"], ["dl@0.3,0.9"]],

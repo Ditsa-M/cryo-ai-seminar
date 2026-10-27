@@ -70,7 +70,7 @@ export function Hand({ id, steps }: { id: string; steps: number }) {
   const calm = still || done;
   const chomp = (to: string) => calm ? null : <animateTransform attributeName="transform" type="rotate" values={`${to};0;${to}`} dur="0.36s" repeatCount="indefinite" />;
   return (
-    <div ref={ref} className={"hand" + (calm ? " still" : "")} aria-hidden data-hand-on={show ? "1" : "0"}
+    <div ref={ref} className={"hand" + (calm ? " still" : "")} aria-hidden data-hand-on={show ? "1" : "0"} data-hand-none={specs.length ? undefined : "1"}
       style={{ left: (pos?.x ?? 960) + OFF - BOX, top: (pos?.y ?? 540) + OFF - BOX, opacity: show ? 1 : 0 }}>
       <svg width={2 * BOX} height={2 * BOX} viewBox={`${-BOX} ${-BOX} ${2 * BOX} ${2 * BOX}`}>
         {/* pellet on the target: eaten and replaced in time with the chomping */}

@@ -1,5 +1,5 @@
 {
- "when": "2026-10-27T03:35:21.135Z",
+ "when": "2026-10-27T04:06:03.155Z",
  "chrome": "/usr/bin/google-chrome",
  "results": [
   {
@@ -38,7 +38,7 @@
    "detail": ""
   },
   {
-   "name": "Pac-Man pointer shown in every click state",
+   "name": "Pac-Man pointer shown where it has targets, hidden elsewhere",
    "ok": true,
    "detail": ""
   },
