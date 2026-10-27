@@ -17,11 +17,14 @@ export function S16Refs() {
   const ess = ESSENTIAL.map((k) => all.find((e) => e.key === k)!).filter(Boolean);
   return (
     <SlideFrame id="s16" hideChrome>
-      <h2 style={{ marginTop: -50, fontSize: 60 }}>Key references · Questions?</h2>
+      <h2 style={{ marginTop: -50, fontSize: 60 }}>Key references · <span data-hand="questions" style={{ color: "var(--accept)" }}>Questions?</span></h2>
       <ol style={{ fontSize: 25, lineHeight: 1.3, columns: 2, columnGap: 48, paddingLeft: "1.3em", margin: 0 }}>
         {ess.map((e) => <li key={e.key} style={{ breakInside: "avoid", margin: "0 0 12px" }}>{fmt(e)}</li>)}
       </ol>
       <p className="small muted" style={{ marginTop: 14 }}>Data: EMPIAR-10017, EMPIAR-10204, EMD-72202 (public). Tools run by the presenter: Topaz 0.3.20, DeepEMhancer 0.18, ChimeraX 1.12. Claim ledger, BibTeX and asset provenance ship with the deck.</p>
+      <p style={{ fontSize: 34, marginTop: 22 }}>
+        Questions later? Email me at <a data-hand="email" href="mailto:dmallic1@asu.edu" style={{ color: "var(--accept)", fontFamily: "var(--mono)", fontWeight: 700, textDecoration: "none" }}>dmallic1@asu.edu</a>
+      </p>
       <button onClick={() => setOpen(!open)} style={{ position: "absolute", right: 64, bottom: 30, fontSize: 18, padding: "8px 14px", background: "#14232F", color: "#EEF3F6", border: "1px solid #4FD1E8", borderRadius: 4, cursor: "pointer", fontFamily: "var(--mono)" }} aria-expanded={open}>
         {open ? "Close" : "Full bibliography"} ({all.length})
       </button>
